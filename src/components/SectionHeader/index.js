@@ -5,7 +5,14 @@ import useStyles from "./styles";
 import { useDispatch } from "react-redux";
 import { setModal } from "@/redux/modals/creators";
 
+import getConfig from "next/config";
+const { publicRuntimeConfig } = getConfig();
+
 export default function sectionHeader() {
+  let basePath = publicRuntimeConfig.basePath
+    ? publicRuntimeConfig.basePath
+    : "";
+
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -19,8 +26,8 @@ export default function sectionHeader() {
         <div className={classes.blackBackground} />
         <img
           className={classes.imgBackground}
-          src="images/headerImage.webp"
-          srcSet="images/headerImage_4000.webp 4000w, images/headerImage_2000.webp 2000w, images/headerImage_1000.webp 1000w"
+          src={`${basePath}images/headerImage.webp`}
+          srcSet={`${basePath}images/headerImage_4000.webp 4000w, ${basePath}images/headerImage_2000.webp 2000w, ${basePath}images/headerImage_1000.webp 1000w`}
           sizes="100vw"
           alt="A cover image."
         />

@@ -10,6 +10,9 @@ import faqs from "./faqs";
 import pna from "./pna";
 import callorchat from "./callorchat";
 
+import getConfig from "next/config";
+const { publicRuntimeConfig } = getConfig();
+
 //reference
 const componentReferenceArray = [
   intro,
@@ -27,6 +30,10 @@ import { Container, Typography } from "@material-ui/core";
 
 export default function body() {
   const classes = useStyles();
+
+  let basePath = publicRuntimeConfig.basePath
+    ? publicRuntimeConfig.basePath
+    : "";
 
   return (
     // body component
@@ -51,7 +58,7 @@ export default function body() {
               {i == 0 && (
                 <img
                   className={classes.introImage}
-                  src="images/introImage.webp"
+                  src={`${basePath}images/introImage.webp`}
                   alt="A man selling his car."
                   width="407px"
                   height="270.94px"
