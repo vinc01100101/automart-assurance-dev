@@ -16,6 +16,11 @@ import { VIBER, TELEPHONE, EMAIL } from "@/components/hrefLinks";
 import { useDispatch } from "react-redux";
 import { setModal } from "@/redux/modals/creators";
 
+import getConfig from "next/config";
+const { publicRuntimeConfig } = getConfig();
+
+let basePath = publicRuntimeConfig.basePath ? publicRuntimeConfig.basePath : "/";
+
 export default function confirmation({ setActiveComponent, setResult }) {
   //redux states
   const {
@@ -211,12 +216,14 @@ export default function confirmation({ setActiveComponent, setResult }) {
     ];
 
     const xhr = new XMLHttpRequest();
+
     xhr.open(
       "POST",
-      "https://sellmycar-api-dev.philippine.properties/inspection-appointments",
+      `${basePath}inspection-appointments`,
       // "/api/appointment", //testing api
       true
     );
+
     xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     xhr.onreadystatechange = () => {
       console.log(readyStates[xhr.readyState], xhr.status);
@@ -233,7 +240,6 @@ export default function confirmation({ setActiveComponent, setResult }) {
         return;
       }
 
-      console.log(xhr);
       //set success dialog
       setResult({
         title:
