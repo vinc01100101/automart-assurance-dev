@@ -24,9 +24,16 @@ const pnaObj = {
   },
 };
 
+import getConfig from "next/config";
+const { publicRuntimeConfig } = getConfig();
+
 pna.title = "Partners & Affiliates";
 
 export default function pna() {
+  let basePath = publicRuntimeConfig.basePath
+    ? publicRuntimeConfig.basePath
+    : "/";
+
   const classes = useStyles();
 
   const makeGridItems = (groupName) => {
@@ -38,7 +45,7 @@ export default function pna() {
           width={entry[1][0]}
           height={entry[1][1]}
           quality={100}
-          src={`/images/${groupName}/${entry[0]}.webp`}
+          src={`${basePath}images/${groupName}/${entry[0]}.webp`}
           alt={entry[0]}
         />
       </Grid>

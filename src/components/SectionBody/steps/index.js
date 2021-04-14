@@ -20,9 +20,16 @@ import { setModal } from "@/redux/modals/creators";
 
 import Image from "next/image";
 
+import getConfig from "next/config";
+const { publicRuntimeConfig } = getConfig();
+
 steps.title = "Just follow these 3 easy steps";
 
 export default function steps() {
+  let basePath = publicRuntimeConfig.basePath
+    ? publicRuntimeConfig.basePath
+    : "/";
+
   const dispatch = useDispatch();
   const classes = useStyles();
   const makeCards = (entry, i) => {
@@ -35,7 +42,7 @@ export default function steps() {
         <div className={classes.setFlex}>
           <div className={classes.logoContainer}>
             <Image
-              src={`/svg/not-in-sprite/logo-step${i}.svg`}
+              src={`${basePath}svg/not-in-sprite/logo-step${i}.svg`}
               alt={entry.title}
               width={entry.size[0]}
               height={entry.size[1]}
@@ -46,7 +53,7 @@ export default function steps() {
               i == 0 && (
                 <div className={classes.introBadge}>
                   <Image
-                    src={`/svg/not-in-sprite/logo-step-badge.svg`}
+                    src={`${basePath}svg/not-in-sprite/logo-step-badge.svg`}
                     alt="Best Offer"
                     width="54px"
                     height="54px"

@@ -21,7 +21,14 @@ import store from "@/redux/store";
 //react
 import { useEffect } from "react";
 
+import getConfig from "next/config";
+const { publicRuntimeConfig } = getConfig();
+
 function MyApp({ Component, pageProps }) {
+  let basePath = publicRuntimeConfig.basePath
+    ? publicRuntimeConfig.basePath
+    : "";
+
   useEffect(() => {
     //google analytics
     window.dataLayer = window.dataLayer || [];
@@ -31,7 +38,7 @@ function MyApp({ Component, pageProps }) {
     gtag("js", new Date());
     gtag("config", "G-6L6EWL6H47");
 
-    console.log(window.dataLayer);
+    // console.log(window.dataLayer);
   }, []);
   return (
     <>
@@ -49,11 +56,15 @@ function MyApp({ Component, pageProps }) {
         <link
           rel="preload"
           as="image"
-          href="images/headerImage.webp"
-          imagesrcset="images/headerImage_4000.webp 4000w, images/headerImage_2000.webp 2000w, images/headerImage_1000.webp 1000w"
+          href={`${basePath}images/headerImage.webp`}
+          imagesrcset={`${basePath}images/headerImage_4000.webp 4000w, ${basePath}images/headerImage_2000.webp 2000w, ${basePath}images/headerImage_1000.webp 1000w`}
           imagesizes="100vw"
         />
-        <link rel="preload" as="image" href="images/introImage.webp" />
+        <link
+          rel="preload"
+          as="image"
+          href={`${basePath}images/introImage.webp`}
+        />
 
         {/* fonts asynchronouse load*/}
         <link rel="preconnect" href="https://fonts.gstatic.com" />
