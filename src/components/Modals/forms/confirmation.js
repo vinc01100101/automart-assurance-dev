@@ -19,7 +19,9 @@ import { setModal } from "@/redux/modals/creators";
 import getConfig from "next/config";
 const { publicRuntimeConfig } = getConfig();
 
-let apiBasePath = publicRuntimeConfig.apiBasePath;
+let { apiBasePath, basePath } = publicRuntimeConfig;
+//"basePath" for testing appointment-api-endpoint only
+basePath = basePath || "";
 
 export default function confirmation({ setActiveComponent, setResult }) {
   //redux states
@@ -220,7 +222,7 @@ export default function confirmation({ setActiveComponent, setResult }) {
     xhr.open(
       "POST",
       `${apiBasePath}/inspection-appointments`,
-      // "/api/appointment", //testing api
+      // `${basePath}api/appointment`, //testing api
       true
     );
 
@@ -285,7 +287,7 @@ export default function confirmation({ setActiveComponent, setResult }) {
       fuel_type_id: fuelType,
       transmission_type_id: transmissionType,
       brand_color_id: color,
-      odometer: odometer,
+      odometer: odometer.replace(/,/g, ""),
       notes: "good",
       scheduled_at: date.format + " " + time,
     };

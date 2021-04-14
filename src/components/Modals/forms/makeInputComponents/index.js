@@ -24,7 +24,7 @@ export default function makeInputComponents() {
   //input formats (string? number? email? etc..)
   const numberReg = /^\d*$/;
   const stringReg = /^[a-z]*((?<=\S)\s{0,1}[a-z]*)*$/i; //multiple words, space separated
-  const emailReg = /^(\w+)?@?([a-z]*)?\.?([a-z]{0,3})?$/i;
+  const emailReg = /^(\w+\.?)*?@?([a-z]*)?\.?([a-z]{0,3})?$/i;
   const defaultFormatReg = /.*/;
 
   //reference [inputFormat, characterLength]
@@ -70,6 +70,7 @@ export default function makeInputComponents() {
       dispatch(fetchModelsData(value));
     }
     if (key === "model") {
+      console.log("value is: " + value);
       dispatch(setInput({ key: "trim", value: "" }));
       dispatch(fetchTrimsData(value));
     }
