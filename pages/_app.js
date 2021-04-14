@@ -17,7 +17,14 @@ import SvgSprite from "@/svgStore/sprite";
 import { createWrapper } from "next-redux-wrapper";
 import { useDispatch } from "react-redux"; //Provider module not needed, createWrapper did it instead
 import store from "@/redux/store";
-import { setDatesArray, fetchLocationsData } from "@/redux/modals/creators";
+import {
+  setDatesArray,
+  fetchLocationsData,
+  fetchBrandsData,
+  fetchTransmissionsData,
+  fetchFuelTypesData,
+  fetchColorsData,
+} from "@/redux/modals/creators";
 
 //react
 import { useEffect } from "react";
@@ -29,6 +36,10 @@ function MyApp({ Component, pageProps }) {
     //fetch redux states
     dispatch(setDatesArray());
     dispatch(fetchLocationsData());
+    dispatch(fetchBrandsData());
+    dispatch(fetchTransmissionsData());
+    dispatch(fetchFuelTypesData());
+    dispatch(fetchColorsData());
 
     //google analytics
     window.dataLayer = window.dataLayer || [];

@@ -7,13 +7,7 @@ import { Typography } from "@material-ui/core";
 import { useSelector } from "react-redux";
 
 //fields data
-import {
-  FIELD_BRAND,
-  FIELD_YEAR,
-  FIELD_TRANSMISSION_TYPE,
-  FIELD_FUEL_TYPE,
-  FIELD_COLOR,
-} from "./data/vehicleInfoData";
+import { FIELD_YEAR } from "./data/vehicleInfoData";
 
 //input component makers
 import makeInputComponents from "./makeInputComponents";
@@ -23,11 +17,19 @@ export default function vehicleInfo() {
   const {
     year,
     brand,
+    brandsArray,
+    model,
+    modelsArray,
+    trim,
+    trimsArray,
     plateNumber,
     conductionSticker,
     transmissionType,
+    transmissionsArray,
     fuelType,
+    fuelTypesArray,
     color,
+    colorsArray,
     odometer,
   } = useSelector((state) => state.modals);
 
@@ -50,7 +52,10 @@ export default function vehicleInfo() {
   return (
     <form>
       {makeSelect("Year", year, "year", FIELD_YEAR)}
-      {makeSelect("Brand", brand, "brand", FIELD_BRAND)}
+      {makeSelect("Brand", brand, "brand", brandsArray)}
+      {modelsArray.length > 0 &&
+        makeSelect("Model", model, "model", modelsArray)}
+      {trimsArray.length > 0 && makeSelect("Trim", trim, "trim", trimsArray)}
 
       {/* flex row this plateConduction*/}
       <div className="plateConduction">
@@ -69,10 +74,10 @@ export default function vehicleInfo() {
         "Transmission Type",
         transmissionType,
         "transmissionType",
-        FIELD_TRANSMISSION_TYPE
+        transmissionsArray
       )}
-      {makeSelect("Fuel Type", fuelType, "fuelType", FIELD_FUEL_TYPE)}
-      {makeSelect("Color", color, "color", FIELD_COLOR)}
+      {makeSelect("Fuel Type", fuelType, "fuelType", fuelTypesArray)}
+      {makeSelect("Color", color, "color", colorsArray)}
       {makeTextField("Odometer", odometer, "odometer")}
     </form>
   );

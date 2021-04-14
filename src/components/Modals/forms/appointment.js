@@ -153,7 +153,6 @@ export default function appointment() {
     const value = pointer * containerWidth;
     updateCurrentPosition(value, true);
   };
-
   return (
     <form>
       {makeSelect("Location", location, "location", locationsArray)}

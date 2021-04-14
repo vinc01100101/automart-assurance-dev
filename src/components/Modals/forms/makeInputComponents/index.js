@@ -11,7 +11,11 @@ import {
 } from "@material-ui/core";
 
 //redux
-import { setInput } from "@/redux/modals/creators";
+import {
+  setInput,
+  fetchModelsData,
+  fetchTrimsData,
+} from "@/redux/modals/creators";
 import { useDispatch } from "react-redux";
 
 export default function makeInputComponents() {
@@ -59,14 +63,16 @@ export default function makeInputComponents() {
     //bring back odometer's comma delimiter
     if (key === "odometer") returnValue = parseInt(testValue).toLocaleString();
 
-    //capitalize first letter of each word (firstName, lastName)
-    //NOTE: this lags on android phone!
-    // if (regFormat === stringReg)
-    //   returnValue = value
-    //     .split(" ")
-    //     .map((x) => x && x[0].toUpperCase() + x.slice(1).toLowerCase())
-    //     .join(" ");
-
+    //prefetch models and trims
+    if (key === "brand") {
+      dispatch(setInput({ key: "model", value: "" }));
+      dispatch(setInput({ key: "trim", value: "" }));
+      dispatch(fetchModelsData(value));
+    }
+    if (key === "model") {
+      dispatch(setInput({ key: "trim", value: "" }));
+      dispatch(fetchTrimsData(value));
+    }
     //dispatch
     return testAndDispatch();
   };
@@ -84,8 +90,8 @@ export default function makeInputComponents() {
           onChange={(e) => handleChange(id, e.target.value)}
         >
           {data.map((x, i) => (
-            <MenuItem key={i} value={x}>
-              {x == "" ? "NONE" : x}
+            <MenuItem key={i} value={x.id}>
+              {x.label == "" ? "NONE" : x.label}
             </MenuItem>
           ))}
         </Select>
@@ -101,7 +107,7 @@ export default function makeInputComponents() {
         id={`input-${id}`}
         InputProps={{
           endAdornment: id === "odometer" && (
-            <InputAdornment>miles</InputAdornment>
+            <InputAdornment>km</InputAdornment>
           ),
         }}
         variant="outlined"

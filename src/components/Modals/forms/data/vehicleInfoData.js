@@ -1,15 +1,11 @@
 export const FIELD_YEAR = (() => {
   const yearNow = new Date().getFullYear();
   // "", == for default empty value (NONE)
-  return ["", ...[...Array(yearNow - 1998)].map((x, i) => 1999 + i)];
+  return [
+    { id: "", label: "" },
+    ...[...Array(yearNow - 1998)].map((x, i) => {
+      const retValue = 1999 + i;
+      return { id: retValue, label: retValue };
+    }),
+  ];
 })();
-
-export const FIELD_BRAND = ["", "Brand A", "Brand B", "Brand C"];
-export const FIELD_TRANSMISSION_TYPE = [
-  "",
-  "Tansmission A",
-  "Tansmission B",
-  "Tansmission C",
-];
-export const FIELD_FUEL_TYPE = ["", "Gas A", "Gas B", "Gas C"];
-export const FIELD_COLOR = ["", "Red", "Green", "Blue"];

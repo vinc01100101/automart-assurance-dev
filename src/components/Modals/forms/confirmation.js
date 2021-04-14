@@ -20,15 +20,24 @@ export default function confirmation({ setActiveComponent, setResult }) {
   //redux states
   const {
     location,
+    locationsArray,
     date,
     time,
     year,
     brand,
+    brandsArray,
+    model,
+    modelsArray,
+    trim,
+    trimsArray,
     plateNumber,
     conductionSticker,
     transmissionType,
+    transmissionsArray,
     fuelType,
+    fuelTypesArray,
     color,
+    colorsArray,
     odometer,
     firstName,
     lastName,
@@ -37,12 +46,14 @@ export default function confirmation({ setActiveComponent, setResult }) {
     address,
   } = useSelector((state) => state.modals);
   const dispatch = useDispatch();
-
   //the key value pairs to present on the confirmation form
   const appointment = {
     title: "Appointment Schedule",
     data: [
-      ["Location", location],
+      [
+        "Location",
+        location ? locationsArray.find((x) => x.id === location).label : "",
+      ],
       ["Date", date],
       ["Time", time],
     ],
@@ -51,12 +62,22 @@ export default function confirmation({ setActiveComponent, setResult }) {
     title: "Car Details",
     data: [
       ["Year", year],
-      ["Brand", brand],
+      ["Brand", brand ? brandsArray.find((x) => x.id === brand).label : ""],
+      ["Model", model ? modelsArray.find((x) => x.id === model).label : ""],
+      ["Trim", trim ? trimsArray.find((x) => x.id === trim).label : ""],
       ["Plate Number", plateNumber],
       ["Conduction Sticker", conductionSticker],
-      ["Transmission Type", transmissionType],
-      ["Fuel Type", fuelType],
-      ["Color", color],
+      [
+        "Transmission Type",
+        transmissionType
+          ? transmissionsArray.find((x) => x.id === transmissionType).label
+          : "",
+      ],
+      [
+        "Fuel Type",
+        fuelType ? fuelTypesArray.find((x) => x.id === fuelType).label : "",
+      ],
+      ["Color", color ? colorsArray.find((x) => x.id === color).label : ""],
       ["Odometer", odometer],
     ],
   };
@@ -90,6 +111,14 @@ export default function confirmation({ setActiveComponent, setResult }) {
             "Location",
             "Date",
             "Time",
+            "Address",
+            "Email",
+            "Odometer",
+            "Transmission Type",
+            "Year",
+            "Brand",
+            "Fuel Type",
+            "Color",
           ];
 
           //either conduction sticker or plate number required
@@ -151,7 +180,7 @@ export default function confirmation({ setActiveComponent, setResult }) {
                 //this section is for details confirmation, make it readOnly
                 readOnly
                 //not sending any data when disabled
-                // disabled
+                disabled
               ></InputBase>
             </div>
           );
@@ -182,7 +211,12 @@ export default function confirmation({ setActiveComponent, setResult }) {
     ];
 
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", "/api/appointment", true);
+    xhr.open(
+      "POST",
+      "https://sellmycar-api-dev.philippine.properties/inspection-appointments",
+      // "/api/appointment", //testing api
+      true
+    );
     xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     xhr.onreadystatechange = () => {
       console.log(readyStates[xhr.readyState], xhr.status);
@@ -199,6 +233,7 @@ export default function confirmation({ setActiveComponent, setResult }) {
         return;
       }
 
+      console.log(xhr);
       //set success dialog
       setResult({
         title:
@@ -226,22 +261,42 @@ export default function confirmation({ setActiveComponent, setResult }) {
       });
     };
 
-    //get the form values and stringify it
-    const formData = new FormData(e.target);
-    const formObject = Object.fromEntries(formData);
-    const stringified = JSON.stringify(formObject);
+    const formData = {
+      inspection_site_id: location,
+      classification_id: 1,
+      referral_partner_id: 1,
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+      mobile: mobileNumber,
+      city_address: address,
+      year: year,
+      brand_id: brand,
+      brand_model_id: model,
+      brand_model_property_id: trim,
+      plate_number: plateNumber,
+      conduction_sticker: conductionSticker,
+      fuel_type_id: fuelType,
+      transmission_type_id: transmissionType,
+      brand_color_id: color,
+      odometer: odometer,
+      notes: "good",
+      scheduled_at: date.format + " " + time,
+    };
+    //delete the empty fields..
+    !conductionSticker && delete formData.conduction_sticker;
+    !plateNumber && delete formData.plate_number;
+    !model && delete formData.brand_model_id;
+    !trim && delete formData.brand_model_property_id;
+
+    const stringified = JSON.stringify(formData);
     xhr.send(stringified);
 
     console.log("sent");
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      id="confirmation-form"
-      method="post"
-      action="/api/appointment"
-    >
+    <form onSubmit={handleSubmit} id="confirmation-form" method="post">
       {makeSection(appointment)}
       {makeSection(vehicle)}
       {makeSection(personal)}

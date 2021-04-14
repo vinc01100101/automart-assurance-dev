@@ -11,11 +11,19 @@ const initialState = {
   //vehicle info
   year: "",
   brand: "",
+  brandsArray: [],
+  model: "",
+  modelsArray: [],
+  trim: "",
+  trimsArray: [],
   plateNumber: "",
   conductionSticker: "",
   transmissionType: "",
+  transmissionsArray: [],
   fuelType: "",
+  fuelTypesArray: [],
   color: "",
+  colorsArray: [],
   odometer: "",
   //personal info
   firstName: "",
@@ -62,12 +70,12 @@ const modalsReducer = (state = initialState, action) => {
           "Nov",
           "Dec",
         ];
-
         //formattedUtcDates = this..
         return dates.map((date) => ({
           month: months[date.getUTCMonth()],
           date: date.getUTCDate(),
           day: days[date.getUTCDay()],
+          format: `${date.getUTCFullYear()}-${date.getUTCMonth()}-${date.getUTCDate()}`,
         }));
       })();
 
@@ -80,8 +88,43 @@ const modalsReducer = (state = initialState, action) => {
         ...state,
         locationsArray: action.payload,
       };
-
       break;
+
+    case ACTIONS.SET_BRANDS_DATA:
+      return {
+        ...state,
+        brandsArray: action.payload,
+      };
+      break;
+
+    case ACTIONS.SET_MODELS_DATA:
+      return {
+        ...state,
+        modelsArray: action.payload,
+      };
+      break;
+
+    case ACTIONS.SET_TRANSMISSIONS_DATA:
+      return {
+        ...state,
+        transmissionsArray: action.payload,
+      };
+      break;
+
+    case ACTIONS.SET_FUELTYPES_DATA:
+      return {
+        ...state,
+        fuelTypesArray: action.payload,
+      };
+      break;
+
+    case ACTIONS.SET_COLORS_DATA:
+      return {
+        ...state,
+        colorsArray: action.payload,
+      };
+      break;
+
     default:
       return state;
   }
