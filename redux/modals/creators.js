@@ -70,6 +70,7 @@ export const fetchTrimsData = (query) => async (dispatch) => {
     label: data.property_value,
     id: data.id,
   }));
+  console.log(payload);
   dispatch(setTrimsData(payload));
 };
 

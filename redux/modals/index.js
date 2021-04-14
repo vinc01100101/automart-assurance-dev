@@ -104,6 +104,13 @@ const modalsReducer = (state = initialState, action) => {
       };
       break;
 
+    case ACTIONS.SET_TRIMS_DATA:
+      return {
+        ...state,
+        trimsArray: action.payload,
+      };
+      break;
+
     case ACTIONS.SET_TRANSMISSIONS_DATA:
       return {
         ...state,
