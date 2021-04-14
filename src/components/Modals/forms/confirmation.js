@@ -19,7 +19,7 @@ import { setModal } from "@/redux/modals/creators";
 import getConfig from "next/config";
 const { publicRuntimeConfig } = getConfig();
 
-let basePath = publicRuntimeConfig.basePath ? publicRuntimeConfig.basePath : "/";
+let apiBasePath = publicRuntimeConfig.apiBasePath;
 
 export default function confirmation({ setActiveComponent, setResult }) {
   //redux states
@@ -219,7 +219,7 @@ export default function confirmation({ setActiveComponent, setResult }) {
 
     xhr.open(
       "POST",
-      `${basePath}inspection-appointments`,
+      `${apiBasePath}/inspection-appointments`,
       // "/api/appointment", //testing api
       true
     );
