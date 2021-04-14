@@ -1,5 +1,5 @@
 import { ACTIONS } from "./constants";
-const BASE_URL = "https://sellmycar-api-dev.philippine.properties";
+// const BASE_URL = "https://sellmycar-api-dev.philippine.properties";
 
 export const setModal = (modal) => ({
   type: ACTIONS.SET_MODAL,
@@ -19,6 +19,11 @@ export const setDatesArray = () => ({
 });
 
 //CHAINED ACTIONS---------------------------
+let BASE_URL;
+export const SET_BASE_URL = (url) => {
+  BASE_URL = url;
+};
+
 export const setLocationsData = (payload) => ({
   type: ACTIONS.SET_LOCATIONS_DATA,
   payload,
