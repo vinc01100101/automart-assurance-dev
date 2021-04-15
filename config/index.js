@@ -4,9 +4,11 @@ const breakpoints = createBreakpoints({});
 const theme = {
   overrides: {
     // Style sheet name ⚛️
-    // MuiTypography: {
-    //   root: {},
-    // },
+    MuiMenuItem: {
+      root: {
+        whiteSpace: "normal",
+      },
+    },
   },
   palette: {
     primary: {

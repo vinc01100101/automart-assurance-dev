@@ -91,7 +91,7 @@ export default function makeInputComponents() {
           onChange={(e) => handleChange(id, e.target.value)}
         >
           {data.map((x, i) => (
-            <MenuItem key={i} value={x.id}>
+            <MenuItem key={i} value={x.id} divider>
               {x.label == "" ? "NONE" : x.label}
             </MenuItem>
           ))}
