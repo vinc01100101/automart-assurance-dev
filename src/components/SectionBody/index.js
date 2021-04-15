@@ -10,6 +10,8 @@ import faqs from "./faqs";
 import pna from "./pna";
 import callorchat from "./callorchat";
 
+import Image from "next/image";
+
 import getConfig from "next/config";
 const { publicRuntimeConfig } = getConfig();
 
@@ -56,15 +58,17 @@ export default function body() {
             >
               {/* circular header image */}
               {i == 0 && (
-                <img
-                  className={classes.introImage}
-                  src={`${basePath}images/introImage.webp`}
-                  alt="A man selling his car."
-                  width="407px"
-                  height="270.94px"
-                />
+                <div className={classes.introImageWrapper}>
+                  <Image
+                    className={classes.introImage}
+                    src={`/${basePath}images/introImage.webp`}
+                    alt="A man selling his car."
+                    layout="fill"
+                  />
+                </div>
               )}
               <div
+                style={{ flex: 1 }}
                 className={`${
                   i == componentReferenceArray.length - 1
                     ? classes.callOrChatBackground
@@ -72,7 +76,9 @@ export default function body() {
                 }`}
               >
                 <Typography
-                  className={`${classes.title} ${i == 0 && classes.introTitle}`}
+                  className={`${classes.title}${
+                    i == 0 ? classes.introTitle : ""
+                  }`}
                   variant="h4"
                   component="div"
                 >

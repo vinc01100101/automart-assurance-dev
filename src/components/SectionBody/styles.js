@@ -19,9 +19,19 @@ export default makeStyles((theme) => ({
     },
   },
   introImage: {
-    width: "407px",
-    height: "auto",
-    clipPath: `circle(39%)`,
+    clipPath: `circle(50%)`,
+    paddingRight: "30px",
+  },
+  introImageWrapper: {
+    position: "relative",
+    flexShrink: 0,
+    width: "300px",
+    height: "300px",
+    marginBottom: "30px",
+    [theme.breakpoints.up("md")]: {
+      marginBottom: "0px",
+      marginRight: "30px",
+    },
   },
   introTitle: {
     [theme.breakpoints.up("md")]: {
