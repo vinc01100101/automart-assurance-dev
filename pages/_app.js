@@ -50,7 +50,7 @@ function MyApp({ Component, pageProps }) {
           name="description"
           content="Sell My Car or Trade In My Used Car Hassle-Free, Quickly and for High Prices in the Philippines. Automart.Ph Will Sell for You. Just Drive It In"
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href={`${basePath}favicon.ico`} />
 
         {/* asset preloads */}
         <link
