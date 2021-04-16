@@ -62,6 +62,5 @@ export default makeStyles((theme) => ({
     borderColor: [theme.palette.secondary.main],
     border: "2px solid",
     borderRadius: "10px",
-    boxShadow: "2px 2px 10px gray",
   },
 }));

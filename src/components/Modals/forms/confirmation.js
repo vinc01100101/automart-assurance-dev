@@ -186,7 +186,6 @@ export default function confirmation({ setActiveComponent, setResult }) {
                 className="summaryValue"
                 //this section is for details confirmation, make it readOnly
                 readOnly
-                //not sending any data when disabled
                 disabled
               ></InputBase>
             </div>
@@ -221,8 +220,8 @@ export default function confirmation({ setActiveComponent, setResult }) {
 
     xhr.open(
       "POST",
-      `${apiBasePath}/inspection-appointments`,
-      // `${basePath}api/appointment`, //testing api
+      // `${apiBasePath}/inspection-appointments`,
+      `${basePath}api/appointment`, //testing api
       true
     );
 
@@ -257,7 +256,7 @@ export default function confirmation({ setActiveComponent, setResult }) {
             </span>
             <span className="contact">
               {viber}
-              <Link href={VIBER}>{VIBER.split(":")[1]}</Link>
+              <Link href={VIBER}>{VIBER.split("=")[1]}</Link>
             </span>
             <span className="contact">
               {atsign}

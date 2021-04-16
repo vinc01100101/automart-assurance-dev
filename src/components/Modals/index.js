@@ -79,6 +79,14 @@ export default function modals() {
     mobileNumber,
     plateNumber,
     conductionSticker,
+    address,
+    email,
+    odometer,
+    transmissionType,
+    year,
+    brand,
+    fuelType,
+    color,
   } = useSelector((state) => state.modals);
   const dispatch = useDispatch();
   const classes = useStyles();
@@ -142,6 +150,14 @@ export default function modals() {
         location === "" ||
         date === "" ||
         time === "" ||
+        address === "" ||
+        email === "" ||
+        odometer === "" ||
+        transmissionType === "" ||
+        year === "" ||
+        brand === "" ||
+        fuelType === "" ||
+        color === "" ||
         (plateNumber === "" && conductionSticker === ""));
 
     return (

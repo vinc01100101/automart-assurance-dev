@@ -25,12 +25,13 @@ export default function makeInputComponents() {
   const numberReg = /^\d*$/;
   const stringReg = /^[a-z]*((?<=\S)\s{0,1}[a-z]*)*$/i; //multiple words, space separated
   const emailReg = /^(\w+\.?)*?@?([a-z]*)?\.?([a-z]{0,3})?$/i;
+  const alphaNumericReg = /^[a-z0-9]*$/i;
   const defaultFormatReg = /.*/;
 
   //reference [inputFormat, characterLength]
   const regs = {
-    plateNumber: [defaultFormatReg, 14],
-    conductionSticker: [defaultFormatReg, 14],
+    plateNumber: [alphaNumericReg, 7],
+    conductionSticker: [alphaNumericReg, 6],
     odometer: [numberReg, 7],
     firstName: [stringReg, 20],
     lastName: [stringReg, 20],
