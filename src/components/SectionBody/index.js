@@ -35,7 +35,7 @@ export default function body() {
 
   let basePath = publicRuntimeConfig.basePath
     ? publicRuntimeConfig.basePath
-    : "";
+    : "/";
 
   return (
     // body component
@@ -61,7 +61,7 @@ export default function body() {
                 <div className={classes.introImageWrapper}>
                   <Image
                     className={classes.introImage}
-                    src={`/${basePath}images/introImage.webp`}
+                    src={`${basePath}images/introImage.webp`}
                     alt="A man selling his car."
                     layout="fill"
                   />
