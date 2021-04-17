@@ -70,13 +70,22 @@ const modalsReducer = (state = initialState, action) => {
           "Nov",
           "Dec",
         ];
+
         //formattedUtcDates = this..
-        return dates.map((date) => ({
-          month: months[date.getUTCMonth()],
-          date: date.getUTCDate(),
-          day: days[date.getUTCDay()],
-          format: `${date.getUTCFullYear()}-${date.getUTCMonth()}-${date.getUTCDate()}`,
-        }));
+        return dates.map((date) => {
+          //add zero to month if it is 1 digit.
+          //increment month by 1 because it starts at 0 count
+          let monthFormat = (date.getUTCMonth() + 1).toString();
+          monthFormat =
+            monthFormat.length == 1 ? `0${monthFormat}` : monthFormat;
+
+          return {
+            month: months[date.getUTCMonth()],
+            date: date.getUTCDate(),
+            day: days[date.getUTCDay()],
+            format: `${date.getUTCFullYear()}-${monthFormat}-${date.getUTCDate()}`,
+          };
+        });
       })();
 
       // console.log(formattedUtcDates);

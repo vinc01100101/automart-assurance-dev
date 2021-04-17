@@ -3,17 +3,19 @@ console.log("IMPORTING: confirmation.js");
 //material ui
 import { Typography, InputBase, Link } from "@material-ui/core";
 
-//redux
-import { useSelector } from "react-redux";
-
 //svg's
 import { viber, telephone, atsign } from "@/svgStore/svgCall";
 
 //contact hrefs
-import { VIBER, TELEPHONE, EMAIL } from "@/components/hrefLinks";
+import { TELEPHONE, EMAIL } from "@/components/hrefLinks";
 
+//time data
+import { FIELD_TIME } from "./data/appointmentData";
+
+//react
+import { useState, useEffect } from "react";
 //redux
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setModal } from "@/redux/modals/creators";
 
 import getConfig from "next/config";
@@ -24,6 +26,18 @@ let { apiBasePath, basePath } = publicRuntimeConfig;
 basePath = basePath || "";
 
 export default function confirmation({ setActiveComponent, setResult }) {
+  const [viberLink, setViberLink] = useState(
+    "viber://add?number=63927 887 6400"
+  );
+
+  useEffect(() => {
+    import("react-device-detect").then((mod) => {
+      mod.isMobile
+        ? setViberLink("viber://add?number=63927 887 6400")
+        : setViberLink("viber://chat?number=+63927 887 6400");
+    });
+  }, []);
+
   //redux states
   const {
     location,
@@ -62,7 +76,7 @@ export default function confirmation({ setActiveComponent, setResult }) {
         location ? locationsArray.find((x) => x.id === location).label : "",
       ],
       ["Date", date],
-      ["Time", time],
+      ["Time", time ? FIELD_TIME.find((x) => x.id === time).label : ""],
     ],
   };
   const vehicle = {
@@ -186,7 +200,6 @@ export default function confirmation({ setActiveComponent, setResult }) {
                 className="summaryValue"
                 //this section is for details confirmation, make it readOnly
                 readOnly
-                //not sending any data when disabled
                 disabled
               ></InputBase>
             </div>
@@ -257,7 +270,7 @@ export default function confirmation({ setActiveComponent, setResult }) {
             </span>
             <span className="contact">
               {viber}
-              <Link href={VIBER}>{VIBER.split(":")[1]}</Link>
+              <Link href={viberLink}>{viberLink.split("=")[1]}</Link>
             </span>
             <span className="contact">
               {atsign}

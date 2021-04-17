@@ -16,7 +16,16 @@ export const YOUTUBE =
   "https://www.youtube.com/channel/UCh-uSYHQZPeNMFkIZzBBbDw";
 export const LINKEDIN = "https://www.linkedin.com/company/automart-ph/";
 
+/**
+ * Since viber has dynamic values, we use useState and useEffect to set them
+ * to prevent server-client-differences warning.
+ * see: src/components/SectionBody/callorchat/index.js
+ */
+// import { isMobile } from "react-device-detect";
+// export const VIBER = isMobile
+//   ? "viber://add?number=63927 887 6400"
+//   : "viber://chat?number=+63927 887 6400";
+
 //PHONE EMAIL
-export const VIBER = "tel:+63 927 887 6400";
 export const TELEPHONE = "tel:(+632) 7905 7940";
 export const EMAIL = "mailto:contact@automart.ph";
