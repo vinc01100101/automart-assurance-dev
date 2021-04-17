@@ -9,6 +9,9 @@ import { viber, telephone, atsign } from "@/svgStore/svgCall";
 //contact hrefs
 import { TELEPHONE, EMAIL } from "@/components/hrefLinks";
 
+//time data
+import { FIELD_TIME } from "./data/appointmentData";
+
 //react
 import { useState, useEffect } from "react";
 //redux
@@ -73,7 +76,7 @@ export default function confirmation({ setActiveComponent, setResult }) {
         location ? locationsArray.find((x) => x.id === location).label : "",
       ],
       ["Date", date],
-      ["Time", time],
+      ["Time", time ? FIELD_TIME.find((x) => x.id === time).label : ""],
     ],
   };
   const vehicle = {
