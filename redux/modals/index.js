@@ -88,7 +88,6 @@ const modalsReducer = (state = initialState, action) => {
         });
       })();
 
-      // console.log(formattedUtcDates);
       return { ...state, datesArray: formattedUtcDates };
       break;
 

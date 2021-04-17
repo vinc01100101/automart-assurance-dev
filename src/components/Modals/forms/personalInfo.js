@@ -1,5 +1,3 @@
-console.log("IMPORTING: personalInfo.js");
-
 //redux
 import { useSelector } from "react-redux";
 

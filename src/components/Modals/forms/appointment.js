@@ -1,4 +1,3 @@
-console.log("IMPORTING: appointment.js");
 //material ui
 import { Typography, IconButton } from "@material-ui/core";
 //svg icons
@@ -44,7 +43,6 @@ export default function appointment() {
 
       //update the date display
       pointer = (Math.ceil((dateOnMount + 1) / 3) - 1) * -1;
-      console.log(pointer);
       const value = pointer * containerWidth;
       updateCurrentPosition(value, true);
     }
@@ -85,7 +83,6 @@ export default function appointment() {
     pointer--;
     //min max
     pointer = pointer < -4 ? -4 : pointer;
-    console.log(pointer);
     //render
     const value = pointer * containerWidth;
     updateCurrentPosition(value, true);
@@ -125,10 +122,8 @@ export default function appointment() {
   const handleDragUp = (e, index) => {
     //just accept left click on "mouseleave" event
     if (e.type == "mouseleave" && e.buttons !== 1) return;
-    console.log(e.type);
     if (index != undefined) {
       if (difference >= -15 && difference <= 15) {
-        console.log("INDEX IS: " + index);
         setSelectedDate(() => index);
         handleChange("date", datesArray[index]);
       }

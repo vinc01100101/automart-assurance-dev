@@ -37,8 +37,6 @@ function MyApp({ Component, pageProps }) {
     }
     gtag("js", new Date());
     gtag("config", "G-6L6EWL6H47");
-
-    // console.log(window.dataLayer);
   }, []);
   return (
     <>

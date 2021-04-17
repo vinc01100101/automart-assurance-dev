@@ -1,5 +1,3 @@
-console.log("IMPORTING: confirmation.js");
-
 //material ui
 import { Typography, InputBase, Link } from "@material-ui/core";
 
@@ -243,7 +241,7 @@ export default function confirmation({ setActiveComponent, setResult }) {
     xhr.onreadystatechange = () => {
       console.log(readyStates[xhr.readyState], xhr.status);
       if (xhr.readyState !== 4) return; //GUARD CLAUSE
-      // const json = JSON.parse(xhr.response);
+
       dispatch(setModal("getMyQuote")); //open modal to notify the user
       if (xhr.status !== 201) {
         //set error dialog
@@ -313,7 +311,7 @@ export default function confirmation({ setActiveComponent, setResult }) {
     const stringified = JSON.stringify(formData);
     xhr.send(stringified);
 
-    console.log("sent");
+    // console.log("sent");
   };
 
   return (

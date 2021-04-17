@@ -1,5 +1,3 @@
-console.log("IMPORTING: makeInputsComponent.js");
-
 //material ui
 import {
   FormControl,
@@ -71,7 +69,6 @@ export default function makeInputComponents() {
       dispatch(fetchModelsData(value));
     }
     if (key === "model") {
-      console.log("value is: " + value);
       dispatch(setInput({ key: "trim", value: "" }));
       dispatch(fetchTrimsData(value));
     }

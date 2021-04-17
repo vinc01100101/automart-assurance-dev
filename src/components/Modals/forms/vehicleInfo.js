@@ -1,5 +1,3 @@
-console.log("IMPORTING: vehicleInfo.js");
-
 //material ui
 import { Typography } from "@material-ui/core";
 
