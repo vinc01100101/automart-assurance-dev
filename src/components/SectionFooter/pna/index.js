@@ -43,6 +43,7 @@ export default function pna() {
         lg
         item
         className={classes.gridItem}
+        container
         direction="column"
       >
         <div className={classes.imgContainer}>
