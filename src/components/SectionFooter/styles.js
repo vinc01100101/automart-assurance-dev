@@ -28,6 +28,10 @@ export default makeStyles((theme) => ({
       },
     },
   },
+  divider: {
+    margin: "30px 0px",
+    background: "white",
+  },
   flexibleContainer: {
     display: "flex",
     flexDirection: "column",

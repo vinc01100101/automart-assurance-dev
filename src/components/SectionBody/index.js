@@ -1,13 +1,11 @@
-/**
- * IMPORT VALUE IS: { title: "Component Title", content: Component }
- */
+//COMPONENTS
 import intro from "./intro";
 import video from "./video";
 import steps from "./steps";
 import benefits from "./benefits";
-import testimonials from "./testimonials"; //waiting for testi data
+// import testimonials from "./testimonials"; //waiting for testi data
 import faqs from "./faqs";
-import pna from "./pna";
+// import pna from "./pna";
 import callorchat from "./callorchat";
 
 import Image from "next/image";
@@ -22,7 +20,7 @@ const componentReferenceArray = [
   steps,
   benefits,
   /*testimonials,*/ faqs,
-  pna,
+  // pna,
   callorchat,
 ];
 //styles

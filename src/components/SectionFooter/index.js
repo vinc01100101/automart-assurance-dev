@@ -1,5 +1,5 @@
 //material ui
-import { IconButton, Link } from "@material-ui/core";
+import { IconButton, Link, Divider } from "@material-ui/core";
 //svg icon pieces
 import {
   facebook,
@@ -36,6 +36,9 @@ const logoLinks = [
   [YOUTUBE, youtube, "YouTube"],
   [LINKEDIN, linkedin, "Linked In"],
 ];
+//partners and affiliates
+import Pna from "./pna";
+
 export default function sectionFooter() {
   const classes = useStyles();
 
@@ -78,6 +81,9 @@ export default function sectionFooter() {
             {makeLinks(logoLinks)}
           </div>
         </div>
+        <Divider className={classes.divider} />
+        <Pna />
+        <Divider className={classes.divider} />
         <ul className={classes.copyright}>
           <li>© Copyright 2020, Automart.PH</li>
           <li>All rights reserved</li>
