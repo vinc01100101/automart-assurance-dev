@@ -57,7 +57,7 @@ export default function pna() {
             alt={entry[0]}
           />
         </div>
-        <Typography variant="body1" component="div" className={classes.label}>
+        <Typography variant="body2" component="div" className={classes.label}>
           {entry[1][2]}
         </Typography>
       </Grid>
