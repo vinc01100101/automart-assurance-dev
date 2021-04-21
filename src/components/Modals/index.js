@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core";
 //redux
 import { useSelector, useDispatch } from "react-redux";
-import { setModal } from "@/redux/modals/creators";
+import { setModal, setShowError } from "@/redux/modals/creators";
 import { useState, useEffect } from "react";
 //next
 import dynamic from "next/dynamic";
@@ -96,6 +96,7 @@ export default function modals() {
     frontPaper: "",
     backPaper: "",
   }));
+  //for submission result
   const [result, setResult] = useState(() => ({
     svg: 0,
     title: "",
@@ -110,9 +111,11 @@ export default function modals() {
         }));
       }, 700);
   }, [result.svg]);
+
   const handleClose = () => {
     dispatch(setModal(false));
   };
+
   const handleBackButton = () => {
     if (activeComponent > 0) {
       setActiveComponent((curr) => curr - 1);
@@ -120,9 +123,31 @@ export default function modals() {
       handleClose();
     }
   };
+  //for prevalidation when pressing next button
+  const preValidate = () => {
+    return activeComponent === 0
+      ? location != "" && date != "" && time != ""
+      : activeComponent === 1
+      ? year != "" &&
+        brand != "" &&
+        transmissionType != "" &&
+        fuelType != "" &&
+        color != "" &&
+        odometer != "" &&
+        (plateNumber != "" || conductionSticker != "")
+      : firstName != "" &&
+        lastName != "" &&
+        mobileNumber != "" &&
+        email != "" &&
+        address != "";
+  };
   const handleNextButton = () => {
     if (activeComponent < 3) {
+      if (!preValidate()) {
+        return dispatch(setShowError(true));
+      }
       setActiveComponent((curr) => curr + 1);
+      dispatch(setShowError(false));
     } else {
       // const form = document.querySelector("#confirmation-form");
       // form.submit(); //<---onSubmit is not triggering

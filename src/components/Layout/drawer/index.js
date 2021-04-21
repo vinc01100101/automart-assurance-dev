@@ -36,8 +36,8 @@ export default function drawer({ isDrawerOpen, toggleDrawer }) {
 
   //references
   const textLinks = [
-    [AUTOMART, "AutoMart"],
-    [MOTOMART, "MotoMart"],
+    [AUTOMART, "Buy a car"],
+    [MOTOMART, "Buy a motorcycle"],
     [BLOG, "Blog"],
     [FAQS, "FAQ's"],
     [CONTACTUS, "Contact Us"],

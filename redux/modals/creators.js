@@ -18,6 +18,10 @@ export const setDatesArray = () => ({
   type: ACTIONS.SET_DATES_ARRAY,
 });
 
+export const setShowError = (bool) => ({
+  type: ACTIONS.SET_SHOW_ERROR,
+  payload: bool,
+});
 //CHAINED ACTIONS---------------------------
 let BASE_URL;
 export const SET_BASE_URL = (url) => {

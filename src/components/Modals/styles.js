@@ -97,6 +97,10 @@ const useStyles = makeStyles((theme) => ({
           width: "100%",
           height: "141px",
           padding: "0px 30px",
+          border: "1px solid transparent",
+        },
+        "&.datesContainerError": {
+          borderColor: "red",
         },
 
         //the arrows

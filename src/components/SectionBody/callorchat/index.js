@@ -15,14 +15,14 @@ callorchat.title = "You can call or chat with us!";
 export default function callorchat() {
   const classes = useStyles();
   const [viberLink, setViberLink] = useState(
-    "viber://add?number=63927 887 6400"
+    "viber://add?number=63963 188 2087"
   );
 
   useEffect(() => {
     import("react-device-detect").then((mod) => {
       mod.isMobile
-        ? setViberLink("viber://add?number=63927 887 6400")
-        : setViberLink("viber://chat?number=+63927 887 6400");
+        ? setViberLink("viber://add?number=63963 188 2087")
+        : setViberLink("viber://chat?number=+63963 188 2087");
     });
   }, []);
 
@@ -34,8 +34,9 @@ export default function callorchat() {
 
   const makeContacts = () => {
     return contacts.map((contact, i) => {
-      const display =
+      let display =
         i == 0 ? contact[0].split("=")[1] : contact[0].split(":")[1];
+      display = display[0] == "6" ? "+".concat(display) : display;
       return (
         <div className={classes.contact} key={i}>
           <div className={classes.contactLogo}>{contact[1]}</div>

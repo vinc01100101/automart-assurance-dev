@@ -1,6 +1,7 @@
 //material ui
 import {
   FormControl,
+  FormHelperText,
   InputLabel,
   InputAdornment,
   Select,
@@ -14,10 +15,11 @@ import {
   fetchModelsData,
   fetchTrimsData,
 } from "@/redux/modals/creators";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function makeInputComponents() {
   const dispatch = useDispatch();
+  const { showError } = useSelector((state) => state.modals);
 
   //input formats (string? number? email? etc..)
   const numberReg = /^\d*$/;
@@ -28,6 +30,7 @@ export default function makeInputComponents() {
 
   //reference [inputFormat, characterLength]
   const regs = {
+    year: [numberReg, 4],
     plateNumber: [alphaNumericReg, 7],
     conductionSticker: [alphaNumericReg, 6],
     odometer: [numberReg, 7],
@@ -78,11 +81,17 @@ export default function makeInputComponents() {
 
   //component makers
   const makeSelect = (label, value, id, data) => {
+    const temp = id == "model" || id == "trim";
     return (
-      <FormControl variant="outlined">
-        <InputLabel id={`label-${id}`}>{label}</InputLabel>
+      <FormControl
+        variant="outlined"
+        error={showError && value === "" && !temp}
+      >
+        <InputLabel id={`label-${id}`}>{`${label}${
+          !temp ? " *" : ""
+        }`}</InputLabel>
         <Select
-          label={label}
+          label={`${label}${!temp ? " *" : ""}`}
           value={value}
           id={`input-${id}`}
           labelId={`label-${id}`}
@@ -94,14 +103,33 @@ export default function makeInputComponents() {
             </MenuItem>
           ))}
         </Select>
+        {showError && value === "" && !temp && (
+          <FormHelperText>This field is required</FormHelperText>
+        )}
       </FormControl>
     );
   };
 
-  const makeTextField = (label, value, id) => {
+  const makeTextField = (label, value, id, pairValue) => {
+    let err = false,
+      helperText = "";
+    if (showError && value == "") {
+      if (id == "plateNumber" || id == "conductionSticker") {
+        helperText =
+          pairValue == ""
+            ? "Either plate number or conduction sticker must be provided"
+            : "";
+        err = pairValue == "";
+      } else {
+        helperText = "This field is required";
+        err = true;
+      }
+    }
     return (
       <TextField
-        label={label}
+        error={err}
+        helperText={helperText}
+        label={label + " *"}
         value={value}
         id={`input-${id}`}
         InputProps={{

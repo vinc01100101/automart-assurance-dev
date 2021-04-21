@@ -5,7 +5,6 @@ import steps from "./steps";
 import benefits from "./benefits";
 // import testimonials from "./testimonials"; //waiting for testi data
 import faqs from "./faqs";
-// import pna from "./pna";
 import callorchat from "./callorchat";
 
 import Image from "next/image";
@@ -20,7 +19,6 @@ const componentReferenceArray = [
   steps,
   benefits,
   /*testimonials,*/ faqs,
-  // pna,
   callorchat,
 ];
 //styles

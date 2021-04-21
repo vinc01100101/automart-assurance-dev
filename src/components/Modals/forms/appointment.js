@@ -1,5 +1,5 @@
 //material ui
-import { Typography, IconButton } from "@material-ui/core";
+import { Typography, IconButton, FormHelperText } from "@material-ui/core";
 //svg icons
 import { arrowright, arrowleft } from "@/svgStore/svgCall";
 //redux
@@ -19,9 +19,14 @@ export default function appointment() {
   const dispatch = useDispatch();
 
   //redux states
-  const { location, date, time, locationsArray, datesArray } = useSelector(
-    (state) => state.modals
-  );
+  const {
+    showError,
+    location,
+    date,
+    time,
+    locationsArray,
+    datesArray,
+  } = useSelector((state) => state.modals);
 
   //makeInputComponents returns input component makers
   const { makeSelect } = makeInputComponents();
@@ -152,7 +157,11 @@ export default function appointment() {
     <form>
       {makeSelect("Location", location, "location", locationsArray)}
 
-      <div className="datesContainer">
+      <div
+        className={`datesContainer${
+          showError && date == "" ? " datesContainerError" : ""
+        }`}
+      >
         <div className="sub-datesContainer">
           <div
             className="cellsContainer"
@@ -190,6 +199,9 @@ export default function appointment() {
         <IconButton className="arrowRight" onClick={panLeft}>
           {arrowright}
         </IconButton>
+        {showError && date == "" && (
+          <FormHelperText error>Please select a date</FormHelperText>
+        )}
       </div>
 
       {makeSelect("Time", time, "time", FIELD_TIME)}

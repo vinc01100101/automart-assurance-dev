@@ -25,14 +25,14 @@ basePath = basePath || "";
 
 export default function confirmation({ setActiveComponent, setResult }) {
   const [viberLink, setViberLink] = useState(
-    "viber://add?number=63927 887 6400"
+    "viber://add?number=63963 188 2087"
   );
 
   useEffect(() => {
     import("react-device-detect").then((mod) => {
       mod.isMobile
-        ? setViberLink("viber://add?number=63927 887 6400")
-        : setViberLink("viber://chat?number=+63927 887 6400");
+        ? setViberLink("viber://add?number=63963 188 2087")
+        : setViberLink("viber://chat?number=+63963 188 2087");
     });
   }, []);
 
@@ -252,7 +252,8 @@ export default function confirmation({ setActiveComponent, setResult }) {
         });
         return;
       }
-
+      let display = viberLink.split("=")[1];
+      display = display[0] == "6" ? "+".concat(display) : display;
       //set success dialog
       setResult({
         title:
@@ -268,7 +269,7 @@ export default function confirmation({ setActiveComponent, setResult }) {
             </span>
             <span className="contact">
               {viber}
-              <Link href={viberLink}>{viberLink.split("=")[1]}</Link>
+              <Link href={viberLink}>{display}</Link>
             </span>
             <span className="contact">
               {atsign}
@@ -311,7 +312,7 @@ export default function confirmation({ setActiveComponent, setResult }) {
     const stringified = JSON.stringify(formData);
     xhr.send(stringified);
 
-    // console.log("sent");
+    console.log("sent");
   };
 
   return (
