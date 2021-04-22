@@ -72,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
         marginTop: "32px !important",
         marginBottom: "2px !important",
       },
-      "& > .summaryContentBox": {
+      "& > div > .summaryContentBox": {
         display: "flex",
         flexDirection: "row",
         marginBottom: "2px !important",

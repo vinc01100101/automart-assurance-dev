@@ -1,5 +1,5 @@
 //material ui
-import { Typography, InputBase, Link } from "@material-ui/core";
+import { Typography, Divider, Link } from "@material-ui/core";
 
 //svg's
 import { viber, telephone, atsign } from "@/svgStore/svgCall";
@@ -110,6 +110,23 @@ export default function confirmation({ setActiveComponent, setResult }) {
       ["Address", address],
     ],
   };
+  //required fields
+  const requiredFields = [
+    "First Name",
+    "Last Name",
+    "Mobile Number",
+    "Location",
+    "Date",
+    "Time",
+    "Address",
+    "Email",
+    "Odometer",
+    "Transmission Type",
+    "Year",
+    "Brand",
+    "Fuel Type",
+    "Color",
+  ];
 
   const makeSection = (info) => {
     return (
@@ -121,24 +138,6 @@ export default function confirmation({ setActiveComponent, setResult }) {
           //data[0] == key
           //data[1] == value
           //thou we could have used Object.fromEntries(data)
-
-          //required fields
-          const requiredFields = [
-            "First Name",
-            "Last Name",
-            "Mobile Number",
-            "Location",
-            "Date",
-            "Time",
-            "Address",
-            "Email",
-            "Odometer",
-            "Transmission Type",
-            "Year",
-            "Brand",
-            "Fuel Type",
-            "Color",
-          ];
 
           //either conduction sticker or plate number required
           const either =
@@ -175,31 +174,35 @@ export default function confirmation({ setActiveComponent, setResult }) {
 
           const fontWeight = color === "#FF0000" && "bold";
 
+          const wordBreak = "break-word";
           return (
-            <div key={i} className="summaryContentBox">
-              <Typography
-                variant="body1"
-                component="div"
-                className="summaryLabel"
-              >
-                {data[0]}
-              </Typography>
-              <InputBase
-                style={{ color, display, alignItems, fontWeight, fontSize }}
-                //the input element inside inputBase has padding, remove it if "either"
-                inputProps={{
-                  style: {
+            <div key={i}>
+              <Divider style={{ width: "100%" }} />
+              <div className="summaryContentBox">
+                <Typography
+                  variant="body1"
+                  component="div"
+                  className="summaryLabel"
+                >
+                  {data[0]}
+                </Typography>
+                <Divider orientation="vertical" flexItem />
+                <Typography
+                  style={{
+                    color,
+                    display,
+                    alignItems,
+                    fontWeight,
+                    fontSize,
+                    wordBreak,
                     padding,
                     pointerEvents: "none",
-                  },
-                  name: data[0],
-                  value,
-                }}
-                className="summaryValue"
-                //this section is for details confirmation, make it readOnly
-                readOnly
-                disabled
-              ></InputBase>
+                  }}
+                  className="summaryValue"
+                >
+                  {value}
+                </Typography>
+              </div>
             </div>
           );
         })}
