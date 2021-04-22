@@ -53,24 +53,13 @@ export default function drawer({ isDrawerOpen, toggleDrawer }) {
   const makeList = () => {
     return textLinks.map((textLink, i) => (
       <Link key={i} href={textLink[0]} target="_blank">
-        <ListItem
-          button
-          // onClick={() => {
-          //   window.open(textLink[0], "_blank");
-          //   window.location.href = textLink[0];
-          //   window.location.assign(textLink[0]);
-          //   window.location.replace(textLink[0]);
-          // }}
-        >
+        <ListItem button>
           <ListItemText
             primary={textLink[1]}
             primaryTypographyProps={{ variant: "h6" }}
           />
         </ListItem>
       </Link>
-      // <form key={i} method="GET" action={textLink[0]} target="_blank">
-      //   <InputBase type="submit" value={textLink[1]} />
-      // </form>
     ));
   };
 
@@ -91,7 +80,7 @@ export default function drawer({ isDrawerOpen, toggleDrawer }) {
             {sellmycar}
             <ListItem>
               <Typography className={classes.callUs}>
-                <a href="tel:+639 2788 76400">Call us: +639 2788 76400</a>
+                <a href="tel:+63963 188 2087">Call us: +63963 188 2087</a>
               </Typography>
             </ListItem>
             {makeList()}
