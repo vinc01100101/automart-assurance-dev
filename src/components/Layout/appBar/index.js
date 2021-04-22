@@ -6,7 +6,16 @@ import {
   Hidden,
   Grid,
   Link,
+  SvgIcon,
 } from "@material-ui/core";
+//appbar link icons
+import {
+  mdiFaceAgent,
+  mdiFrequentlyAskedQuestions,
+  mdiPostOutline,
+  mdiMotorbike,
+  mdiCarOutline,
+} from "@mdi/js";
 //mui icons
 import { Menu as MenuIcon } from "@material-ui/icons";
 //next
@@ -29,11 +38,11 @@ export default function appBar({ toggleDrawer }) {
 
   //references
   const textLinks = [
-    [AUTOMART, "AutoMart"],
-    [MOTOMART, "MotoMart"],
-    [BLOG, "Blog"],
-    [FAQS, "FAQ's"],
-    [CONTACTUS, "Contact Us"],
+    [AUTOMART, "AutoMart", mdiCarOutline],
+    [MOTOMART, "MotoMart", mdiMotorbike],
+    [BLOG, "Blog", mdiPostOutline],
+    [FAQS, "FAQ's", mdiFrequentlyAskedQuestions],
+    [CONTACTUS, "Contact Us", mdiFaceAgent],
   ];
 
   const makeList = () => {
@@ -45,6 +54,9 @@ export default function appBar({ toggleDrawer }) {
         className={classes.gridLink}
         variant="h6"
       >
+        <SvgIcon>
+          <path d={textLink[2]} />
+        </SvgIcon>
         {textLink[1]}
       </Link>
     ));

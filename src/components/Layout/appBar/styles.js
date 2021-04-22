@@ -13,14 +13,20 @@ export default makeStyles((theme) => ({
     },
   },
   gridLink: {
+    display: "flex",
+    alignItems: "center",
     color: "white",
     textDecoration: "none !important",
-    margin: "16px 25px",
+    margin: "16px 15px",
     whiteSpace: "nowrap",
 
     transition: "transform 0.2s",
     "&:hover": {
       transform: "scale(1.1)",
+    },
+
+    "& > svg": {
+      marginRight: 7,
     },
   },
 }));
