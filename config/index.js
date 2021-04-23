@@ -9,6 +9,11 @@ const theme = {
         whiteSpace: "normal",
       },
     },
+    MuiSelect: {
+      selectMenu: {
+        whiteSpace: "pre-wrap",
+      },
+    },
   },
   palette: {
     primary: {
