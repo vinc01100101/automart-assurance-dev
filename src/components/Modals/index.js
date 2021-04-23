@@ -23,6 +23,7 @@ import useStyles from "./styles";
 const Appointment = "./forms/appointment";
 const VehicleInfo = "./forms/vehicleInfo";
 const PersonalInfo = "./forms/personalInfo";
+const ReasonForSelling = "./forms/reasonForSelling";
 const Confirmation = "./forms/confirmation";
 //svg's
 import loading from "@/svgStore/svg/loading";
@@ -60,6 +61,11 @@ let componentReferenceArray = [
     description: "Tell us about your personal information.",
   },
   {
+    Component: makeDynamic(ReasonForSelling),
+    title: "Reason for selling",
+    description: "Why do you want to sell your car?",
+  },
+  {
     Component: makeDynamic(Confirmation),
     title: "Summary",
     description:
@@ -87,6 +93,7 @@ export default function modals() {
     brand,
     fuelType,
     color,
+    reasonForSelling,
   } = useSelector((state) => state.modals);
   const dispatch = useDispatch();
   const classes = useStyles();
@@ -135,14 +142,16 @@ export default function modals() {
         color != "" &&
         odometer != "" &&
         (plateNumber != "" || conductionSticker != "")
-      : firstName != "" &&
+      : activeComponent === 2
+      ? firstName != "" &&
         lastName != "" &&
         mobileNumber != "" &&
         email != "" &&
-        address != "";
+        address != ""
+      : reasonForSelling != "";
   };
   const handleNextButton = () => {
-    if (activeComponent < 3) {
+    if (activeComponent < 4) {
       if (!preValidate()) {
         return dispatch(setShowError(true));
       }
@@ -156,8 +165,8 @@ export default function modals() {
       formSubmitButton.click();
     }
   };
-  if (activeComponent === 4)
-    componentReferenceArray[4] = {
+  if (activeComponent === 5)
+    componentReferenceArray[5] = {
       title: result.title,
       description: result.description,
     };
@@ -168,7 +177,7 @@ export default function modals() {
   const makeFormLayout = () => {
     //--disable submit button if requirements are not met
     const isDisabled =
-      activeComponent === 3 &&
+      activeComponent === 4 &&
       (firstName === "" ||
         lastName === "" ||
         mobileNumber === "" ||
@@ -192,8 +201,8 @@ export default function modals() {
         </Typography>
         {description && <Typography variant="body1">{description}</Typography>}
         <Component
-          setActiveComponent={activeComponent === 3 && setActiveComponent}
-          setResult={activeComponent === 3 && setResult}
+          setActiveComponent={activeComponent === 4 && setActiveComponent}
+          setResult={activeComponent === 4 && setResult}
         />
         <div className={classes.buttonsContainer}>
           <Button variant="text" onClick={handleBackButton}>
@@ -205,7 +214,7 @@ export default function modals() {
             color="secondary"
             onClick={handleNextButton}
           >
-            {activeComponent < 3 ? "Next" : "Submit"}
+            {activeComponent < 4 ? "Next" : "Submit"}
           </Button>
         </div>
       </>
@@ -287,7 +296,7 @@ export default function modals() {
       >
         <Fade in={activeModal === "getMyQuote"}>
           <Paper className={classes.paper}>
-            {activeComponent <= 3 ? makeFormLayout() : makeDialogLayout()}
+            {activeComponent <= 4 ? makeFormLayout() : makeDialogLayout()}
           </Paper>
         </Fade>
       </Modal>

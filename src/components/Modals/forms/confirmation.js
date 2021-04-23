@@ -63,6 +63,7 @@ export default function confirmation({ setActiveComponent, setResult }) {
     mobileNumber,
     email,
     address,
+    reasonForSelling,
   } = useSelector((state) => state.modals);
   const dispatch = useDispatch();
   //the key value pairs to present on the confirmation form
@@ -109,6 +110,10 @@ export default function confirmation({ setActiveComponent, setResult }) {
       ["Email", email],
       ["Address", address],
     ],
+  };
+  const reason = {
+    title: "Reason For Selling",
+    data: [["Note", reasonForSelling]],
   };
   //required fields
   const requiredFields = [
@@ -179,14 +184,18 @@ export default function confirmation({ setActiveComponent, setResult }) {
             <div key={i}>
               <Divider style={{ width: "100%" }} />
               <div className="summaryContentBox">
-                <Typography
-                  variant="body1"
-                  component="div"
-                  className="summaryLabel"
-                >
-                  {data[0]}
-                </Typography>
-                <Divider orientation="vertical" flexItem />
+                {info.title != "Reason For Selling" && (
+                  <>
+                    <Typography
+                      variant="body1"
+                      component="div"
+                      className="summaryLabel"
+                    >
+                      {data[0]}
+                    </Typography>
+                    <Divider orientation="vertical" flexItem />
+                  </>
+                )}
                 <Typography
                   style={{
                     color,
@@ -198,7 +207,11 @@ export default function confirmation({ setActiveComponent, setResult }) {
                     padding,
                     pointerEvents: "none",
                   }}
-                  className="summaryValue"
+                  className={
+                    info.title != "Reason For Selling"
+                      ? "summaryValue"
+                      : "summaryValue_reasonForSelling"
+                  }
                 >
                   {value}
                 </Typography>
@@ -218,7 +231,7 @@ export default function confirmation({ setActiveComponent, setResult }) {
       description: "Your form is being sent.",
       svg: 0,
     });
-    setActiveComponent(4);
+    setActiveComponent(5);
 
     //uncomment "return" to simulate the loading dialog
     // return;
@@ -303,7 +316,7 @@ export default function confirmation({ setActiveComponent, setResult }) {
       transmission_type_id: transmissionType,
       brand_color_id: color,
       odometer: odometer.replace(/,/g, ""),
-      notes: "good",
+      notes: reasonForSelling,
       scheduled_at: date.format + " " + time,
     };
     //delete the empty fields..
@@ -323,6 +336,7 @@ export default function confirmation({ setActiveComponent, setResult }) {
       {makeSection(appointment)}
       {makeSection(vehicle)}
       {makeSection(personal)}
+      {makeSection(reason)}
       <input type="submit" id="submitterButton" hidden />
     </form>
   );

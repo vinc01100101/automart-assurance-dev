@@ -39,23 +39,25 @@ export default function makeInputComponents() {
     mobileNumber: [numberReg, 14],
     email: [emailReg, 40],
     address: [defaultFormatReg, 150],
+    reasonForSelling: [defaultFormatReg, 300],
   };
 
   //controlled inputs
-  const handleChange = (key, value) => {
+  const handleChange = (key, value, isTextInput) => {
     //remove odometer comma's
     const testValue = key === "odometer" ? value.replace(/,/g, "") : value;
 
     const keyName = regs[key];
     const regFormat = keyName ? keyName[0] : defaultFormatReg;
-    const regLength = RegExp(`^.{0,${keyName ? keyName[1] : 30}}$`);
+    const length = isTextInput ? testValue.length : 0;
 
+    const validateLength = keyName ? length <= keyName[1] : true;
     let returnValue = testValue;
 
     const testAndDispatch = () => {
       //if format and length is correct, allow the input
-      regFormat.test(testValue) &&
-        regLength.test(testValue) &&
+      (regFormat.test(testValue) || key === "reasonForSelling") &&
+        validateLength &&
         dispatch(setInput({ key, value: returnValue }));
     };
 
@@ -110,7 +112,7 @@ export default function makeInputComponents() {
     );
   };
 
-  const makeTextField = (label, value, id, pairValue) => {
+  const makeTextField = (label, value, id, pairValue, isMultilined) => {
     let err = false,
       helperText = "";
     if (showError && value == "") {
@@ -129,6 +131,8 @@ export default function makeInputComponents() {
       <TextField
         error={err}
         helperText={helperText}
+        multiline={isMultilined}
+        rows={10}
         label={label + " *"}
         value={value}
         id={`input-${id}`}
@@ -138,7 +142,7 @@ export default function makeInputComponents() {
           ),
         }}
         variant="outlined"
-        onChange={(e) => handleChange(id, e.target.value)}
+        onChange={(e) => handleChange(id, e.target.value, true)}
       />
     );
   };

@@ -85,6 +85,10 @@ const useStyles = makeStyles((theme) => ({
         "& > .summaryValue": {
           width: "60%",
         },
+        "& > .summaryValue_reasonForSelling": {
+          width: "100%",
+          whiteSpace: "pre-wrap",
+        },
       },
 
       //each div child

@@ -32,6 +32,8 @@ const initialState = {
   mobileNumber: "",
   email: "",
   address: "",
+  //reason for selling note
+  reasonForSelling: "",
   //error handle when empty field
   showError: false,
 };
