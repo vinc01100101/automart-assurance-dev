@@ -42,6 +42,7 @@ export default function body() {
           // conditional classes.stepsBackground for light green background
           <div
             key={i}
+            id={`bodySection-${i}`}
             className={`${classes.child} ${
               i == 2 ? classes.stepsBackground : ""
             }`}

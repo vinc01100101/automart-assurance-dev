@@ -53,7 +53,12 @@ export default function sectionFooter() {
       const group = type == "string" && i > 2 ? group2 : group1;
       group.push(
         <li key={i}>
-          <Link href={entry[0]} target="_blank" key={i} variant="body1">
+          <Link
+            href={entry[0]}
+            target={entry[1] == "FAQs" ? "" : "_blank"}
+            key={i}
+            variant="body1"
+          >
             {type == "string" ? (
               entry[1]
             ) : (

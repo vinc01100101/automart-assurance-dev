@@ -5,15 +5,24 @@
 import { Grid, Divider, Typography } from "@material-ui/core";
 import useStyles from "./styles";
 import Image from "next/image";
+//links
+import {
+  BDO,
+  EASTWESTBANK,
+  SECURITYBANK,
+  UNIONBANK,
+  TFS,
+} from "@/components/hrefLinks";
 
 const pnaObj = {
   Partners: {
-    bdo: [50, 35, "BDO"],
-    eastWest: [50, 35, "EastWest Bank"],
-    securityBank: [50, 35, "Security Bank"],
+    bdo: [50, 35, "BDO", BDO],
+    eastWest: [50, 35, "EastWest Bank", EASTWESTBANK],
+    securityBank: [50, 35, "Security Bank", SECURITYBANK],
     orix: [29, 35, "Orix"],
-    unionBank: [50, 35, "UnionBank"],
+    unionBank: [50, 35, "UnionBank", UNIONBANK],
     avis: [50, 15, "Avis"],
+    tfs: [50, 15, "Toyota Financial Services", TFS],
   },
   Affiliates: {
     dost: [50, 35, "DOST"],
@@ -39,7 +48,7 @@ export default function pna() {
       <Grid
         key={i}
         xs={6}
-        sm={4}
+        sm={3}
         lg
         item
         className={classes.gridItem}
@@ -47,15 +56,17 @@ export default function pna() {
         direction="column"
       >
         <div className={classes.imgContainer}>
-          <Image
-            // priority //<--throws Error: EPERM: operation not permitted, unlink
-            layout="fixed"
-            width={entry[1][0]}
-            height={entry[1][1]}
-            quality={100}
-            src={`${basePath}images/${groupName}/${entry[0]}.webp`}
-            alt={entry[0]}
-          />
+          <a href={entry[1][3] || "#0"} target={entry[1][3] ? "_blank" : ""}>
+            <Image
+              // priority //<--throws Error: EPERM: operation not permitted, unlink
+              layout="fixed"
+              width={entry[1][0]}
+              height={entry[1][1]}
+              quality={100}
+              src={`${basePath}images/${groupName}/${entry[0]}.webp`}
+              alt={entry[0]}
+            />
+          </a>
         </div>
         <Typography variant="body2" component="div" className={classes.label}>
           {entry[1][2]}

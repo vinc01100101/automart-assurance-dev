@@ -41,7 +41,7 @@ export default function appBar({ toggleDrawer }) {
     [AUTOMART, "AutoMart", mdiCarOutline],
     [MOTOMART, "MotoMart", mdiMotorbike],
     [BLOG, "Blog", mdiPostOutline],
-    [FAQS, "FAQ's", mdiFrequentlyAskedQuestions],
+    [FAQS, "FAQs", mdiFrequentlyAskedQuestions],
     [CONTACTUS, "Contact Us", mdiFaceAgent],
   ];
 
@@ -50,7 +50,7 @@ export default function appBar({ toggleDrawer }) {
       <Link
         key={i}
         href={textLink[0]}
-        target="_blank"
+        target={i == 3 ? "" : "_blank"}
         className={classes.gridLink}
         variant="h6"
       >

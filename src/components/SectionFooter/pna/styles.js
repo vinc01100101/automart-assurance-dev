@@ -6,7 +6,7 @@ export default makeStyles((theme) => ({
   },
   gridItem: {
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     alignItems: "center",
   },
   imgContainer: {
@@ -30,5 +30,6 @@ export default makeStyles((theme) => ({
   },
   label: {
     marginTop: 5,
+    textAlign: "center",
   },
 }));

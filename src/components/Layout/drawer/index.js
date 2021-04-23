@@ -39,7 +39,7 @@ export default function drawer({ isDrawerOpen, toggleDrawer }) {
     [AUTOMART, "Buy a car"],
     [MOTOMART, "Buy a motorcycle"],
     [BLOG, "Blog"],
-    [FAQS, "FAQ's"],
+    [FAQS, "FAQs"],
     [CONTACTUS, "Contact Us"],
   ];
 
@@ -52,7 +52,12 @@ export default function drawer({ isDrawerOpen, toggleDrawer }) {
 
   const makeList = () => {
     return textLinks.map((textLink, i) => (
-      <Link key={i} href={textLink[0]} target="_blank">
+      <Link
+        key={i}
+        href={textLink[0]}
+        target={textLink[1] == "FAQs" ? "" : "_blank"}
+        onClick={toggleDrawer(false)}
+      >
         <ListItem button>
           <ListItemText
             primary={textLink[1]}

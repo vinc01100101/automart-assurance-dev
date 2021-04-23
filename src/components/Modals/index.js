@@ -63,7 +63,7 @@ let componentReferenceArray = [
   {
     Component: makeDynamic(ReasonForSelling),
     title: "Reason for selling",
-    description: "Why do you want to sell your car?",
+    description: "Please share with us your reason for selling.",
   },
   {
     Component: makeDynamic(Confirmation),

@@ -44,6 +44,8 @@ export default makeStyles((theme) => ({
   child: {
     marginBottom: "98px",
     width: "100%",
+    paddingTop: 70,
+    marginTop: -70,
   },
   //for curved light green background of "Just follow these 3 easy steps" section.
   stepsBackground: {

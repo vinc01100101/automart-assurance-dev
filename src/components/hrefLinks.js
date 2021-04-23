@@ -6,7 +6,7 @@ export const PRIVACY = "http://automart.ph/page/privacy-policy";
 export const AUTOMART = "http://automart.ph/";
 export const MOTOMART = "http://motomart.ph/";
 export const BLOG = "http://automart.ph/blog";
-export const FAQS = "http://automart.ph/blog/frequently-asked-questions";
+export const FAQS = "#bodySection-4";
 export const CONTACTUS = "http://automart.ph/contact-us";
 
 //SOCIAL
@@ -29,3 +29,14 @@ export const LINKEDIN = "https://www.linkedin.com/company/automart-ph/";
 //PHONE EMAIL
 export const TELEPHONE = "tel:(+632) 7905 7940";
 export const EMAIL = "mailto:contact@automart.ph";
+
+//PARTNERS LANDING PAGE
+export const BDO = "https://automart.ph/repossessed-cars/bdo";
+export const EASTWESTBANK =
+  "https://automart.ph/repossessed-cars/eastwest-bank";
+export const SECURITYBANK =
+  "https://automart.ph/repossessed-cars/security-bank";
+export const UNIONBANK = "https://automart.ph/repossessed-cars/unionbank";
+export const TFS = "https://automart.ph/repossessed-cars/tfs";
+
+//AFFILIATES LANDING PAGE

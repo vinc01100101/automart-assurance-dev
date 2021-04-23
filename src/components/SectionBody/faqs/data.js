@@ -3,13 +3,36 @@ const howToSellYourCar = {
   content: [
     {
       q: `What is the best way to Sell My Car?`,
-      a: `Head to www.sellmycar.automart.ph/sell-my-car and input the necessary information about your car.
-
-1. Enter your personal information then choose a location and time of your choice for the inspection and appraisal. In Metro Manila, slots are available everyday, from 9AM to 4PM. For Davao, slots are available only on Fridays, and in Cebu, TBA.
-2. Meetup with our adviser the pre-purchase car inspection, appraisal, and price negotiation.
-3. Go home and relax while we sell your car, normally within one week.
-4. Sign the deed of sale and get your money.
-5. Want to trade in? Buy your next car from us and get an additional P10,000 of credit.`,
+      a: (
+        <>
+          Head to our{" "}
+          <a href="https://sellmycar.automart.ph/sell-my-car" target="_blank">
+            SellMyCar link
+          </a>{" "}
+          and input the necessary information about your car.
+          <ol>
+            <li>
+              Enter your personal information then choose a location and time of
+              your choice for the inspection and appraisal. In Metro Manila,
+              slots are available everyday, from 9AM to 4PM. For Davao, slots
+              are available only on Fridays, and in Cebu, TBA.
+            </li>
+            <li>
+              Meetup with our adviser the pre-purchase car inspection,
+              appraisal, and price negotiation.
+            </li>
+            <li>
+              Go home and relax while we sell your car, normally within one
+              week.
+            </li>
+            <li>Sign the deed of sale and get your money.</li>
+            <li>
+              Want to trade in? Buy your next car from us and get an additional
+              P10,000 of credit.
+            </li>
+          </ol>
+        </>
+      ),
     },
     {
       q: `Do I have to pay to register?`,
@@ -17,13 +40,21 @@ const howToSellYourCar = {
     },
     {
       q: `What are the requirements to Sell My Car?`,
-      a: `The actual unit must be present with its original Official Receipt and Certificate of Registration. If available, please also bring the following:
-
-Insurance policy
-Owner’s manual
-Service history
-Duplicate keys
-Spare tire, tools, and other miscellaneous parts`,
+      a: (
+        <>
+          The actual unit must be present with its original Official Receipt and
+          Certificate of Registration. If available, please also bring the
+          following:
+          <ul>
+            <li>Insurance policy</li>
+            <li>Owner’s manual</li>
+            <li>Service history</li>
+            <li>Duplicate keys</li>
+            <li>Spare tire, tools, and other miscellaneous</li>
+            parts
+          </ul>
+        </>
+      ),
     },
     {
       break: true,
@@ -71,12 +102,20 @@ const eligibilityGuidelines = {
     {
       break: true,
       q: `What issues could cause my car to be rejected?`,
-      a: `Cars with the following conditions are not eligible for Sell My Car.
-
-The car is past a certain age (10 years)
-Major body or drivetrain damage
-Unauthorized change of color
-Other issues or modifications that could render the vehicle unsafe according to our mechanic’s pre-purchase inspection`,
+      a: (
+        <>
+          Cars with the following conditions are not eligible for Sell My Car:
+          <ul>
+            <li>The car is more than 10 years old</li>
+            <li>Major body or drivetrain damage</li>
+            <li>Unauthorized change of color</li>
+            <li>
+              Other issues or modifications that could render the vehicle unsafe
+              according to our mechanic’s pre-purchase inspection
+            </li>
+          </ul>
+        </>
+      ),
     },
     {
       q: `Can I sell my car that is still under loan?`,
@@ -134,11 +173,36 @@ const howToTradeInWithSellMyCar = {
     {
       break: true,
       q: `Learn more about Automart.Ph`,
-      a: `Want to learn more about buying from Automart.Ph? Here’s a few great links:How to Buy Repossessed CarsHow to Buy Used CarsGet Your Car Loan Approved`,
+      a: (
+        <>
+          Want to learn more about buying from Automart.Ph? Here’s a few great
+          links:
+          <ul>
+            <li>
+              <a href="https://automart.ph/blog/why-buy-repo" target="_blank">
+                How to Buy Repossessed Cars
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://automart.ph/blog/how-to-buy-used-cars"
+                target="_blank"
+              >
+                How to Buy Used Cars
+              </a>
+            </li>
+            <li>
+              <a href="https://automart.ph/blog/car-loan-guide" target="_blank">
+                Get Your Car Loan Approved
+              </a>
+            </li>
+          </ul>
+        </>
+      ),
     },
     {
       q: `Got more questions?`,
-      a: `We’d love to hear from you! Please send us an email at contact@automart.ph or call us at 0927-887-6400 so we can speak with you and answer any questions you might have.`,
+      a: `We’d love to hear from you! Please send us an email at contact@automart.ph or call us at +63963-188-2087 so we can speak with you and answer any questions you might have.`,
     },
   ],
 };
