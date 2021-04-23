@@ -7,7 +7,7 @@ const howToSellYourCar = {
         <>
           Head to our{" "}
           <a href="https://sellmycar.automart.ph/sell-my-car" target="_blank">
-            SellMyCar link
+            SellMyCar page
           </a>{" "}
           and input the necessary information about your car.
           <ol>
