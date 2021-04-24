@@ -67,16 +67,18 @@ export default function appBar({ toggleDrawer }) {
       <AppBar color="secondary">
         <Toolbar>
           <Grid container wrap="nowrap">
-            <Grid item xs={1} className={classes.gridMenu}>
-              <IconButton
-                aria-label="Menu Button"
-                edge="start"
-                color="inherit"
-                onClick={toggleDrawer(true)}
-              >
-                <MenuIcon />
-              </IconButton>
-            </Grid>
+            <Hidden mdUp>
+              <Grid item xs={1} className={classes.gridMenu}>
+                <IconButton
+                  aria-label="Menu Button"
+                  edge="start"
+                  color="inherit"
+                  onClick={toggleDrawer(true)}
+                >
+                  <MenuIcon />
+                </IconButton>
+              </Grid>
+            </Hidden>
             <Grid
               item
               sm={10}
@@ -93,7 +95,7 @@ export default function appBar({ toggleDrawer }) {
             <Hidden smDown>
               <Grid
                 item
-                sm={7}
+                sm={8}
                 container
                 wrap="nowrap"
                 justify="flex-end"

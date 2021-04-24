@@ -17,7 +17,7 @@ export default makeStyles((theme) => ({
     alignItems: "center",
     color: "white",
     textDecoration: "none !important",
-    margin: "16px 15px",
+    margin: "16px 20px",
     whiteSpace: "nowrap",
 
     transition: "transform 0.2s",
