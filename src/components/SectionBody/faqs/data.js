@@ -27,7 +27,7 @@ const howToSellYourCar = {
             </li>
             <li>Sign the deed of sale and get your money.</li>
             <li>
-              Want to trade in? Buy your next car from us and get an additional
+              Want to trade-in? Buy your next car from us and get an additional
               P10,000 of credit.
             </li>
           </ol>

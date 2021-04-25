@@ -13,6 +13,9 @@ const muiTheme = createMuiTheme(theme);
 //svg sprite
 import SvgSprite from "@/svgStore/sprite";
 
+//FAQs Schema
+import faqSchema from "@/src/faqSchema";
+
 //redux
 import { createWrapper } from "next-redux-wrapper";
 //Provider module not needed, createWrapper did it instead
@@ -87,6 +90,12 @@ function MyApp({ Component, pageProps }) {
         <script
           src="https://www.googletagmanager.com/gtag/js?id=G-6L6EWL6H47"
           defer
+        ></script>
+
+        {/* FAQs SCHEMA */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: faqSchema }}
         ></script>
       </Head>
       {/* this svg sprite is hidden, images are called in src/svgStore/svgCall.js */}
