@@ -102,6 +102,7 @@ const useStyles = makeStyles((theme) => ({
           height: "141px",
           padding: "0px 30px",
           border: "1px solid transparent",
+          marginBottom: "50px",
         },
         "&.datesContainerError": {
           borderColor: "red",

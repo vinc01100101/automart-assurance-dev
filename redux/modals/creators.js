@@ -35,7 +35,14 @@ export const setLocationsData = (payload) => ({
 export const fetchLocationsData = () => async (dispatch) => {
   const data = await fetch(`${BASE_URL}/inspection-sites`);
   const json = await data.json();
-  const payload = json.map((data) => ({ label: data.label, id: data.id }));
+  const payload = json.map((data) => {
+    const city = data.city ? data.city.city_name : "";
+    return {
+      label: data.label,
+      id: data.id,
+      city,
+    };
+  });
   dispatch(setLocationsData(payload));
 };
 
@@ -46,6 +53,7 @@ export const setBrandsData = (payload) => ({
 export const fetchBrandsData = () => async (dispatch) => {
   const data = await fetch(`${BASE_URL}/brands`);
   const json = await data.json();
+
   const payload = json.map((data) => ({ label: data.name, id: data.id }));
   dispatch(setBrandsData(payload));
 };

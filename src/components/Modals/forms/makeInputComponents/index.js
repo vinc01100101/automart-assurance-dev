@@ -13,6 +13,7 @@ import {
 import {
   setInput,
   fetchModelsData,
+  setTrimsData,
   fetchTrimsData,
 } from "@/redux/modals/creators";
 import { useSelector, useDispatch } from "react-redux";
@@ -72,6 +73,7 @@ export default function makeInputComponents() {
       dispatch(setInput({ key: "model", value: "" }));
       dispatch(setInput({ key: "trim", value: "" }));
       dispatch(fetchModelsData(value));
+      dispatch(setTrimsData([]));
     }
     if (key === "model") {
       dispatch(setInput({ key: "trim", value: "" }));
@@ -83,6 +85,8 @@ export default function makeInputComponents() {
 
   //component makers
   const makeSelect = (label, value, id, data) => {
+    const other = data.filter((x) => x.label == "Other");
+    const newData = data.filter((x) => x.label !== "Other").concat(other);
     const temp = id == "model" || id == "trim";
     return (
       <FormControl
@@ -99,8 +103,9 @@ export default function makeInputComponents() {
           labelId={`label-${id}`}
           onChange={(e) => handleChange(id, e.target.value)}
         >
-          {data.map((x, i) => (
+          {newData.map((x, i) => (
             <MenuItem key={i} value={x.id} divider>
+              {x.city && x.city != "Cebu" ? `${x.city} - ` : ""}
               {x.label == "" ? "NONE" : x.label}
             </MenuItem>
           ))}
@@ -132,7 +137,7 @@ export default function makeInputComponents() {
         error={err}
         helperText={helperText}
         multiline={isMultilined}
-        rows={10}
+        rows={4}
         label={label + " *"}
         value={value}
         id={`input-${id}`}

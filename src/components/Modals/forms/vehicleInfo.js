@@ -1,6 +1,3 @@
-//material ui
-import { Typography } from "@material-ui/core";
-
 //redux
 import { useSelector } from "react-redux";
 

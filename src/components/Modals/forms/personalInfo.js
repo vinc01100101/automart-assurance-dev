@@ -19,7 +19,7 @@ export default function personalInfo() {
       {makeTextField("Last Name", lastName, "lastName")}
       {makeTextField("Mobile Number", mobileNumber, "mobileNumber")}
       {makeTextField("Email", email, "email")}
-      {makeTextField("Address", address, "address")}
+      {makeTextField("Address", address, "address", undefined, true)}
     </form>
   );
 }
