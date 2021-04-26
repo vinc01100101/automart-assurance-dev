@@ -5,9 +5,9 @@ export const PRIVACY = "http://automart.ph/page/privacy-policy";
 
 export const AUTOMART = "http://automart.ph/";
 export const MOTOMART = "http://motomart.ph/";
-export const BLOG = "http://automart.ph/blog";
 export const FAQS = "#bodySection-4";
-export const CONTACTUS = "http://automart.ph/contact-us";
+export const CONTACTUS = "#bodySection-5";
+// export const BLOG = "http://automart.ph/blog";
 
 //SOCIAL
 export const FACEBOOK = "https://www.facebook.com/automartph/";

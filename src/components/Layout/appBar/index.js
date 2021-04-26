@@ -9,38 +9,21 @@ import {
   SvgIcon,
 } from "@material-ui/core";
 //appbar link icons
-import {
-  mdiFaceAgent,
-  mdiFrequentlyAskedQuestions,
-  mdiPostOutline,
-  mdiMotorbike,
-  mdiCarOutline,
-} from "@mdi/js";
+import { mdiFaceAgent, mdiFrequentlyAskedQuestions } from "@mdi/js";
 //mui icons
 import { Menu as MenuIcon } from "@material-ui/icons";
-//next
-import NextLink from "next/link";
 //sibling files
 import useStyles from "./styles";
 //svg piece
 import { sellmycar } from "@/svgStore/svgCall";
 //href strings
-import {
-  AUTOMART,
-  MOTOMART,
-  BLOG,
-  FAQS,
-  CONTACTUS,
-} from "@/components/hrefLinks";
+import { FAQS, CONTACTUS } from "@/components/hrefLinks";
 
 export default function appBar({ toggleDrawer }) {
   const classes = useStyles();
 
   //references
   const textLinks = [
-    [AUTOMART, "AutoMart", mdiCarOutline],
-    [MOTOMART, "MotoMart", mdiMotorbike],
-    [BLOG, "Blog", mdiPostOutline],
     [FAQS, "FAQs", mdiFrequentlyAskedQuestions],
     [CONTACTUS, "Contact Us", mdiFaceAgent],
   ];
@@ -50,7 +33,6 @@ export default function appBar({ toggleDrawer }) {
       <Link
         key={i}
         href={textLink[0]}
-        target={i == 3 ? "" : "_blank"}
         className={classes.gridLink}
         variant="h6"
       >
@@ -67,32 +49,30 @@ export default function appBar({ toggleDrawer }) {
       <AppBar color="secondary">
         <Toolbar>
           <Grid container wrap="nowrap">
-            <Hidden mdUp>
-              <Grid item xs={1} className={classes.gridMenu}>
-                <IconButton
-                  aria-label="Menu Button"
-                  edge="start"
-                  color="inherit"
-                  onClick={toggleDrawer(true)}
-                >
-                  <MenuIcon />
-                </IconButton>
-              </Grid>
-            </Hidden>
+            <Grid item xs={1} className={classes.gridMenu}>
+              <IconButton
+                aria-label="Menu Button"
+                edge="start"
+                color="inherit"
+                onClick={toggleDrawer(true)}
+              >
+                <MenuIcon />
+              </IconButton>
+            </Grid>
             <Grid
               item
-              sm={10}
-              md={4}
+              xs={10}
+              sm={4}
               container
               className={classes.gridTitle}
               alignItems="center"
             >
-              <NextLink href="/">
-                <a aria-label="Home">{sellmycar}</a>
-              </NextLink>
+              <a aria-label="Home" href="#">
+                {sellmycar}
+              </a>
             </Grid>
 
-            <Hidden smDown>
+            <Hidden xsDown>
               <Grid
                 item
                 sm={8}

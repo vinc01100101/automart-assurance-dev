@@ -22,7 +22,6 @@ import {
 import {
   AUTOMART,
   MOTOMART,
-  BLOG,
   FAQS,
   CONTACTUS,
   FACEBOOK,
@@ -38,7 +37,6 @@ export default function drawer({ isDrawerOpen, toggleDrawer }) {
   const textLinks = [
     [AUTOMART, "Buy a car"],
     [MOTOMART, "Buy a motorcycle"],
-    [BLOG, "Blog"],
     [FAQS, "FAQs"],
     [CONTACTUS, "Contact Us"],
   ];
@@ -55,7 +53,9 @@ export default function drawer({ isDrawerOpen, toggleDrawer }) {
       <Link
         key={i}
         href={textLink[0]}
-        target={textLink[1] == "FAQs" ? "" : "_blank"}
+        target={
+          textLink[1] == "FAQs" || textLink[1] == "Contact Us" ? "" : "_blank"
+        }
         onClick={toggleDrawer(false)}
       >
         <ListItem button>

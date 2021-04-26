@@ -8,7 +8,7 @@ export default makeStyles((theme) => ({
   },
   gridTitle: {
     justifyContent: "center",
-    [theme.breakpoints.up("md")]: {
+    [theme.breakpoints.up("sm")]: {
       justifyContent: "flex-start",
     },
   },

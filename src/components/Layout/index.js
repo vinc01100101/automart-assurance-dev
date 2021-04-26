@@ -1,4 +1,3 @@
-import { Hidden } from "@material-ui/core";
 import { useState } from "react";
 //layout children modules
 import Drawer from "./drawer";
@@ -13,9 +12,7 @@ export default function layOut({ children }) {
 
   return (
     <>
-      <Hidden mdUp>
-        <Drawer isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
-      </Hidden>
+      <Drawer isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
       <AppBar toggleDrawer={toggleDrawer} />
 
       {children}

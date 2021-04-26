@@ -55,7 +55,9 @@ export default function sectionFooter() {
         <li key={i}>
           <Link
             href={entry[0]}
-            target={entry[1] == "FAQs" ? "" : "_blank"}
+            target={
+              entry[1] == "FAQs" || entry[1] == "Contact Us" ? "" : "_blank"
+            }
             key={i}
             variant="body1"
           >
