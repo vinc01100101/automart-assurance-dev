@@ -33,6 +33,16 @@ const pnaObj = {
   },
 };
 
+const hrefChecker = (href, Component) => {
+  return href ? (
+    <a href={href} target="_blank">
+      <Component />
+    </a>
+  ) : (
+    <Component />
+  );
+};
+
 import getConfig from "next/config";
 const { publicRuntimeConfig } = getConfig();
 
@@ -56,7 +66,12 @@ export default function pna() {
         direction="column"
       >
         <div className={classes.imgContainer}>
-          <a href={entry[1][3] || "#0"} target={entry[1][3] ? "_blank" : ""}>
+          {/**
+           * hrefChecker(href,Component)
+           * @params href {String}
+           * @params Component {Functional Component}
+           */}
+          {hrefChecker(entry[1][3], () => (
             <Image
               // priority //<--throws Error: EPERM: operation not permitted, unlink
               layout="fixed"
@@ -66,7 +81,7 @@ export default function pna() {
               src={`${basePath}images/${groupName}/${entry[0]}.webp`}
               alt={entry[0]}
             />
-          </a>
+          ))}
         </div>
         <Typography variant="body2" component="div" className={classes.label}>
           {entry[1][2]}
