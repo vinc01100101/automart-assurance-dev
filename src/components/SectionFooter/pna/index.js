@@ -33,16 +33,6 @@ const pnaObj = {
   },
 };
 
-const hrefChecker = (href, Component) => {
-  return href ? (
-    <a href={href} target="_blank">
-      <Component />
-    </a>
-  ) : (
-    <Component />
-  );
-};
-
 import getConfig from "next/config";
 const { publicRuntimeConfig } = getConfig();
 
@@ -52,6 +42,16 @@ export default function pna() {
     : "/";
 
   const classes = useStyles();
+
+  const hrefChecker = (href, Component) => {
+    return href ? (
+      <a href={href} target="_blank" className={classes.imgContainer}>
+        <Component />
+      </a>
+    ) : (
+      <Component />
+    );
+  };
 
   const makeGridItems = (groupName) => {
     return Object.entries(pnaObj[groupName]).map((entry, i) => (
