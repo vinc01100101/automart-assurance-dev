@@ -1,5 +1,6 @@
+import { FreeBreakfastOutlined } from "@material-ui/icons";
 import { ACTIONS } from "./constants";
-
+//arrays: [] are the dropdowns
 const initialState = {
   activeModal: false,
   //appointment
@@ -31,6 +32,10 @@ const initialState = {
   mobileNumber: "",
   email: "",
   address: "",
+  //reason for selling note
+  reasonForSelling: "",
+  //error handle when empty field
+  showError: false,
 };
 
 const modalsReducer = (state = initialState, action) => {
@@ -53,7 +58,7 @@ const modalsReducer = (state = initialState, action) => {
       );
 
       //IIFE (Immediately Invoked Function Expression)
-      const formattedUtcDates = (() => {
+      const formattedDates = (() => {
         //set references
         const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
         const months = [
@@ -71,25 +76,24 @@ const modalsReducer = (state = initialState, action) => {
           "Dec",
         ];
 
-        //formattedUtcDates = this..
+        //formattedDates = this..
         return dates.map((date) => {
           //add zero to month if it is 1 digit.
           //increment month by 1 because it starts at 0 count
-          let monthFormat = (date.getUTCMonth() + 1).toString();
+          let monthFormat = (date.getMonth() + 1).toString();
           monthFormat =
             monthFormat.length == 1 ? `0${monthFormat}` : monthFormat;
 
           return {
-            month: months[date.getUTCMonth()],
-            date: date.getUTCDate(),
-            day: days[date.getUTCDay()],
-            format: `${date.getUTCFullYear()}-${monthFormat}-${date.getUTCDate()}`,
+            month: months[date.getMonth()],
+            date: date.getDate(),
+            day: days[date.getDay()],
+            format: `${date.getFullYear()}-${monthFormat}-${date.getDate()}`,
           };
         });
       })();
 
-      // console.log(formattedUtcDates);
-      return { ...state, datesArray: formattedUtcDates };
+      return { ...state, datesArray: formattedDates };
       break;
 
     case ACTIONS.SET_LOCATIONS_DATA:
@@ -138,6 +142,13 @@ const modalsReducer = (state = initialState, action) => {
       return {
         ...state,
         colorsArray: action.payload,
+      };
+      break;
+
+    case ACTIONS.SET_SHOW_ERROR:
+      return {
+        ...state,
+        showError: action.payload,
       };
       break;
 

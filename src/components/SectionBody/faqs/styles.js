@@ -27,6 +27,9 @@ export default makeStyles((theme) => ({
     marginBottom: "24px",
     paddingRight: "20px",
     whiteSpace: "pre-wrap",
+    "& *": {
+      userSelect: "text !important",
+    },
   },
   summary: {
     background: "#F0F5EF",
@@ -43,6 +46,6 @@ export default makeStyles((theme) => ({
     marginBottom: "20px",
   },
   a: {
-    userSelect: "text !important",
+    // userSelect: "text !important",
   },
 }));

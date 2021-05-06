@@ -13,6 +13,7 @@ export default function intro() {
         If you’ve ever experienced trying to sell a car then you know it is
         definitely the harder experience.
       </Typography>
+      <br />
       <Typography variant="body1" component="p">
         Nobody wants to deal with joy bidders, low ballers, and endless
         questions from people who don’t even seriously plan on buying–not to

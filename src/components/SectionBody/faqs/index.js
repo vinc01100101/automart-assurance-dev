@@ -15,7 +15,7 @@ import { useState } from "react";
 import data from "./data";
 import useStyles from "./styles";
 
-faqs.title = "Sell My Car FAQ’s";
+faqs.title = "Sell My Car FAQs";
 
 export default function faqs() {
   const classes = useStyles();
@@ -85,7 +85,7 @@ export default function faqs() {
                     <Typography
                       variant="body1"
                       className={classes.a}
-                      component="p"
+                      component="div"
                     >
                       {qna.a}
                     </Typography>
@@ -110,8 +110,8 @@ export default function faqs() {
       <Typography variant="h6" component="div" className={classes.description}>
         With the Sell My Car service, Automart.Ph will do the hard work to sell
         your car while you wait. No more looking for buyers, negotiating with
-        joy bidders, and setting up countless meetups–Sell My Car is designed to
-        make the process as hassle-free as possible.
+        joy bidders, and setting up countless meetups. Sell My Car is designed
+        to make the process as hassle-free as possible.
       </Typography>
       {makeAccordions()}
     </>

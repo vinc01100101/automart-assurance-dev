@@ -32,7 +32,11 @@ export default function sectionHeader() {
           alt="A cover image."
         />
         <Container maxWidth="sm" className={classes.container}>
-          <Typography variant="h3" className={classes.headerText}>
+          <Typography
+            variant="h2"
+            component="h1"
+            className={classes.headerText}
+          >
             Sell or Trade-in Cars With Zero Headaches
           </Typography>
           <Button

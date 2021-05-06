@@ -44,6 +44,8 @@ export default makeStyles((theme) => ({
   child: {
     marginBottom: "98px",
     width: "100%",
+    paddingTop: 70,
+    marginTop: -70,
   },
   //for curved light green background of "Just follow these 3 easy steps" section.
   stepsBackground: {
@@ -62,5 +64,6 @@ export default makeStyles((theme) => ({
     borderColor: [theme.palette.secondary.main],
     border: "2px solid",
     borderRadius: "10px",
+    boxShadow: `0px 3px 3px -2px rgb(0 0 0 / 20%), 0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);`,
   },
 }));

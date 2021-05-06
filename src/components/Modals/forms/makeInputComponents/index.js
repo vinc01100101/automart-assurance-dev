@@ -1,8 +1,7 @@
-console.log("IMPORTING: makeInputsComponent.js");
-
 //material ui
 import {
   FormControl,
+  FormHelperText,
   InputLabel,
   InputAdornment,
   Select,
@@ -14,12 +13,14 @@ import {
 import {
   setInput,
   fetchModelsData,
+  setTrimsData,
   fetchTrimsData,
 } from "@/redux/modals/creators";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function makeInputComponents() {
   const dispatch = useDispatch();
+  const { showError } = useSelector((state) => state.modals);
 
   //input formats (string? number? email? etc..)
   const numberReg = /^\d*$/;
@@ -30,6 +31,7 @@ export default function makeInputComponents() {
 
   //reference [inputFormat, characterLength]
   const regs = {
+    year: [numberReg, 4],
     plateNumber: [alphaNumericReg, 7],
     conductionSticker: [alphaNumericReg, 6],
     odometer: [numberReg, 7],
@@ -38,23 +40,25 @@ export default function makeInputComponents() {
     mobileNumber: [numberReg, 14],
     email: [emailReg, 40],
     address: [defaultFormatReg, 150],
+    reasonForSelling: [defaultFormatReg, 300],
   };
 
   //controlled inputs
-  const handleChange = (key, value) => {
+  const handleChange = (key, value, isTextInput) => {
     //remove odometer comma's
     const testValue = key === "odometer" ? value.replace(/,/g, "") : value;
 
     const keyName = regs[key];
     const regFormat = keyName ? keyName[0] : defaultFormatReg;
-    const regLength = RegExp(`^.{0,${keyName ? keyName[1] : 30}}$`);
+    const length = isTextInput ? testValue.length : 0;
 
+    const validateLength = keyName ? length <= keyName[1] : true;
     let returnValue = testValue;
 
     const testAndDispatch = () => {
       //if format and length is correct, allow the input
-      regFormat.test(testValue) &&
-        regLength.test(testValue) &&
+      (regFormat.test(testValue) || key === "reasonForSelling") &&
+        validateLength &&
         dispatch(setInput({ key, value: returnValue }));
     };
 
@@ -69,9 +73,9 @@ export default function makeInputComponents() {
       dispatch(setInput({ key: "model", value: "" }));
       dispatch(setInput({ key: "trim", value: "" }));
       dispatch(fetchModelsData(value));
+      dispatch(setTrimsData([]));
     }
     if (key === "model") {
-      console.log("value is: " + value);
       dispatch(setInput({ key: "trim", value: "" }));
       dispatch(fetchTrimsData(value));
     }
@@ -81,30 +85,60 @@ export default function makeInputComponents() {
 
   //component makers
   const makeSelect = (label, value, id, data) => {
+    const other = data.filter((x) => x.label == "Other");
+    const newData = data.filter((x) => x.label !== "Other").concat(other);
+    const temp = id == "model" || id == "trim";
     return (
-      <FormControl variant="outlined">
-        <InputLabel id={`label-${id}`}>{label}</InputLabel>
+      <FormControl
+        variant="outlined"
+        error={showError && value === "" && !temp}
+      >
+        <InputLabel id={`label-${id}`}>{`${label}${
+          !temp ? " *" : ""
+        }`}</InputLabel>
         <Select
-          label={label}
+          label={`${label}${!temp ? " *" : ""}`}
           value={value}
           id={`input-${id}`}
           labelId={`label-${id}`}
           onChange={(e) => handleChange(id, e.target.value)}
         >
-          {data.map((x, i) => (
+          {newData.map((x, i) => (
             <MenuItem key={i} value={x.id} divider>
+              {x.city && x.city != "Cebu" ? `${x.city} - ` : ""}
               {x.label == "" ? "NONE" : x.label}
             </MenuItem>
           ))}
         </Select>
+        {showError && value === "" && !temp && (
+          <FormHelperText>This field is required</FormHelperText>
+        )}
       </FormControl>
     );
   };
 
-  const makeTextField = (label, value, id) => {
+  const makeTextField = (label, value, id, pairValue, isMultilined) => {
+    let err = false,
+      helperText = "";
+    if (showError && value == "") {
+      if (id == "plateNumber" || id == "conductionSticker") {
+        helperText =
+          pairValue == ""
+            ? "Either plate number or conduction sticker must be provided"
+            : "";
+        err = pairValue == "";
+      } else {
+        helperText = "This field is required";
+        err = true;
+      }
+    }
     return (
       <TextField
-        label={label}
+        error={err}
+        helperText={helperText}
+        multiline={isMultilined}
+        rows={4}
+        label={label + " *"}
         value={value}
         id={`input-${id}`}
         InputProps={{
@@ -113,7 +147,7 @@ export default function makeInputComponents() {
           ),
         }}
         variant="outlined"
-        onChange={(e) => handleChange(id, e.target.value)}
+        onChange={(e) => handleChange(id, e.target.value, true)}
       />
     );
   };

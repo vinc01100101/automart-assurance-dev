@@ -13,7 +13,6 @@ export default function layOut({ children }) {
   return (
     <>
       <Drawer isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
-
       <AppBar toggleDrawer={toggleDrawer} />
 
       {children}

@@ -1,13 +1,8 @@
-console.log("IMPORTING: vehicleInfo.js");
-
-//material ui
-import { Typography } from "@material-ui/core";
-
 //redux
 import { useSelector } from "react-redux";
 
 //fields data
-import { FIELD_YEAR } from "./data/vehicleInfoData";
+// import { FIELD_YEAR } from "./data/vehicleInfoData";
 
 //input component makers
 import makeInputComponents from "./makeInputComponents";
@@ -36,39 +31,31 @@ export default function vehicleInfo() {
   //makeInputComponents returns input component makers
   const { makeSelect, makeTextField } = makeInputComponents();
 
-  const jsxPlateNumber = (
-    <>
-      <div>Plate</div>
-      <div>Number</div>
-    </>
-  );
-
-  const jsxConductionSticker = (
-    <>
-      <div>Conduction</div>
-      <div>Sticker</div>
-    </>
-  );
   return (
     <form>
-      {makeSelect("Year", year, "year", FIELD_YEAR)}
+      {/* {makeSelect("Year", year, "year", FIELD_YEAR)} */}
+      {makeTextField("Year", year, "year")}
       {makeSelect("Brand", brand, "brand", brandsArray)}
       {modelsArray.length > 0 &&
         makeSelect("Model", model, "model", modelsArray)}
       {trimsArray.length > 0 && makeSelect("Trim", trim, "trim", trimsArray)}
 
-      {/* flex row this plateConduction*/}
-      <div className="plateConduction">
-        {makeTextField(jsxPlateNumber, plateNumber, "plateNumber")}
-        <Typography variant="h6" component="p">
-          Or
-        </Typography>
-        {makeTextField(
-          jsxConductionSticker,
-          conductionSticker,
-          "conductionSticker"
-        )}
-      </div>
+      {/**
+       * 4th params = for special cases:
+       * "either plate number or conduction sticker is required"
+       */}
+      {makeTextField(
+        "Plate Number",
+        plateNumber,
+        "plateNumber",
+        conductionSticker
+      )}
+      {makeTextField(
+        "Conduction Sticker",
+        conductionSticker,
+        "conductionSticker",
+        plateNumber
+      )}
 
       {makeSelect(
         "Transmission Type",

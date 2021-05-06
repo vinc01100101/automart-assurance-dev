@@ -13,6 +13,9 @@ const muiTheme = createMuiTheme(theme);
 //svg sprite
 import SvgSprite from "@/svgStore/sprite";
 
+//FAQs Schema
+import faqSchema from "@/src/faqSchema";
+
 //redux
 import { createWrapper } from "next-redux-wrapper";
 //Provider module not needed, createWrapper did it instead
@@ -37,18 +40,20 @@ function MyApp({ Component, pageProps }) {
     }
     gtag("js", new Date());
     gtag("config", "G-6L6EWL6H47");
-
-    // console.log(window.dataLayer);
   }, []);
   return (
     <>
       <Head>
         <title>
-          Sell My Car or Trade It In Quickly and at Top Prices | Automart.Ph"
+          Sell My Car or Trade-In Quickly at Best Prices | Automart.Ph
         </title>
         <meta
           name="description"
-          content="Sell My Car or Trade In My Used Car Hassle-Free, Quickly and for High Prices in the Philippines. Automart.Ph Will Sell for You. Just Drive It In"
+          content="Sell your used cars or trade-in quick and easy thru Automart.Ph. We offer the best prices for used cars in the Philippines and remove the hassle of looking for buyers, dealing with joy bidders and countless meetups."
+        />
+        <link
+          rel="canonical"
+          href="https://sellmycar.automart.ph/sell-my-car"
         />
         <link rel="icon" href={`${basePath}favicon.ico`} />
 
@@ -85,6 +90,12 @@ function MyApp({ Component, pageProps }) {
         <script
           src="https://www.googletagmanager.com/gtag/js?id=G-6L6EWL6H47"
           defer
+        ></script>
+
+        {/* FAQs SCHEMA */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: faqSchema }}
         ></script>
       </Head>
       {/* this svg sprite is hidden, images are called in src/svgStore/svgCall.js */}

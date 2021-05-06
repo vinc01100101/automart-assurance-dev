@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-video.title = "How it works";
+video.title = "How It Works";
 
 export default function video() {
   const classes = useStyles();

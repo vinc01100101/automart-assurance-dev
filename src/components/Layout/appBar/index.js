@@ -6,34 +6,26 @@ import {
   Hidden,
   Grid,
   Link,
+  SvgIcon,
 } from "@material-ui/core";
+//appbar link icons
+import { mdiFaceAgent, mdiFrequentlyAskedQuestions } from "@mdi/js";
 //mui icons
 import { Menu as MenuIcon } from "@material-ui/icons";
-//next
-import NextLink from "next/link";
 //sibling files
 import useStyles from "./styles";
 //svg piece
 import { sellmycar } from "@/svgStore/svgCall";
 //href strings
-import {
-  AUTOMART,
-  MOTOMART,
-  BLOG,
-  FAQS,
-  CONTACTUS,
-} from "@/components/hrefLinks";
+import { FAQS, CONTACTUS } from "@/components/hrefLinks";
 
 export default function appBar({ toggleDrawer }) {
   const classes = useStyles();
 
   //references
   const textLinks = [
-    [AUTOMART, "AutoMart"],
-    [MOTOMART, "MotoMart"],
-    [BLOG, "Blog"],
-    [FAQS, "FAQ's"],
-    [CONTACTUS, "Contact Us"],
+    [FAQS, "FAQs", mdiFrequentlyAskedQuestions],
+    [CONTACTUS, "Contact Us", mdiFaceAgent],
   ];
 
   const makeList = () => {
@@ -41,10 +33,12 @@ export default function appBar({ toggleDrawer }) {
       <Link
         key={i}
         href={textLink[0]}
-        target="_blank"
         className={classes.gridLink}
         variant="h6"
       >
+        <SvgIcon>
+          <path d={textLink[2]} />
+        </SvgIcon>
         {textLink[1]}
       </Link>
     ));
@@ -67,21 +61,21 @@ export default function appBar({ toggleDrawer }) {
             </Grid>
             <Grid
               item
-              sm={10}
-              md={4}
+              xs={10}
+              sm={4}
               container
               className={classes.gridTitle}
               alignItems="center"
             >
-              <NextLink href="/">
-                <a aria-label="Home">{sellmycar}</a>
-              </NextLink>
+              <a aria-label="Home" href="#">
+                {sellmycar}
+              </a>
             </Grid>
 
-            <Hidden smDown>
+            <Hidden xsDown>
               <Grid
                 item
-                sm={7}
+                sm={8}
                 container
                 wrap="nowrap"
                 justify="flex-end"

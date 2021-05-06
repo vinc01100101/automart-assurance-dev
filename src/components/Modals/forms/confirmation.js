@@ -1,7 +1,5 @@
-console.log("IMPORTING: confirmation.js");
-
 //material ui
-import { Typography, InputBase, Link } from "@material-ui/core";
+import { Typography, Divider, Link } from "@material-ui/core";
 
 //svg's
 import { viber, telephone, atsign } from "@/svgStore/svgCall";
@@ -27,14 +25,14 @@ basePath = basePath || "";
 
 export default function confirmation({ setActiveComponent, setResult }) {
   const [viberLink, setViberLink] = useState(
-    "viber://add?number=63927 887 6400"
+    "viber://add?number=63963 188 2087"
   );
 
   useEffect(() => {
     import("react-device-detect").then((mod) => {
       mod.isMobile
-        ? setViberLink("viber://add?number=63927 887 6400")
-        : setViberLink("viber://chat?number=+63927 887 6400");
+        ? setViberLink("viber://add?number=63963 188 2087")
+        : setViberLink("viber://chat?number=+63963 188 2087");
     });
   }, []);
 
@@ -65,6 +63,7 @@ export default function confirmation({ setActiveComponent, setResult }) {
     mobileNumber,
     email,
     address,
+    reasonForSelling,
   } = useSelector((state) => state.modals);
   const dispatch = useDispatch();
   //the key value pairs to present on the confirmation form
@@ -112,6 +111,27 @@ export default function confirmation({ setActiveComponent, setResult }) {
       ["Address", address],
     ],
   };
+  const reason = {
+    title: "Reason For Selling",
+    data: [["Note", reasonForSelling]],
+  };
+  //required fields
+  const requiredFields = [
+    "First Name",
+    "Last Name",
+    "Mobile Number",
+    "Location",
+    "Date",
+    "Time",
+    "Address",
+    "Email",
+    "Odometer",
+    "Transmission Type",
+    "Year",
+    "Brand",
+    "Fuel Type",
+    "Color",
+  ];
 
   const makeSection = (info) => {
     return (
@@ -123,24 +143,6 @@ export default function confirmation({ setActiveComponent, setResult }) {
           //data[0] == key
           //data[1] == value
           //thou we could have used Object.fromEntries(data)
-
-          //required fields
-          const requiredFields = [
-            "First Name",
-            "Last Name",
-            "Mobile Number",
-            "Location",
-            "Date",
-            "Time",
-            "Address",
-            "Email",
-            "Odometer",
-            "Transmission Type",
-            "Year",
-            "Brand",
-            "Fuel Type",
-            "Color",
-          ];
 
           //either conduction sticker or plate number required
           const either =
@@ -177,31 +179,43 @@ export default function confirmation({ setActiveComponent, setResult }) {
 
           const fontWeight = color === "#FF0000" && "bold";
 
+          const wordBreak = "break-word";
           return (
-            <div key={i} className="summaryContentBox">
-              <Typography
-                variant="body1"
-                component="div"
-                className="summaryLabel"
-              >
-                {data[0]}
-              </Typography>
-              <InputBase
-                style={{ color, display, alignItems, fontWeight, fontSize }}
-                //the input element inside inputBase has padding, remove it if "either"
-                inputProps={{
-                  style: {
+            <div key={i}>
+              <Divider style={{ width: "100%" }} />
+              <div className="summaryContentBox">
+                {info.title != "Reason For Selling" && (
+                  <>
+                    <Typography
+                      variant="body1"
+                      component="div"
+                      className="summaryLabel"
+                    >
+                      {data[0]}
+                    </Typography>
+                    <Divider orientation="vertical" flexItem />
+                  </>
+                )}
+                <Typography
+                  style={{
+                    color,
+                    display,
+                    alignItems,
+                    fontWeight,
+                    fontSize,
+                    wordBreak,
                     padding,
                     pointerEvents: "none",
-                  },
-                  name: data[0],
-                  value,
-                }}
-                className="summaryValue"
-                //this section is for details confirmation, make it readOnly
-                readOnly
-                disabled
-              ></InputBase>
+                  }}
+                  className={
+                    info.title != "Reason For Selling"
+                      ? "summaryValue"
+                      : "summaryValue_reasonForSelling"
+                  }
+                >
+                  {value}
+                </Typography>
+              </div>
             </div>
           );
         })}
@@ -217,7 +231,7 @@ export default function confirmation({ setActiveComponent, setResult }) {
       description: "Your form is being sent.",
       svg: 0,
     });
-    setActiveComponent(4);
+    setActiveComponent(5);
 
     //uncomment "return" to simulate the loading dialog
     // return;
@@ -243,7 +257,7 @@ export default function confirmation({ setActiveComponent, setResult }) {
     xhr.onreadystatechange = () => {
       console.log(readyStates[xhr.readyState], xhr.status);
       if (xhr.readyState !== 4) return; //GUARD CLAUSE
-      // const json = JSON.parse(xhr.response);
+
       dispatch(setModal("getMyQuote")); //open modal to notify the user
       if (xhr.status !== 201) {
         //set error dialog
@@ -254,7 +268,8 @@ export default function confirmation({ setActiveComponent, setResult }) {
         });
         return;
       }
-
+      let display = viberLink.split("=")[1];
+      display = display[0] == "6" ? "+".concat(display) : display;
       //set success dialog
       setResult({
         title:
@@ -270,7 +285,7 @@ export default function confirmation({ setActiveComponent, setResult }) {
             </span>
             <span className="contact">
               {viber}
-              <Link href={viberLink}>{viberLink.split("=")[1]}</Link>
+              <Link href={viberLink}>{display}</Link>
             </span>
             <span className="contact">
               {atsign}
@@ -301,7 +316,7 @@ export default function confirmation({ setActiveComponent, setResult }) {
       transmission_type_id: transmissionType,
       brand_color_id: color,
       odometer: odometer.replace(/,/g, ""),
-      notes: "good",
+      notes: reasonForSelling,
       scheduled_at: date.format + " " + time,
     };
     //delete the empty fields..
@@ -321,6 +336,7 @@ export default function confirmation({ setActiveComponent, setResult }) {
       {makeSection(appointment)}
       {makeSection(vehicle)}
       {makeSection(personal)}
+      {makeSection(reason)}
       <input type="submit" id="submitterButton" hidden />
     </form>
   );

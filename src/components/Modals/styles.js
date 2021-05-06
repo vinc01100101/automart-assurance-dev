@@ -72,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
         marginTop: "32px !important",
         marginBottom: "2px !important",
       },
-      "& > .summaryContentBox": {
+      "& > div > .summaryContentBox": {
         display: "flex",
         flexDirection: "row",
         marginBottom: "2px !important",
@@ -84,6 +84,10 @@ const useStyles = makeStyles((theme) => ({
         },
         "& > .summaryValue": {
           width: "60%",
+        },
+        "& > .summaryValue_reasonForSelling": {
+          width: "100%",
+          whiteSpace: "pre-wrap",
         },
       },
 
@@ -97,6 +101,11 @@ const useStyles = makeStyles((theme) => ({
           width: "100%",
           height: "141px",
           padding: "0px 30px",
+          border: "1px solid transparent",
+          marginBottom: "50px",
+        },
+        "&.datesContainerError": {
+          borderColor: "red",
         },
 
         //the arrows

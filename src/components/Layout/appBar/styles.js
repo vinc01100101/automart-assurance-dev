@@ -8,19 +8,25 @@ export default makeStyles((theme) => ({
   },
   gridTitle: {
     justifyContent: "center",
-    [theme.breakpoints.up("md")]: {
+    [theme.breakpoints.up("sm")]: {
       justifyContent: "flex-start",
     },
   },
   gridLink: {
+    display: "flex",
+    alignItems: "center",
     color: "white",
     textDecoration: "none !important",
-    margin: "16px 25px",
+    margin: "16px 20px",
     whiteSpace: "nowrap",
 
     transition: "transform 0.2s",
     "&:hover": {
       transform: "scale(1.1)",
+    },
+
+    "& > svg": {
+      marginRight: 7,
     },
   },
 }));

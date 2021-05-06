@@ -1,6 +1,5 @@
-console.log("IMPORTING: appointment.js");
 //material ui
-import { Typography, IconButton } from "@material-ui/core";
+import { Typography, IconButton, FormHelperText } from "@material-ui/core";
 //svg icons
 import { arrowright, arrowleft } from "@/svgStore/svgCall";
 //redux
@@ -20,9 +19,14 @@ export default function appointment() {
   const dispatch = useDispatch();
 
   //redux states
-  const { location, date, time, locationsArray, datesArray } = useSelector(
-    (state) => state.modals
-  );
+  const {
+    showError,
+    location,
+    date,
+    time,
+    locationsArray,
+    datesArray,
+  } = useSelector((state) => state.modals);
 
   //makeInputComponents returns input component makers
   const { makeSelect } = makeInputComponents();
@@ -44,7 +48,6 @@ export default function appointment() {
 
       //update the date display
       pointer = (Math.ceil((dateOnMount + 1) / 3) - 1) * -1;
-      console.log(pointer);
       const value = pointer * containerWidth;
       updateCurrentPosition(value, true);
     }
@@ -85,7 +88,6 @@ export default function appointment() {
     pointer--;
     //min max
     pointer = pointer < -4 ? -4 : pointer;
-    console.log(pointer);
     //render
     const value = pointer * containerWidth;
     updateCurrentPosition(value, true);
@@ -125,10 +127,8 @@ export default function appointment() {
   const handleDragUp = (e, index) => {
     //just accept left click on "mouseleave" event
     if (e.type == "mouseleave" && e.buttons !== 1) return;
-    console.log(e.type);
     if (index != undefined) {
       if (difference >= -15 && difference <= 15) {
-        console.log("INDEX IS: " + index);
         setSelectedDate(() => index);
         handleChange("date", datesArray[index]);
       }
@@ -157,7 +157,11 @@ export default function appointment() {
     <form>
       {makeSelect("Location", location, "location", locationsArray)}
 
-      <div className="datesContainer">
+      <div
+        className={`datesContainer${
+          showError && date == "" ? " datesContainerError" : ""
+        }`}
+      >
         <div className="sub-datesContainer">
           <div
             className="cellsContainer"
@@ -195,6 +199,9 @@ export default function appointment() {
         <IconButton className="arrowRight" onClick={panLeft}>
           {arrowright}
         </IconButton>
+        {showError && date == "" && (
+          <FormHelperText error>Please select a date</FormHelperText>
+        )}
       </div>
 
       {makeSelect("Time", time, "time", FIELD_TIME)}
