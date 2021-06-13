@@ -1,5 +1,6 @@
-import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
-const breakpoints = createBreakpoints({});
+import { createMuiTheme } from '@material-ui/core/styles';
+
+const defaultTheme = createMuiTheme();
 
 const theme = {
   overrides: {
@@ -48,12 +49,12 @@ const theme = {
     fontFamily: `'Source Sans Pro', sans-serif`,
     body1: {
       fontSize: "16px",
-      [breakpoints.up("md")]: {
+      [defaultTheme.breakpoints.up("md")]: {
         fontSize: "18px",
       },
     },
     h5: {
-      [breakpoints.up("md")]: {
+      [defaultTheme.breakpoints.up("md")]: {
         fontWeight: "bold",
       },
     },

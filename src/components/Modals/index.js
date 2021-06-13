@@ -170,9 +170,8 @@ export default function modals() {
             title: result.title,
             description: result.description,
         };
-    const {Component, title, description} = componentReferenceArray[
-        activeComponent
-    ];
+    const {Component, title, description} =
+        componentReferenceArray[activeComponent];
     //--Component constant is only for makeFormLayout()
     const makeFormLayout = () => {
         //--disable submit button if requirements are not met
@@ -215,7 +214,6 @@ export default function modals() {
                     <Button
                         disabled={isDisabled}
                         variant="contained"
-                        color="secondary"
                         onClick={handleNextButton}
                     >
                         {activeComponent < 4 ? "Next" : "Submit"}
@@ -269,7 +267,6 @@ export default function modals() {
                         {result.svg === 2 && (
                             <Button
                                 variant="contained"
-                                color="secondary"
                                 onClick={() => {
                                     setPaperClasses(() => ({
                                         frontPaper: "",

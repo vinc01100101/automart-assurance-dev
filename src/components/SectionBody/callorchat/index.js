@@ -1,52 +1,57 @@
 //svg pieces
-import { viber, telephone, atsign } from "@/svgStore/svgCall";
+import {viber, telephone, atsign} from "@/svgStore/svgCall";
 //href strings
-import { TELEPHONE, EMAIL } from "@/components/hrefLinks";
+import {TELEPHONE, EMAIL} from "@/components/hrefLinks";
 
-import { Link } from "@material-ui/core";
+import {Link} from "@material-ui/core";
 
 //sibling files
 import useStyles from "./styles";
 //react
-import { useState, useEffect } from "react";
+import {useState, useEffect} from "react";
 
 callorchat.title = "You can call or chat with us!";
 
 export default function callorchat() {
-  const classes = useStyles();
-  const [viberLink, setViberLink] = useState(
-    "viber://add?number=63963 188 2087"
-  );
+    const classes = useStyles();
+    const [viberLink, setViberLink] = useState(
+        "viber://add?number=63963 188 2087"
+    );
 
-  useEffect(() => {
-    import("react-device-detect").then((mod) => {
-      mod.isMobile
-        ? setViberLink("viber://add?number=63963 188 2087")
-        : setViberLink("viber://chat?number=+63963 188 2087");
-    });
-  }, []);
+    useEffect(() => {
+        import("react-device-detect").then((mod) => {
+            mod.isMobile
+                ? setViberLink("viber://add?number=63963 188 2087")
+                : setViberLink("viber://chat?number=+63963 188 2087");
+        });
+    }, []);
 
-  const contacts = [
-    [viberLink, viber],
-    [TELEPHONE, telephone],
-    [EMAIL, atsign],
-  ];
+    const contacts = [
+        [viberLink, viber],
+        [TELEPHONE, telephone],
+        [EMAIL, atsign],
+    ];
 
-  const makeContacts = () => {
-    return contacts.map((contact, i) => {
-      let display =
-        i == 0 ? contact[0].split("=")[1] : contact[0].split(":")[1];
-      display = display[0] == "6" ? "+".concat(display) : display;
-      return (
-        <div className={classes.contact} key={i}>
-          <div className={classes.contactLogo}>{contact[1]}</div>
-          <Link href={contact[0]} className={classes.contactText} variant="h6">
-            {display}
-          </Link>
-        </div>
-      );
-    });
-  };
+    const makeContacts = () => {
+        return contacts.map((contact, i) => {
+            let display =
+                i == 0 ? contact[0].split("=")[1] : contact[0].split(":")[1];
+            display = display[0] == "6" ? "+".concat(display) : display;
+            return (
+                <div className={classes.contact} key={i}>
+                    <div className={classes.contactLogo}>{contact[1]}</div>
+                    <Link
+                        href={contact[0]}
+                        className={classes.contactText}
+                        variant="h6"
+                        color="secondary"
+                    >
+                        {display}
+                    </Link>
+                </div>
+            );
+        });
+    };
 
-  return <div className={classes.root}>{makeContacts()}</div>;
+    return <div className={classes.root}>{makeContacts()}</div>;
 }

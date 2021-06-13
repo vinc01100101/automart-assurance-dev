@@ -3,11 +3,11 @@
  */
 
 import {
-  Card,
-  CardContent,
-  CardActions,
-  Button,
-  Typography,
+    Card,
+    CardContent,
+    CardActions,
+    Button,
+    Typography,
 } from "@material-ui/core";
 
 //sibling files
@@ -15,96 +15,108 @@ import useStyles from "./styles";
 import data from "./data";
 
 //redux
-import { useDispatch } from "react-redux";
-import { setModal } from "@/redux/modals/creators";
+import {useDispatch} from "react-redux";
+import {setModal} from "@/redux/modals/creators";
 
 import Image from "next/image";
 
 import getConfig from "next/config";
-const { publicRuntimeConfig } = getConfig();
+const {publicRuntimeConfig} = getConfig();
 
 steps.title = "Just follow these 3 easy steps";
 
 export default function steps() {
-  let basePath = publicRuntimeConfig.basePath
-    ? publicRuntimeConfig.basePath
-    : "/";
+    let basePath = publicRuntimeConfig.basePath
+        ? publicRuntimeConfig.basePath
+        : "/";
 
-  const dispatch = useDispatch();
-  const classes = useStyles();
-  const makeCards = (entry, i) => {
-    return (
-      <Card
-        key={i}
-        className={`${classes.root} ${i == 0 && classes.introStep}`}
-        elevation={3}
-      >
-        <div className={classes.setFlex}>
-          <div className={classes.logoContainer}>
-            <Image
-              src={`${basePath}svg/not-in-sprite/logo-step${i}.svg`}
-              alt={entry.title}
-              width={entry.size[0]}
-              height={entry.size[1]}
-              layout="fixed"
-            />
-            {
-              //the yellow badge on the first card
-              i == 0 && (
-                <div className={classes.introBadge}>
-                  <Image
-                    src={`${basePath}svg/not-in-sprite/logo-step-badge.svg`}
-                    alt="Best Offer"
-                    width="54px"
-                    height="54px"
-                    layout="fixed"
-                  />
+    const dispatch = useDispatch();
+    const classes = useStyles();
+    const makeCards = (entry, i) => {
+        return (
+            <Card
+                key={i}
+                className={`${classes.root} ${i == 0 && classes.introStep}`}
+                elevation={3}
+            >
+                <div className={classes.setFlex}>
+                    <div className={classes.logoContainer}>
+                        <Image
+                            src={`${basePath}svg/not-in-sprite/logo-step${i}.svg`}
+                            alt={entry.title}
+                            width={entry.size[0]}
+                            height={entry.size[1]}
+                            layout="fixed"
+                        />
+                        {
+                            //the yellow badge on the first card
+                            i == 0 && (
+                                <div className={classes.introBadge}>
+                                    <Image
+                                        src={`${basePath}svg/not-in-sprite/logo-step-badge.svg`}
+                                        alt="Best Offer"
+                                        width="54px"
+                                        height="54px"
+                                        layout="fixed"
+                                    />
+                                </div>
+                            )
+                        }
+                    </div>
+                    <CardContent>
+                        <Typography
+                            variant="h5"
+                            component="div"
+                            className={classes.title}
+                            style={{color: i == 0 && "white"}}
+                        >
+                            {entry.title}
+                        </Typography>
+                        <Typography
+                            variant="body1"
+                            component="p"
+                            style={{color: i == 0 && "white"}}
+                        >
+                            {entry.content}
+                        </Typography>
+                        <CardActions className={classes.cardActions}>
+                            {entry.button &&
+                                //   idk why conditional statement doesn't work on color props,
+                                //   so i'll do this instead
+                                (i == 0 ? (
+                                    <Button
+                                        className={`${classes.button} ${classes.whiteButton}`}
+                                        variant="contained"
+                                        onClick={() =>
+                                            dispatch(setModal("getMyQuote"))
+                                        }
+                                    >
+                                        {entry.button}
+                                    </Button>
+                                ) : (
+                                    <Button
+                                        className={classes.button}
+                                        variant="contained"
+                                        onClick={() =>
+                                            dispatch(setModal("getMyQuote"))
+                                        }
+                                    >
+                                        {entry.button}
+                                    </Button>
+                                ))}
+                        </CardActions>
+                    </CardContent>
                 </div>
-              )
-            }
-          </div>
-          <CardContent style={{ color: i == 0 && "white" }}>
-            <Typography variant="h5" component="div" className={classes.title}>
-              {entry.title}
-            </Typography>
-            <Typography variant="body1" component="p">
-              {entry.content}
-            </Typography>
-            <CardActions className={classes.cardActions}>
-              {entry.button &&
-                //   idk why conditional statement doesn't work on color props,
-                //   so i'll do this instead
-                (i == 0 ? (
-                  <Button
-                    className={`${classes.button} ${classes.whiteButton}`}
-                    variant="contained"
-                    onClick={() => dispatch(setModal("getMyQuote"))}
-                  >
-                    {entry.button}
-                  </Button>
-                ) : (
-                  <Button
-                    className={classes.button}
-                    color="secondary"
-                    variant="contained"
-                    onClick={() => dispatch(setModal("getMyQuote"))}
-                  >
-                    {entry.button}
-                  </Button>
-                ))}
-            </CardActions>
-          </CardContent>
-        </div>
-      </Card>
-    );
-  };
+            </Card>
+        );
+    };
 
-  return (
-    <>
-      <Typography component="p" variant="h6" className={classes.subtitle}>
-        but use the amount as your trade in value instead
-      </Typography>
-      {data.map(makeCards)}
-    </>
-  );
+    return (
+        <>
+            <Typography component="p" variant="h6" className={classes.subtitle}>
+                but use the amount as your trade in value instead
+            </Typography>
+            {data.map(makeCards)}
+        </>
+    );
 }
