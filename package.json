@@ -1,30 +1,34 @@
 {
-  "name": "sell-your-car-testpage",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "endlink": "npm unlink @qniverse/core @material-ui/core @material-ui/system @material-ui/styles react react-dom",
-    "startlink": "npm link @qniverse/core @material-ui/core @material-ui/system @material-ui/styles react react-dom",
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start -p $PORT",
-    "localstart": "next start"
-  },
-  "dependencies": {
-    "@emotion/react": "^11.1.4",
-    "@emotion/styled": "latest",
-    "@justinribeiro/lite-youtube": "^0.9.1",
-    "@material-ui/core": "^5.0.0-alpha.20",
-    "@material-ui/icons": "5.0.0-alpha.20",
-    "@mdi/js": "^5.9.55",
-    "mdi-react": "^7.5.0",
-    "next": "10.0.9",
-    "next-redux-wrapper": "^6.0.2",
-    "react": "17.0.1",
-    "react-device-detect": "^1.17.0",
-    "react-dom": "17.0.1",
-    "react-redux": "^7.2.3",
-    "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
-  }
+    "name": "sell-your-car-testpage",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "endlink": "npm unlink @qniverse/core @material-ui/core @material-ui/system @material-ui/styles react react-dom",
+        "startlink": "npm link @qniverse/core @material-ui/core @material-ui/system @material-ui/styles react react-dom",
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start -p $PORT",
+        "localstart": "next start"
+    },
+    "dependencies": {
+        "@emotion/react": "^11.1.4",
+        "@emotion/styled": "latest",
+        "@justinribeiro/lite-youtube": "^0.9.1",
+        "@material-ui/core": "^5.0.0-alpha.20",
+        "@material-ui/icons": "5.0.0-alpha.20",
+        "@mdi/js": "^5.9.55",
+        "@qniverse/core": "^1.1.13",
+        "mdi-react": "^7.5.0",
+        "next": "10.0.9",
+        "next-redux-wrapper": "^6.0.2",
+        "react": "17.0.1",
+        "react-device-detect": "^1.17.0",
+        "react-dom": "17.0.1",
+        "react-redux": "^7.2.3",
+        "redux": "^4.0.5",
+        "redux-thunk": "^2.3.0"
+    },
+    "devDependencies": {
+        "babel-plugin-import": "^1.13.3"
+    }
 }
