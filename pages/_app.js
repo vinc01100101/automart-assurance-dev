@@ -57,8 +57,8 @@ function MyApp({Component, pageProps}) {
         //link hrefs
         qConfig.links = {
             ...qConfig.links,
-            FAQs: ["#bodySection-4", false],
-            "Contact Us": ["#bodySection-5", false],
+            FAQs: ["#bodySection-5", false],
+            "Contact Us": ["#bodySection-6", false],
             "Login or Signup": ["https://automart.ph/login", true],
             "Buy a Car": ["http://automart.ph/", true],
             "Buy a Motorcycle": ["http://motomart.ph/", true],

@@ -25,7 +25,7 @@ export default makeStyles((theme) => ({
             border: "hidden",
             borderRadius: "50%",
             padding: "0px",
-            transform: "translateY(200%)",
+            transform: "translateY(247px)",
             [theme.breakpoints.down("sm")]: {
                 width: 40,
             },

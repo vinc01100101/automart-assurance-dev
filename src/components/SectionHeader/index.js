@@ -37,7 +37,7 @@ export default function sectionHeader() {
                         component="h1"
                         className={classes.headerText}
                     >
-                        Sell or Trade-in Cars With Zero Headaches
+                        Peace of mind is just a click away.
                     </Typography>
                     <Button
                         variant="contained"
