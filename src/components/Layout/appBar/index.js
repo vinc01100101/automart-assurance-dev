@@ -15,7 +15,7 @@ import {Menu as MenuIcon} from "@material-ui/icons";
 //sibling files
 import useStyles from "./styles";
 //svg piece
-import {sellmycar} from "@/svgStore/svgCall";
+import {assurance} from "@/svgStore/svgCall";
 //href strings
 import {FAQS, CONTACTUS} from "@/components/hrefLinks";
 

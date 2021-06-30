@@ -3,7 +3,7 @@ import intro from "./intro";
 import video from "./video";
 import steps from "./steps";
 import benefits from "./benefits";
-// import testimonials from "./testimonials"; //waiting for testi data
+import blogs from "./blogs"; //waiting for testi data
 import faqs from "./faqs";
 import callorchat from "./callorchat";
 
@@ -18,7 +18,8 @@ const componentReferenceArray = [
     video,
     steps,
     benefits,
-    /*testimonials,*/ faqs,
+    blogs,
+    faqs,
     callorchat,
 ];
 //styles
@@ -47,14 +48,19 @@ export default function body() {
                             i == 2 ? classes.stepsBackground : ""
                         }`}
                     >
-                        {/* maxWidth = "sm" for testimonials = 4 and callorchat = componentReferenceArray.length-1 */}
+                        {/* maxWidth = "sm" for blogs = 4 and callorchat = componentReferenceArray.length-1 */}
                         <Container
-                            // maxWidth={i === 4 || i === componentReferenceArray.length-1 ? "sm" : "md"}
                             maxWidth={
+                                i === 4 ||
                                 i === componentReferenceArray.length - 1
                                     ? "sm"
                                     : "md"
                             }
+                            // maxWidth={
+                            //     i === componentReferenceArray.length - 1
+                            //         ? "sm"
+                            //         : "md"
+                            // }
                             className={i === 0 ? classes.introFlexSetter : ""}
                         >
                             {/* circular header image */}

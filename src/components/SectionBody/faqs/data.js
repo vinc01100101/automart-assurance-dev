@@ -1,215 +1,95 @@
-const howToSellYourCar = {
-  title: "How To Sell Your Car",
-  content: [
-    {
-      q: `What is the best way to Sell My Car?`,
-      a: (
-        <>
-          Head to our{" "}
-          <a href="https://sellmycar.automart.ph/sell-my-car" target="_blank">
-            SellMyCar page
-          </a>{" "}
-          and input the necessary information about your car.
-          <ol>
-            <li>
-              Enter your personal information then choose a location and time of
-              your choice for the inspection and appraisal. In Metro Manila,
-              slots are available everyday, from 9AM to 4PM. For Davao, slots
-              are available only on Fridays, and in Cebu, TBA.
-            </li>
-            <li>
-              Meetup with our adviser the pre-purchase car inspection,
-              appraisal, and price negotiation.
-            </li>
-            <li>
-              Go home and relax while we sell your car, normally within one
-              week.
-            </li>
-            <li>Sign the deed of sale and get your money.</li>
-            <li>
-              Want to trade-in? Buy your next car from us and get an additional
-              P10,000 of credit.
-            </li>
-          </ol>
-        </>
-      ),
-    },
-    {
-      q: `Do I have to pay to register?`,
-      a: `No, registration with Sell My Car is free!`,
-    },
-    {
-      q: `What are the requirements to Sell My Car?`,
-      a: (
-        <>
-          The actual unit must be present with its original Official Receipt and
-          Certificate of Registration. If available, please also bring the
-          following:
-          <ul>
-            <li>Insurance policy</li>
-            <li>Owner’s manual</li>
-            <li>Service history</li>
-            <li>Duplicate keys</li>
-            <li>Spare tire, tools, and other miscellaneous</li>
-            parts
-          </ul>
-        </>
-      ),
-    },
-    {
-      break: true,
-      q: `Can I sign up more than one car?`,
-      a: `Yes, you may sign up more than one car and it is still free! Please present each individual unit for appraisal and inspection with their respective papers`,
-    },
-    {
-      q: `Can I take my car home after the inspection?`,
-      a: `Yes, there is no need to leave your car with us after the inspection.`,
-    },
-    {
-      q: `Where will my car be posted for sale?`,
-      a: `It will be posted on Automart.Ph and will be open to online bidding or “buy it now” offers.`,
-    },
-    {
-      q: `What if a buyer wants to view my car?`,
-      a: `During inspection and appraisal, we will take all the necessary photos and record videos of your car in running condition. Don’t stress–a buyer will not be sent to your house just to check the car’s condition.`,
-    },
-    {
-      q: `A buyer approached me personally, can I refer them to my adviser?`,
-      a: `Please refer them to your adviser, we’ll do the negotiation for you.`,
-    },
-    {
-      q: `What if I don’t want to sell my car anymore?`,
-      a: `It is free to cancel your agreement with Sell My Car at any time, with no penalty.`,
-    },
-  ],
-};
-
-const eligibilityGuidelines = {
-  title: "Eligibility Guidelines",
-  content: [
-    {
-      q: `What if the car is not under my name?`,
-      a: `A notarized deed of sale will be required if the car’s registration is not under your name.`,
-    },
-    {
-      q: `What if my car registration is expired?`,
-      a: `Cars with expired registration may be accepted but it may affect the car’s final valuation during the appraisal.`,
-    },
-    {
-      q: `What if my car has been modified?`,
-      a: `Non-stock cars with modifications are allowed. If you plan to return it to stock condition before selling, please do so before appraisal and inspection.`,
-    },
-    {
-      break: true,
-      q: `What issues could cause my car to be rejected?`,
-      a: (
-        <>
-          Cars with the following conditions are not eligible for Sell My Car:
-          <ul>
-            <li>The car is more than 10 years old</li>
-            <li>Major body or drivetrain damage</li>
-            <li>Unauthorized change of color</li>
-            <li>
-              Other issues or modifications that could render the vehicle unsafe
-              according to our mechanic’s pre-purchase inspection
-            </li>
-          </ul>
-        </>
-      ),
-    },
-    {
-      q: `Can I sell my car that is still under loan?`,
-      a: `Cars for “assume balance” or “pasalo” will not be accepted for Sell My Car. All cars must be free from any bank loan or financing agreements.`,
-    },
-  ],
-};
-
-const priceAndPayment = {
-  title: "Price and Payment",
-  content: [
-    {
-      q: `How do I find out what my car is worth?`,
-      a: `Our advisers will conduct an appraisal and provide a price that will be open to negotiation afterwards. If an agreement cannot be reached, then the car will not be accepted for sale.`,
-    },
-    {
-      q: `Will Automart.Ph take a commission from me?`,
-      a: `Yes, Automart.Ph will take a commission from the seller that will be discussed during the inspection appointment.`,
-    },
-    {
-      q: `What if my car has not sold after one week?`,
-      a: `We can keep your car up for sale until it is sold or you wish to take it down.`,
-    },
-    {
-      q: `Do I have a last say on the final price?`,
-      a: `No. Once an agreement to sell your car has been made, it will be sold based on the appraisal price. Automart.Ph will not ask for your final approval before accepting any offers.`,
-    },
-    {
-      break: true,
-      q: `What if a buyer wants to pay in installment? Will I get my money in installments?`,
-      a: `Automart.Ph will only accept payments in full through deposit or cheque, so there is no need to wait for your money. If needed, Automart will arrange the financing for the vehicle, however, you will still get your money in full.`,
-    },
-    {
-      q: `Can I get paid in cash?`,
-      a: `The proceeds from a car’s sale will only be available via cheque, to be claimed upon signing of the deed of sale.`,
-    },
-    {
-      q: `Can a buyer approach me with any issues after a sale?`,
-      a: `No. Automart.Ph will prepare a deed of absolute sale for every sale, to release you from any liabilities after the buyer takes delivery of the car.`,
-    },
-  ],
-};
-
-const howToTradeInWithSellMyCar = {
-  title: "How To Trade In With Sell My Car",
-  content: [
-    {
-      q: `How do I trade-in my car?`,
-      a: `You may opt to trade-in instead of getting the cheque from your car’s sale. You also get an additional P10,000 credit towards any vehicle in Automart.Ph’s inventory.`,
-    },
-    {
-      q: `Can I combine financing with my trade-in?`,
-      a: `Yes, Automart.Ph accepts financing, subject to approval.`,
-    },
-    {
-      break: true,
-      q: `Learn more about Automart.Ph`,
-      a: (
-        <>
-          Want to learn more about buying from Automart.Ph? Here’s a few great
-          links:
-          <ul>
-            <li>
-              <a href="https://automart.ph/blog/why-buy-repo" target="_blank">
-                How to Buy Repossessed Cars
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://automart.ph/blog/how-to-buy-used-cars"
-                target="_blank"
-              >
-                How to Buy Used Cars
-              </a>
-            </li>
-            <li>
-              <a href="https://automart.ph/blog/car-loan-guide" target="_blank">
-                Get Your Car Loan Approved
-              </a>
-            </li>
-          </ul>
-        </>
-      ),
-    },
-    {
-      q: `Got more questions?`,
-      a: `We’d love to hear from you! Please send us an email at contact@automart.ph or call us at +63963-188-2087 so we can speak with you and answer any questions you might have.`,
-    },
-  ],
-};
-
 export default [
-  howToSellYourCar,
-  eligibilityGuidelines,
-  priceAndPayment,
-  howToTradeInWithSellMyCar,
+    {
+        title: "WHAT IS CAR INSURANCE?",
+        content: [
+            {
+                q: ``,
+                a: (
+                    <>
+                        Car insurance provides financial protection for car
+                        owners like you if you are involved in an accident or
+                        collision. In a nutshell: Your auto insurance generally
+                        covers your property (your vehicle), your liabilities or
+                        legal responsibility to others, and medical and
+                        hospitalization.
+                    </>
+                ),
+            },
+            {
+                break: true,
+                q: ``,
+                a: (
+                    <>
+                        This financial protection includes vehicle repair costs,
+                        bodily injury, and hospital and medical fees, as well as
+                        losses from theft, fire, and other types of damages to
+                        your vehicle It may also extend to cover damages to your
+                        car caused by natural disasters---earthquakes, typhoons,
+                        floods, among others.
+                    </>
+                ),
+            },
+        ],
+    },
+    {
+        title: "WHY DO I NEED TO GET CAR INSURANCE?",
+        content: [
+            {
+                a: `You take a gamble when you get behind the wheel. You can try to be the best driver you can be, but you must also trust that everyone else on the road is doing their job and paying attention. When drivers make mistakes, auto insurance covers the costs that come as a result of these errors.`,
+            },
+            {
+                a: `In the event of an accident, you are at risk of a potentially costly expense. If the crash was not your fault and the other driver doesn’t have any insurance of their own, you would be responsible for any repairs to your own vehicle as well as any medical expenses if you were seriously injured.`,
+            },
+            {
+                break: true,
+                a: `When you're at fault, you're usually responsible for the damage to the other person's car as well as the medical bills of any injured people. Besides, if you are charged, you must pay for your own vehicle's maintenance as well as legal costs. If you are uninsured or underinsured, your savings and assets (properties and other owned assets) may be at risk. Your auto or car insurance ensures that you have the financial means to cover these responsibilities and lessen your financial burden.`,
+            },
+        ],
+    },
+    {
+        title: "HOW DOES CAR INSURANCE WORK",
+        content: [
+            {
+                a: `Car insurance is required by law before you are allowed to drive your vehicle on a public road, and is, essentially, your financial protection when your car is damaged or when you cause damage to another vehicle while driving your car.`,
+            },
+            {
+                break: true,
+                a: `You can choose the amount of financial protection you want and what options are included in your policy. At the minimum, all vehicle owners like you must get Compulsory Third Party Liability Insurance (CTPL), which covers death and injury of third parties (or, people who are not your passengers and were involved in the accident). At the most, you may get comprehensive insurance that may cover you for a wider range of financial protection.`,
+            },
+        ],
+    },
+
+    {
+        title: "WHAT ARE THE COMMON FEATURES OF A CAR INSURANCE POLICY",
+        content: [
+            {
+                a: `Your car insurance policy may include, but not limited to:`,
+            },
+            {
+                q: `Compulsory Third Party Liability (CTPL)`,
+                a: `This type of financial protection is mandated by the LTO upon purchasing a new vehicle or renewing your car registration. CTPL insurance is LTO-mandated coverage and is a key feature in your policy (obligatory, not optional). It only provides financial protection for death indemnity, bodily injury, and permanent disablement to third parties involved in an accident. Meaning, you, as the driver, and your passengers, won't be covered for medical and hospital care if an accident occurs (your expenses will be out-of-pocket).`,
+            },
+            {
+                q: `Bodily Injury Coverage`,
+                a: `Similar to CTPL (but a little more specific in its legalistic language), this feature deals with financial protection and coverage if you hit another person while driving your car, and may cover medical and hospitalization fees of the other person injured, as well as lost wages, emotional distress damages, and any legal fees that may occur.`,
+            },
+            {
+                q: `Personal Injury coverage / Auto personal accident`,
+                a: `This, on the other hand, is financial protection for you and your passengers and may cover medical and hospitalization fees for treatment that may be needed and an accident occurs.`,
+            },
+            {
+                break: true,
+                q: `Property Damage Protection`,
+                a: `If you get into an accident and you are responsible, then your insurance policy will financially protect and cover payment for property damage ranging from other people’s car repairs, property damage, and other non-human damages. If a case was filed against you, then legal fees would also be covered.`,
+            },
+            {
+                q: `Comprehensive Coverage`,
+                a: `Provides financial protection for damages to your vehicle which aren't your fault, and are beyond your control including malicious damage, theft, vandalism, fire, riots, and other non-natural events.`,
+            },
+            {
+                q: `Acts of God`,
+                a: `Also known as "Acts of Nature," this type of financial protection covers you if damage to your vehicle occurs due to flooding, typhoons, earthquakes, and other such natural disasters---a very crucial option to consider here in the Philippines.`,
+            },
+        ],
+    },
 ];

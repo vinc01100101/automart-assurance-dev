@@ -40,6 +40,7 @@ export default makeStyles((theme) => ({
     },
     title: {
         fontWeight: "bold",
+        width: "100%",
     },
     q: {
         fontWeight: "bold",

@@ -9,7 +9,7 @@ import Head from "next/head";
 import _Wrapper from "@qniverse/core/_Wrapper";
 import _NavBarWithDrawer from "@qniverse/core/_NavBarWithDrawer";
 import _Footer from "@qniverse/core/_Footer";
-import sellMyCar from "@qniverse/core/sellMyCar";
+import assuranceTheme from "@qniverse/core/assurance";
 import qConfig from "@qniverse/core/config";
 
 import NextImage from "next/image";
@@ -30,7 +30,7 @@ import Pna from "@/components/SectionFooter/pna";
 
 //svg sprite
 import SvgSprite from "@/svgStore/sprite";
-import {sellmycar} from "@/svgStore/svgCall";
+import {assurance} from "@/svgStore/svgCall";
 
 //FAQs Schema
 import faqSchema from "@/src/faqSchema";
@@ -49,10 +49,10 @@ const {publicRuntimeConfig} = getConfig();
 function MyApp({Component, pageProps}) {
     (() => {
         //theme module
-        qConfig.theme = sellMyCar;
+        qConfig.theme = assuranceTheme;
 
         //company logo to be used
-        qConfig.companyLogoSvg = sellmycar;
+        qConfig.companyLogoSvg = assurance;
 
         //link hrefs
         qConfig.links = {
@@ -124,9 +124,7 @@ function MyApp({Component, pageProps}) {
     return (
         <>
             <Head>
-                <title>
-                    Sell My Car or Trade-In Quickly at Best Prices | Automart.Ph
-                </title>
+                <title>Assurance.Ph</title>
                 <meta
                     name="description"
                     content="Sell your used cars or trade-in quick and easy thru Automart.Ph. We offer the best prices for used cars in the Philippines and remove the hassle of looking for buyers, dealing with joy bidders and countless meetups."
@@ -135,7 +133,7 @@ function MyApp({Component, pageProps}) {
                     rel="canonical"
                     href="https://sellmycar.automart.ph/sell-my-car"
                 />
-                <link rel="icon" href={`${basePath}favicon.ico`} />
+                <link rel="icon" href={`${basePath}favicon.png`} />
 
                 {/* asset preloads */}
                 <link
