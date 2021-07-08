@@ -24,12 +24,12 @@ export default function intro() {
                 repossessed cars. Motomart has the same concept but selling
                 repossessed motorcycles instead. Our branches are located
                 nationwide. With the growing footprint of Automart.Ph and
-                Motomart.pH with respect to car and motorcycle sales,
+                Motomart.Ph with respect to car and motorcycle sales,
                 Assurance.Ph was conceptualized to service the insurance
                 requirements of our buyers. Car dealerships in the Philippines
                 traditionally have their own agencies and insurance partners so
                 it was timely that in the third year of Automart and its
-                nationwide recognition, Assurance was born.
+                nationwide recognition, Assurance.Ph was born.
             </Typography>
         </>
     );

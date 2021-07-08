@@ -1,7 +1,7 @@
 //svg pieces
 import {viber, telephone, atsign} from "@/svgStore/svgCall";
 //href strings
-import {TELEPHONE, EMAIL} from "@/components/hrefLinks";
+import {TELEPHONE, EMAIL, VIBER} from "@/components/hrefLinks";
 
 import {Link} from "@material-ui/core";
 
@@ -14,28 +14,29 @@ callorchat.title = "You can call or chat with us!";
 
 export default function callorchat() {
     const classes = useStyles();
-    const [viberLink, setViberLink] = useState(
+    const [viberFormat, setViberFormat] = useState(
         "viber://add?number=63963 188 2087"
     );
 
     useEffect(() => {
         import("react-device-detect").then((mod) => {
             mod.isMobile
-                ? setViberLink("viber://add?number=63963 188 2087")
-                : setViberLink("viber://chat?number=+63963 188 2087");
+                ? setViberFormat("viber://add?number=639")
+                : setViberFormat("viber://chat?number=+639");
         });
     }, []);
 
-    const contacts = [
-        [viberLink, viber],
-        [TELEPHONE, telephone],
-        [EMAIL, atsign],
-    ];
+    const viberLinks = VIBER.map((phoneNum) => [
+        viberFormat.concat(phoneNum),
+        viber,
+    ]);
+    const contacts = [...viberLinks, [TELEPHONE, telephone], [EMAIL, atsign]];
 
     const makeContacts = () => {
         return contacts.map((contact, i) => {
-            let display =
-                i == 0 ? contact[0].split("=")[1] : contact[0].split(":")[1];
+            let display = /viber/.test(contact[0])
+                ? contact[0].split("=")[1]
+                : contact[0].split(":")[1];
             display = display[0] == "6" ? "+".concat(display) : display;
             return (
                 <div className={classes.contact} key={i}>

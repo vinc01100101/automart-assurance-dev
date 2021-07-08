@@ -7,8 +7,8 @@ import {
     AccordionDetails,
     AccordionSummary,
     Typography,
-    Hidden,
     Divider,
+    Hidden,
 } from "@material-ui/core";
 import {ExpandMore} from "@material-ui/icons";
 import {useState} from "react";
@@ -17,7 +17,7 @@ import {useState} from "react";
 import data from "./data";
 import useStyles from "./styles";
 
-faqs.title = "Frequently Asked Questions (FAQs)";
+faqs.title = "Guidelines in settlement of motor car claims";
 
 export default function faqs() {
     const classes = useStyles();
@@ -128,20 +128,5 @@ export default function faqs() {
             );
         });
     };
-    return (
-        <>
-            <Typography
-                variant="h6"
-                component="div"
-                className={classes.description}
-            >
-                Insurance protects you, your loved ones, and your car from
-                accidents and calamities. With that said, you may have questions
-                about your insurance policy. Read up some common car insurance
-                questions below, so that you may have a better understanding of
-                how insurance policies work.
-            </Typography>
-            {makeAccordions()}
-        </>
-    );
+    return <>{makeAccordions()}</>;
 }

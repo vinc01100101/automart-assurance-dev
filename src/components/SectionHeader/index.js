@@ -37,7 +37,7 @@ export default function sectionHeader() {
                         component="h1"
                         className={classes.headerText}
                     >
-                        Peace of mind is just a click away.
+                        Peace of Mind Is Just a Click Away.
                     </Typography>
                     <Button
                         variant="contained"

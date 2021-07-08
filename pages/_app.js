@@ -5,6 +5,8 @@ import "../src/global.css";
 import Head from "next/head";
 // import CssBaseline from "@material-ui/core/CssBaseline";
 
+//hrefLinks
+import {CONTACTUS, FAQS} from "@/components/hrefLinks";
 //QLIB
 import _Wrapper from "@qniverse/core/_Wrapper";
 import _NavBarWithDrawer from "@qniverse/core/_NavBarWithDrawer";
@@ -57,8 +59,8 @@ function MyApp({Component, pageProps}) {
         //link hrefs
         qConfig.links = {
             ...qConfig.links,
-            FAQs: ["#bodySection-5", false],
-            "Contact Us": ["#bodySection-6", false],
+            FAQs: [FAQS, false],
+            "Contact Us": [CONTACTUS, false],
             "Login or Signup": ["https://automart.ph/login", true],
             "Buy a Car": ["http://automart.ph/", true],
             "Buy a Motorcycle": ["http://motomart.ph/", true],

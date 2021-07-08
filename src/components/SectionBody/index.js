@@ -2,6 +2,7 @@
 import intro from "./intro";
 import video from "./video";
 import steps from "./steps";
+import guidelines from "./guidelines";
 import benefits from "./benefits";
 import blogs from "./blogs"; //waiting for testi data
 import faqs from "./faqs";
@@ -17,6 +18,7 @@ const componentReferenceArray = [
     intro,
     video,
     steps,
+    guidelines,
     benefits,
     blogs,
     faqs,
@@ -48,10 +50,10 @@ export default function body() {
                             i == 2 ? classes.stepsBackground : ""
                         }`}
                     >
-                        {/* maxWidth = "sm" for blogs = 4 and callorchat = componentReferenceArray.length-1 */}
+                        {/* maxWidth = "sm" for blogs = 5 and callorchat = componentReferenceArray.length-1 */}
                         <Container
                             maxWidth={
-                                i === 4 ||
+                                i === 5 ||
                                 i === componentReferenceArray.length - 1
                                     ? "sm"
                                     : "md"

@@ -7,8 +7,8 @@ export default makeStyles((theme) => ({
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",
-        "& #bodySection-4": {
-            height: 650,
+        "& #bodySection-5": {
+            height: 700,
         },
     },
     introFlexSetter: {
