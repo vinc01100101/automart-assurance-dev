@@ -23,7 +23,7 @@ import Image from "next/image";
 import getConfig from "next/config";
 const {publicRuntimeConfig} = getConfig();
 
-steps.title = "Just follow these 3 easy steps";
+steps.title = "";
 
 export default function steps() {
     let basePath = publicRuntimeConfig.basePath
@@ -42,26 +42,12 @@ export default function steps() {
                 <div className={classes.setFlex}>
                     <div className={classes.logoContainer}>
                         <Image
-                            src={`${basePath}svg/not-in-sprite/logo-step${i}.svg`}
+                            src={`${basePath}images/ClaimAndRegistration/${i}.webp`}
                             alt={entry.title}
                             width={entry.size[0]}
                             height={entry.size[1]}
                             layout="fixed"
                         />
-                        {
-                            //the yellow badge on the first card
-                            i == 0 && (
-                                <div className={classes.introBadge}>
-                                    <Image
-                                        src={`${basePath}svg/not-in-sprite/logo-step-badge.svg`}
-                                        alt="Best Offer"
-                                        width="54px"
-                                        height="54px"
-                                        layout="fixed"
-                                    />
-                                </div>
-                            )
-                        }
                     </div>
                     <CardContent>
                         <Typography
@@ -111,12 +97,5 @@ export default function steps() {
         );
     };
 
-    return (
-        <>
-            <Typography component="p" variant="h6" className={classes.subtitle}>
-                but use the amount as your trade in value instead
-            </Typography>
-            {data.map(makeCards)}
-        </>
-    );
+    return <>{data.map(makeCards)}</>;
 }

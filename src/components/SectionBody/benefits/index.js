@@ -34,7 +34,7 @@ export default function benefits() {
         <div className={classes.root}>
             {makeComponents([
                 "Quick and simple process",
-                "We are your partner in the event of a claim",
+                "We will fully assist you in the event of a claim",
                 <>
                     We are part of a trusted brand -{" "}
                     <a href={AUTOMART} target="_blank">

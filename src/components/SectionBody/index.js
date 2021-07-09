@@ -50,9 +50,10 @@ export default function body() {
                             i == 2 ? classes.stepsBackground : ""
                         }`}
                     >
-                        {/* maxWidth = "sm" for blogs = 5 and callorchat = componentReferenceArray.length-1 */}
+                        {/* maxWidth = "sm" for steps = 2, blogs = 5 and callorchat = componentReferenceArray.length-1 */}
                         <Container
                             maxWidth={
+                                i === 2 ||
                                 i === 5 ||
                                 i === componentReferenceArray.length - 1
                                     ? "sm"
