@@ -16,7 +16,7 @@ import data from "./data";
 
 //redux
 import {useDispatch} from "react-redux";
-import {setModal} from "@/redux/modals/creators";
+import {onChange} from "@/redux/dialogs/creators";
 
 import Image from "next/image";
 
@@ -74,7 +74,12 @@ export default function steps() {
                                         className={`${classes.button} ${classes.whiteButton}`}
                                         variant="contained"
                                         onClick={() =>
-                                            dispatch(setModal("getMyQuote"))
+                                            dispatch(
+                                                onChange({
+                                                    key: "dialogCtplIsOpen",
+                                                    value: true,
+                                                })
+                                            )
                                         }
                                     >
                                         {entry.button}
@@ -83,9 +88,14 @@ export default function steps() {
                                     <Button
                                         className={classes.button}
                                         variant="contained"
-                                        onClick={() =>
-                                            dispatch(setModal("getMyQuote"))
-                                        }
+                                        // onClick={() =>
+                                        //     dispatch(
+                                        //         onChange({
+                                        //             key: "dialogCtplIsOpen",
+                                        //             value: true,
+                                        //         })
+                                        //     )
+                                        // }
                                     >
                                         {entry.button}
                                     </Button>

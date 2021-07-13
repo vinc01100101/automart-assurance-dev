@@ -185,7 +185,7 @@ export default [
                         <strong>G.</strong> Depreciation rates shall be applied
                         to cost of parts (except for windshield glass and other
                         glass parts) as follows:
-                        <Grid container>{makeTable()}</Grid>
+                        {makeTable()}
                     </>
                 ),
             },
@@ -254,7 +254,7 @@ function makeTable() {
             background,
         };
         return (
-            <>
+            <Grid container key={i}>
                 <Grid item xs={6} style={{background}}>
                     {col1}
                 </Grid>
@@ -264,7 +264,7 @@ function makeTable() {
                 <Grid item xs={3} style={style}>
                     {col3}
                 </Grid>
-            </>
+            </Grid>
         );
     }
     const data = [

@@ -3,7 +3,7 @@ import useStyles from "./styles";
 
 //redux
 import {useDispatch} from "react-redux";
-import {setModal} from "@/redux/modals/creators";
+import {onChange} from "@/redux/dialogs/creators";
 
 import getConfig from "next/config";
 const {publicRuntimeConfig} = getConfig();
@@ -17,7 +17,7 @@ export default function sectionHeader() {
     const dispatch = useDispatch();
 
     const handleClick = () => {
-        dispatch(setModal("getMyQuote"));
+        // dispatch(onChange({key: "dialogCtplIsOpen", value: true}));
     };
 
     return (

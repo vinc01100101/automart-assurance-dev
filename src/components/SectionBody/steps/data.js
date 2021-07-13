@@ -1,6 +1,6 @@
 export default [
     {
-        title: "Need to register your car at LTO?",
+        title: "Get your CTPL now",
         content: "",
         button: "Click here",
         size: ["181px", "180px"],
@@ -8,7 +8,7 @@ export default [
     {
         title: "File your Motorcar claim",
         content: "",
-        button: "Here",
+        button: "Click Here",
         size: ["180px", "185px"],
     },
 ];

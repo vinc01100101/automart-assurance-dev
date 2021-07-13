@@ -5,6 +5,9 @@ import "../src/global.css";
 import Head from "next/head";
 // import CssBaseline from "@material-ui/core/CssBaseline";
 
+//whole page dialogs
+import GetCTPL from "@/components/Dialogs/GetCTPL";
+
 //hrefLinks
 import {CONTACTUS, FAQS} from "@/components/hrefLinks";
 //QLIB
@@ -189,6 +192,7 @@ function MyApp({Component, pageProps}) {
 
             <_Wrapper>
                 <_NavBarWithDrawer />
+                <GetCTPL />
                 <Component {...pageProps} />
                 <_Footer PartnersAndAffiliates={Pna} />
             </_Wrapper>

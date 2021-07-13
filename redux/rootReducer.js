@@ -1,6 +1,6 @@
-import { combineReducers } from "redux";
-import modals from "./modals";
+import {combineReducers} from "redux";
+import dialogReducer from "./dialogs";
 
 export default combineReducers({
-  modals,
+    dialogReducer,
 });
