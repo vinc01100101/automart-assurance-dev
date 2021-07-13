@@ -12,6 +12,7 @@ import Image from "next/image";
 
 import getConfig from "next/config";
 const {publicRuntimeConfig} = getConfig();
+let basePath = publicRuntimeConfig.basePath || "/";
 
 //reference
 const componentReferenceArray = [
@@ -31,10 +32,6 @@ import {Container, Typography} from "@material-ui/core";
 
 export default function body() {
     const classes = useStyles();
-
-    let basePath = publicRuntimeConfig.basePath
-        ? publicRuntimeConfig.basePath
-        : "/";
 
     return (
         // body component
@@ -71,7 +68,7 @@ export default function body() {
                                 <div className={classes.introImageWrapper}>
                                     <Image
                                         className={classes.introImage}
-                                        src={`${basePath}images/introImage.webp`}
+                                        src={`${basePath}/images/introImage.webp`}
                                         alt="A man selling his car."
                                         layout="fill"
                                         sizes="50vw"

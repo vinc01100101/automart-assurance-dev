@@ -138,20 +138,20 @@ function MyApp({Component, pageProps}) {
                     rel="canonical"
                     href="https://sellmycar.automart.ph/sell-my-car"
                 />
-                <link rel="icon" href={`${basePath}favicon.png`} />
+                <link rel="icon" href={`${basePath}/favicon.png`} />
 
                 {/* asset preloads */}
                 <link
                     rel="preload"
                     as="image"
-                    href={`${basePath}images/headerImage.webp`}
-                    imagesrcset={`${basePath}images/headerImage_4000.webp 4000w, ${basePath}images/headerImage_2000.webp 2000w, ${basePath}images/headerImage_1000.webp 1000w`}
+                    href={`${basePath}/images/headerImage.webp`}
+                    imagesrcset={`${basePath}/images/headerImage_4000.webp 4000w, ${basePath}/images/headerImage_2000.webp 2000w, ${basePath}/images/headerImage_1000.webp 1000w`}
                     imagesizes="100vw"
                 />
                 <link
                     rel="preload"
                     as="image"
-                    href={`${basePath}images/introImage.webp`}
+                    href={`${basePath}/images/introImage.webp`}
                 />
 
                 {/* fonts asynchronouse load*/}

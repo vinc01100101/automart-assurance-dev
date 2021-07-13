@@ -18,4 +18,9 @@
 //   };
 // }
 
-// module.exports = exportsObj;
+module.exports = {
+    basePath: "/assurance",
+    publicRuntimeConfig: {
+        basePath: "/assurance",
+    },
+};

@@ -22,14 +22,11 @@ import Image from "next/image";
 
 import getConfig from "next/config";
 const {publicRuntimeConfig} = getConfig();
+let basePath = publicRuntimeConfig.basePath || "/";
 
 steps.title = "";
 
 export default function steps() {
-    let basePath = publicRuntimeConfig.basePath
-        ? publicRuntimeConfig.basePath
-        : "/";
-
     const dispatch = useDispatch();
     const classes = useStyles();
     const makeCards = (entry, i) => {
@@ -42,7 +39,7 @@ export default function steps() {
                 <div className={classes.setFlex}>
                     <div className={classes.logoContainer}>
                         <Image
-                            src={`${basePath}images/ClaimAndRegistration/${i}.webp`}
+                            src={`${basePath}/images/ClaimAndRegistration/${i}.webp`}
                             alt={entry.title}
                             width={entry.size[0]}
                             height={entry.size[1]}

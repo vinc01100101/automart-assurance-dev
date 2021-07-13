@@ -201,21 +201,11 @@ export default function GetCTPL() {
                     className={classes.formLayout}
                     action="/api/appointment"
                     method="post"
-                    encType="multipart/form-data"
                     onSubmit={handleSubmit}
                 >
                     {textFieldsArray.map((x) =>
                         makeTextField(x.label, x.value, x.id, x.isMultilined)
                     )}
-                    Upload a clear picture of your Certificate of Registration
-                    <div>
-                        <input
-                            type="file"
-                            name="file"
-                            accept="image/*"
-                            onChange={(e) => console.log(e)}
-                        />
-                    </div>
                     <input type="submit" id="submitterButton" hidden />
                 </form>
             </>
