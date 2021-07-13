@@ -20,7 +20,6 @@ export default function GetCTPL() {
     } = useSelector((state) => state.dialogReducer);
 
     const handleChange = (key, value) => {
-        console.log(value);
         dispatch(onChange({key, value}));
     };
 

@@ -7,7 +7,7 @@ export default makeStyles((theme) => ({
         alignItems: "center",
         width: "100%",
         "& > div": {
-            marginBottom: 20,
+            margin: "10px 0",
         },
     },
 }));

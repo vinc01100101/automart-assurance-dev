@@ -85,14 +85,14 @@ export default function steps() {
                                     <Button
                                         className={classes.button}
                                         variant="contained"
-                                        // onClick={() =>
-                                        //     dispatch(
-                                        //         onChange({
-                                        //             key: "dialogCtplIsOpen",
-                                        //             value: true,
-                                        //         })
-                                        //     )
-                                        // }
+                                        onClick={() =>
+                                            dispatch(
+                                                onChange({
+                                                    key: "dialogClaimIsOpen",
+                                                    value: true,
+                                                })
+                                            )
+                                        }
                                     >
                                         {entry.button}
                                     </Button>

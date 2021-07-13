@@ -7,6 +7,7 @@ import Head from "next/head";
 
 //whole page dialogs
 import GetCTPL from "@/components/Dialogs/GetCTPL";
+import Claim from "@/components/Dialogs/Claim";
 
 //hrefLinks
 import {CONTACTUS, FAQS} from "@/components/hrefLinks";
@@ -193,6 +194,7 @@ function MyApp({Component, pageProps}) {
             <_Wrapper>
                 <_NavBarWithDrawer />
                 <GetCTPL />
+                <Claim />
                 <Component {...pageProps} />
                 <_Footer PartnersAndAffiliates={Pna} />
             </_Wrapper>
