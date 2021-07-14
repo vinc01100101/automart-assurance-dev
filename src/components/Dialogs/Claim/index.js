@@ -3,13 +3,12 @@ import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
 import {Button} from "@material-ui/core";
 import {onChange} from "@/redux/dialogs/creators";
-import {TextField, Typography} from "@material-ui/core";
+import {Typography} from "@material-ui/core";
 import useStyles from "./styles";
+import textFieldMaker from "../helpers/TextFieldMaker";
 
-export default function GetCTPL() {
-    const classes = useStyles();
-    const [activeScreen, setActiveScreen] = useState(0);
-    const dispatch = useDispatch();
+export default function Claim() {
+    const [activeScreen, setActiveScreen] = useState(() => 0);
     const {
         dialogClaimIsOpen,
         insured,
@@ -173,6 +172,9 @@ export default function GetCTPL() {
         textFieldsArray4,
     ];
 
+    const classes = useStyles();
+    const dispatch = useDispatch();
+
     const handleChange = (key, value) => {
         dispatch(onChange({key, value}));
     };
@@ -207,55 +209,7 @@ export default function GetCTPL() {
         e.preventDefault();
         console.log(e);
     };
-    const makeTextField = (
-        label,
-        value,
-        id,
-        isMultilined,
-        placeholder = ""
-    ) => {
-        const error = errorArray.filter((x) => x.id === id)[0];
-        const helperText = error ? error.helperText : "";
 
-        return (
-            <TextField
-                className={classes.textField}
-                key={id}
-                fullWidth
-                error={!!error}
-                helperText={helperText}
-                multiline={isMultilined}
-                rows={4}
-                label={label + " *"}
-                value={value}
-                id={`input-${id}`}
-                variant="outlined"
-                onChange={(e) => handleChange(id, e.target.value)}
-                inputProps={{name: id, placeholder}}
-                InputLabelProps={{
-                    style: {width: "90%", top: -10},
-                }}
-            />
-        );
-    };
-
-    const content = () => {
-        return (
-            <>
-                <div className={classes.formLayout}>
-                    {textFiledsArraySet[activeScreen].map((x) =>
-                        makeTextField(
-                            x.label,
-                            x.value,
-                            x.id,
-                            x.isMultilined,
-                            x.placeholder
-                        )
-                    )}
-                </div>
-            </>
-        );
-    };
     const title = (
         <>
             <Typography variant="h6" component="span">{`Car Accident Report (${
@@ -267,10 +221,20 @@ export default function GetCTPL() {
             </Typography>
         </>
     );
+    const Content = () => (
+        <div className={classes.formLayout}>
+            {textFiledsArraySet[activeScreen].map((x) => {
+                const error = errorArray.filter((y) => y.id === x.id)[0];
+                const helperText = error ? error.helperText : "";
+
+                return textFieldMaker(x, !!error, helperText, handleChange);
+            })}
+        </div>
+    );
     return (
         <_Dialog
             title={title}
-            content={content()}
+            content={Content()}
             Actions={() => (
                 <>
                     <Button onClick={handleBack}>
@@ -284,6 +248,6 @@ export default function GetCTPL() {
                 </>
             )}
             open={dialogClaimIsOpen}
-        />
+        ></_Dialog>
     );
 }

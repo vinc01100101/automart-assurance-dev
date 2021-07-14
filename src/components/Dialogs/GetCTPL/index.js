@@ -2,8 +2,8 @@ import _Dialog from "@qniverse/core/_Dialog";
 import {useDispatch, useSelector} from "react-redux";
 import {Button} from "@material-ui/core";
 import {onChange} from "@/redux/dialogs/creators";
-import {TextField} from "@material-ui/core";
 import useStyles from "./styles";
+import textFieldMaker from "../helpers/TextFieldMaker";
 
 export default function GetCTPL() {
     const classes = useStyles();
@@ -26,27 +26,6 @@ export default function GetCTPL() {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(e);
-    };
-    const makeTextField = (label, value, id, isMultilined) => {
-        const error = errorArray.filter((x) => x.id === id)[0];
-        const helperText = error ? error.helperText : "";
-
-        return (
-            <TextField
-                key={id}
-                fullWidth
-                error={!!error}
-                helperText={helperText}
-                multiline={isMultilined}
-                rows={4}
-                label={label + " *"}
-                value={value}
-                id={`input-${id}`}
-                variant="outlined"
-                onChange={(e) => handleChange(id, e.target.value)}
-                inputProps={{name: id}}
-            />
-        );
     };
 
     const textFieldsArray = [
@@ -83,7 +62,7 @@ export default function GetCTPL() {
         },
     ];
 
-    const content = () => {
+    const Content = () => {
         return (
             <>
                 <form
@@ -93,9 +72,19 @@ export default function GetCTPL() {
                     encType="multipart/form-data"
                     onSubmit={handleSubmit}
                 >
-                    {textFieldsArray.map((x) =>
-                        makeTextField(x.label, x.value, x.id, x.isMultilined)
-                    )}
+                    {textFieldsArray.map((x) => {
+                        const error = errorArray.filter(
+                            (y) => y.id === x.id
+                        )[0];
+                        const helperText = error ? error.helperText : "";
+
+                        return textFieldMaker(
+                            x,
+                            !!error,
+                            helperText,
+                            handleChange
+                        );
+                    })}
                     Upload a clear picture of your Certificate of Registration
                     <div>
                         <input
@@ -113,7 +102,7 @@ export default function GetCTPL() {
     return (
         <_Dialog
             title="Get your CTPL"
-            content={content()}
+            content={Content()}
             Actions={() => (
                 <>
                     <Button

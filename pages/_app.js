@@ -5,6 +5,20 @@ import "../src/global.css";
 import Head from "next/head";
 // import CssBaseline from "@material-ui/core/CssBaseline";
 
+//redux
+//Provider module not needed, createWrapper did it instead
+import {createWrapper} from "next-redux-wrapper";
+import store from "@/redux/store";
+
+//react
+import {useEffect} from "react";
+
+//react-redux
+import {useDispatch} from "react-redux";
+
+//redux actions
+import {fetchYear, fetchBrands, fetchModels} from "@/redux/dialogs/creators";
+
 //whole page dialogs
 import GetCTPL from "@/components/Dialogs/GetCTPL";
 import Claim from "@/components/Dialogs/Claim";
@@ -26,7 +40,6 @@ import FrequentlyAskedQuestionsIcon from "mdi-react/FrequentlyAskedQuestionsIcon
 import FaceAgentIcon from "mdi-react/FaceAgentIcon";
 
 //optional componenets for QLIB
-
 import Pna from "@/components/SectionFooter/pna";
 
 //theme
@@ -41,18 +54,17 @@ import {assurance} from "@/svgStore/svgCall";
 //FAQs Schema
 import faqSchema from "@/src/faqSchema";
 
-//redux
-import {createWrapper} from "next-redux-wrapper";
-//Provider module not needed, createWrapper did it instead
-import store from "@/redux/store";
-
-//react
-import {useEffect} from "react";
-
+//basePath
 import getConfig from "next/config";
 const {publicRuntimeConfig} = getConfig();
+let basePath = publicRuntimeConfig.basePath || "";
 
 function MyApp({Component, pageProps}) {
+    const dispatch = useDispatch();
+    dispatch(fetchYear);
+    dispatch(fetchBrands);
+    dispatch(fetchModels);
+
     (() => {
         //theme module
         qConfig.theme = assuranceTheme;
@@ -113,10 +125,6 @@ function MyApp({Component, pageProps}) {
         //platform copyright text
         qConfig.copyrightText = "© Copyright 2020, Automart.Ph";
     })();
-
-    let basePath = publicRuntimeConfig.basePath
-        ? publicRuntimeConfig.basePath
-        : "";
 
     useEffect(() => {
         //google analytics
