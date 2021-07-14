@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Button} from "@material-ui/core";
 import {onChange} from "@/redux/dialogs/creators";
 import useStyles from "./styles";
-import textFieldMaker from "../helpers/TextFieldMaker";
+import textFieldMaker from "../helpers/textFieldMaker";
 
 export default function GetCTPL() {
     const classes = useStyles();
