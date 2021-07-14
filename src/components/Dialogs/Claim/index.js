@@ -219,6 +219,7 @@ export default function GetCTPL() {
 
         return (
             <TextField
+                className={classes.textField}
                 key={id}
                 fullWidth
                 error={!!error}

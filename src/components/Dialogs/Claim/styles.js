@@ -10,4 +10,9 @@ export default makeStyles((theme) => ({
             margin: "10px 0",
         },
     },
+    textField: {
+        "& span": {
+            whiteSpace: "nowrap",
+        },
+    },
 }));
