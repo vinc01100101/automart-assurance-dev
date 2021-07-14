@@ -20,6 +20,7 @@ import {useDispatch} from "react-redux";
 import {fetchYear, fetchBrands, fetchModels} from "@/redux/dialogs/creators";
 
 //whole page dialogs
+import GetQuote from "@/components/Dialogs/GetQuote";
 import GetCTPL from "@/components/Dialogs/GetCTPL";
 import Claim from "@/components/Dialogs/Claim";
 
@@ -201,6 +202,7 @@ function MyApp({Component, pageProps}) {
 
             <_Wrapper>
                 <_NavBarWithDrawer />
+                {/* <GetQuote /> */}
                 <GetCTPL />
                 <Claim />
                 <Component {...pageProps} />

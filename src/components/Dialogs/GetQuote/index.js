@@ -5,6 +5,18 @@ import {Button} from "@material-ui/core";
 import {onChange} from "@/redux/dialogs/creators";
 import {TextField, Typography} from "@material-ui/core";
 import useStyles from "./styles";
+import dynamic from "next/dynamic";
+
+const makeDynamic = (componentName) => {
+    return dynamic(() => import(`./${componentName}`));
+};
+
+const pages = [
+    {
+        Component: makeDynamic("CarDetails"),
+        title: "Car Details",
+    },
+];
 
 export default function GetQuote() {
     const classes = useStyles();
@@ -26,8 +38,8 @@ export default function GetQuote() {
         dispatch(onChange({key, value}));
     };
 
-    const handleNext = (e) => {
-        if (activeScreen < textFiledsArraySet.length - 1) {
+    const handleNext = () => {
+        if (activeScreen < pages.length - 1) {
             setActiveScreen((prevScreen) => prevScreen + 1);
         } else {
             //submit event
@@ -40,7 +52,7 @@ export default function GetQuote() {
         }
     };
 
-    const handleBack = (e) => {
+    const handleBack = () => {
         if (activeScreen > 0) {
             setActiveScreen((prevScreen) => prevScreen - 1);
         } else {
@@ -56,83 +68,33 @@ export default function GetQuote() {
         e.preventDefault();
         console.log(e);
     };
-    const makeTextField = (
-        label,
-        value,
-        id,
-        isMultilined,
-        placeholder = ""
-    ) => {
-        const error = errorArray.filter((x) => x.id === id)[0];
-        const helperText = error ? error.helperText : "";
 
-        return (
-            <TextField
-                className={classes.textField}
-                key={id}
-                fullWidth
-                error={!!error}
-                helperText={helperText}
-                multiline={isMultilined}
-                rows={4}
-                label={label + " *"}
-                value={value}
-                id={`input-${id}`}
-                variant="outlined"
-                onChange={(e) => handleChange(id, e.target.value)}
-                inputProps={{name: id, placeholder}}
-                InputLabelProps={{
-                    style: {width: "90%", top: -10},
-                }}
-            />
-        );
-    };
-
+    const {Component, title} = pages[activeScreen];
     const Content = () => {
         return (
             <>
                 <div className={classes.formLayout}>
-                    {textFiledsArraySet[activeScreen].map((x) =>
-                        makeTextField(
-                            x.label,
-                            x.value,
-                            x.id,
-                            x.isMultilined,
-                            x.placeholder
-                        )
-                    )}
+                    <Component />
                 </div>
             </>
         );
     };
-    const title = (
-        <>
-            <Typography variant="h6" component="span">{`Car Accident Report (${
-                activeScreen + 1
-            }/4)`}</Typography>
-            <br />
-            <Typography variant="body1" component="span">
-                NOTE: This form is not a substitute of the Police Report
-            </Typography>
-        </>
-    );
+
     return (
         <_Dialog
             title={title}
-            Content={Content}
+            content={Content()}
             Actions={() => (
                 <>
                     <Button onClick={handleBack}>
                         {activeScreen > 0 ? "Back" : "Cancel"}
                     </Button>
                     <Button variant="contained" onClick={handleNext}>
-                        {activeScreen < textFiledsArraySet.length - 1
-                            ? "Next"
-                            : "Submit"}
+                        {activeScreen < pages.length - 1 ? "Next" : "Submit"}
                     </Button>
                 </>
             )}
-            open={dialogClaimIsOpen}
+            open={dialogGetQuoteIsOpen}
         />
     );
 }

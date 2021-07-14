@@ -30,7 +30,7 @@ export default function GetCTPL() {
 
     const textFieldsArray = [
         {
-            label: "Complete Name",
+            label: "Full name of the registered owner",
             value: completeName,
             id: "completeName",
         },

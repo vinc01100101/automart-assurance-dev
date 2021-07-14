@@ -14,7 +14,7 @@ export default function sectionHeader() {
     const dispatch = useDispatch();
 
     const handleClick = () => {
-        // dispatch(onChange({key: "dialogCtplIsOpen", value: true}));
+        dispatch(onChange({key: "dialogGetQuoteIsOpen", value: true}));
     };
 
     return (

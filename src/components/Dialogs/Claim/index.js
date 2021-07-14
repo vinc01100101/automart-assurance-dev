@@ -13,17 +13,13 @@ export default function Claim() {
         dialogClaimIsOpen,
         insured,
         homeAddress,
-        homeContactNumber,
-        officeAddress,
-        officeContactNumber,
-        driverName,
-        driverAddress,
-        driverContactNumber,
+        contactInformation,
+        driversName,
+        driversAddress,
+        driversContactNumber,
         yearModel,
         make,
         claim_plateNumber,
-        motorNumber,
-        claim_chasisNumber,
         registeredOwnerName,
         dateOfAccidentOrLoss,
         time,
@@ -49,36 +45,25 @@ export default function Claim() {
             isMultilined: true,
         },
         {
-            label: "Contact Number(Home)",
-            value: homeContactNumber,
-            id: "homeContactNumber",
+            label: "Contact Information",
+            value: contactInformation,
+            id: "contactInformation",
         },
         {
-            label: "Office Address",
-            value: officeAddress,
-            id: "officeAddress",
+            label: "Driver's Name",
+            value: driversName,
+            id: "driversName",
+        },
+        {
+            label: "Driver's Address",
+            value: driversAddress,
+            id: "driversAddress",
             isMultilined: true,
         },
         {
-            label: "Contact Number(Office)",
-            value: officeContactNumber,
-            id: "officeContactNumber",
-        },
-        {
-            label: "Driver Name",
-            value: driverName,
-            id: "driverName",
-        },
-        {
-            label: "Driver Address",
-            value: driverAddress,
-            id: "driverAddress",
-            isMultilined: true,
-        },
-        {
-            label: "Contact Number(Driver)",
-            value: driverContactNumber,
-            id: "driverContactNumber",
+            label: "Driver's Contact Number",
+            value: driversContactNumber,
+            id: "driversContactNumber",
         },
     ];
 
@@ -97,16 +82,6 @@ export default function Claim() {
             label: "Plate Number",
             value: claim_plateNumber,
             id: "claim_plateNumber",
-        },
-        {
-            label: "Motor Number",
-            value: motorNumber,
-            id: "motorNumber",
-        },
-        {
-            label: "Chasis Number",
-            value: claim_chasisNumber,
-            id: "claim_chasisNumber",
         },
     ];
 
@@ -146,7 +121,7 @@ export default function Claim() {
 
     const textFieldsArray4 = [
         {
-            label: "Name and Address of any Third Party involved",
+            label: "Name and Address of persons invovled in the accident",
             value: nameAndAddressOfInvolved,
             id: "nameAndAddressOfInvolved",
             isMultilined: true,

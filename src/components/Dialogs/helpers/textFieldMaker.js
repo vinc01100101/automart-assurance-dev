@@ -1,4 +1,6 @@
 import {TextField} from "@material-ui/core";
+import dynamic from "next/dynamic";
+const MenuItem = dynamic(() => import("@material-ui/core/MenuItem"));
 
 export default function textFieldMaker(
     textFieldProps,
@@ -6,7 +8,8 @@ export default function textFieldMaker(
     helperText,
     handleChange
 ) {
-    const {label, value, id, isMultilined, placeholder} = textFieldProps;
+    const {label, value, id, isMultilined, isSelect, menuData, placeholder} =
+        textFieldProps;
 
     return (
         <TextField
@@ -15,6 +18,7 @@ export default function textFieldMaker(
             error={error}
             helperText={helperText}
             multiline={isMultilined}
+            select={isSelect}
             rows={4}
             label={label + " *"}
             value={value}
@@ -25,6 +29,15 @@ export default function textFieldMaker(
             InputLabelProps={{
                 style: {width: "90%", top: -10},
             }}
-        />
+        >
+            {isSelect &&
+                menuData.map((x, i) => {
+                    return (
+                        <MenuItem key={i} value={x}>
+                            {x}
+                        </MenuItem>
+                    );
+                })}
+        </TextField>
     );
 }
