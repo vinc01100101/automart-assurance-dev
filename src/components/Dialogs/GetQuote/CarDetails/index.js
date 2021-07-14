@@ -1,6 +1,6 @@
 import {useSelector, useDispatch} from "react-redux";
 import {onChange} from "@/redux/dialogs/creators";
-import textFieldMaker from "../../helpers/TextFieldMaker";
+import textFieldMaker from "../../helpers/textFieldMaker";
 
 export default function CarDetails() {
     //states from redux

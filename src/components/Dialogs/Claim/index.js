@@ -5,7 +5,7 @@ import {Button} from "@material-ui/core";
 import {onChange} from "@/redux/dialogs/creators";
 import {Typography} from "@material-ui/core";
 import useStyles from "./styles";
-import textFieldMaker from "../helpers/TextFieldMaker";
+import textFieldMaker from "../helpers/textFieldMaker";
 
 export default function Claim() {
     const [activeScreen, setActiveScreen] = useState(() => 0);
