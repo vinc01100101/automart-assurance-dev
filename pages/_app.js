@@ -17,7 +17,13 @@ import {useEffect} from "react";
 import {useDispatch} from "react-redux";
 
 //redux actions
-import {fetchYear, fetchBrands, fetchModels} from "@/redux/dialogs/creators";
+import {
+    fetchType,
+    fetchYear,
+    fetchBrands,
+    fetchModels,
+    fetcVtplLimits,
+} from "@/redux/dialogs/creators";
 
 //whole page dialogs
 import GetQuote from "@/components/Dialogs/GetQuote";
@@ -55,16 +61,15 @@ import {assurance} from "@/svgStore/svgCall";
 //FAQs Schema
 import faqSchema from "@/src/faqSchema";
 
-//basePath
-import getConfig from "next/config";
-const {publicRuntimeConfig} = getConfig();
-let basePath = publicRuntimeConfig.basePath || "";
+const basePath = process.env.NEXT_PUBLIC_BASEPATH;
 
 function MyApp({Component, pageProps}) {
     const dispatch = useDispatch();
-    dispatch(fetchYear);
-    dispatch(fetchBrands);
-    dispatch(fetchModels);
+    dispatch(fetchType());
+    dispatch(fetchYear());
+    dispatch(fetchBrands());
+    dispatch(fetchModels());
+    dispatch(fetcVtplLimits());
 
     (() => {
         //theme module
@@ -114,11 +119,11 @@ function MyApp({Component, pageProps}) {
         //image element to be used
         qConfig.imageElement = (props) => <NextImage {...props} />;
 
-        //anchor element to be used
-        qConfig.anchorElement = (props) => {
+        //anchor element to be used by the library
+        qConfig.anchorElement = ({children, ...props}) => {
             return (
                 <NextLink {...props}>
-                    <a {...props}>{props.children}</a>
+                    <a {...props}>{children}</a>
                 </NextLink>
             );
         };
@@ -202,7 +207,7 @@ function MyApp({Component, pageProps}) {
 
             <_Wrapper>
                 <_NavBarWithDrawer />
-                {/* <GetQuote /> */}
+                <GetQuote />
                 <GetCTPL />
                 <Claim />
                 <Component {...pageProps} />

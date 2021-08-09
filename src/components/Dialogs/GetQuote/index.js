@@ -3,7 +3,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
 import {Button} from "@material-ui/core";
 import {onChange} from "@/redux/dialogs/creators";
-import {TextField, Typography} from "@material-ui/core";
 import useStyles from "./styles";
 import dynamic from "next/dynamic";
 
@@ -13,8 +12,16 @@ const makeDynamic = (componentName) => {
 
 const pages = [
     {
-        Component: makeDynamic("CarDetails"),
-        title: "Car Details",
+        Component: makeDynamic("VehicleDetails"),
+        title: "Vehicle Details",
+    },
+    {
+        Component: makeDynamic("InsuranceType"),
+        title: "Insurance Type",
+    },
+    {
+        Component: makeDynamic("PolicyDetails"),
+        title: "Policy Details",
     },
 ];
 
@@ -22,17 +29,7 @@ export default function GetQuote() {
     const classes = useStyles();
     const [activeScreen, setActiveScreen] = useState(0);
     const dispatch = useDispatch();
-    const {
-        dialogGetQuoteIsOpen,
-        gq_brand,
-        gq_model,
-        gq_year,
-        gq_plateNunmber,
-        gq_typeOfInsurance,
-        gq_comprehensiveWithCtpl,
-        gq_useBidDeposit,
-        errorArray,
-    } = useSelector((state) => state.dialogReducer);
+    const {dialogGetQuoteIsOpen} = useSelector((state) => state.dialogReducer);
 
     const handleChange = (key, value) => {
         dispatch(onChange({key, value}));

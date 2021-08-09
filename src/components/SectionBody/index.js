@@ -1,5 +1,6 @@
 //COMPONENTS
 import intro from "./intro";
+import aon from "./aon";
 import video from "./video";
 import steps from "./steps";
 import guidelines from "./guidelines";
@@ -10,13 +11,12 @@ import callorchat from "./callorchat";
 
 import Image from "next/image";
 
-import getConfig from "next/config";
-const {publicRuntimeConfig} = getConfig();
-let basePath = publicRuntimeConfig.basePath || "/";
+const basePath = process.env.NEXT_PUBLIC_BASEPATH;
 
 //reference
 const componentReferenceArray = [
     intro,
+    aon,
     video,
     steps,
     guidelines,
@@ -44,14 +44,14 @@ export default function body() {
                         key={i}
                         id={`bodySection-${i}`}
                         className={`${classes.child} ${
-                            i == 2 ? classes.stepsBackground : ""
+                            i == 3 ? classes.stepsBackground : ""
                         }`}
                     >
-                        {/* maxWidth = "sm" for steps = 2, blogs = 5 and callorchat = componentReferenceArray.length-1 */}
+                        {/* maxWidth = "sm" for steps = 3, blogs = 6 and callorchat = componentReferenceArray.length-1 */}
                         <Container
                             maxWidth={
-                                i === 2 ||
-                                i === 5 ||
+                                i === 3 ||
+                                i === 6 ||
                                 i === componentReferenceArray.length - 1
                                     ? "sm"
                                     : "md"
@@ -68,9 +68,12 @@ export default function body() {
                                 <div className={classes.introImageWrapper}>
                                     <Image
                                         className={classes.introImage}
-                                        src={`${basePath}/images/introImage.webp`}
-                                        alt="A man selling his car."
+                                        src={`${basePath}/images/introImage.jpg`}
+                                        alt="A girl reporting car damage."
                                         layout="fill"
+                                        objectFit="cover"
+                                        // width={500}
+                                        // height={383}
                                         sizes="50vw"
                                     />
                                 </div>

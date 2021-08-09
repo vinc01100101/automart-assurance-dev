@@ -5,6 +5,8 @@ import textFieldMaker from "../../helpers/textFieldMaker";
 export default function CarDetails() {
     //states from redux
     const {
+        gq_dd_type,
+        gq_type,
         gq_dd_brand,
         gq_brand,
         gq_dd_model,
@@ -21,6 +23,13 @@ export default function CarDetails() {
     };
 
     const dataArray = [
+        {
+            label: "Type",
+            value: gq_type,
+            id: "gq_type",
+            isSelect: true,
+            menuData: gq_dd_type,
+        },
         {
             label: "Brand",
             value: gq_brand,

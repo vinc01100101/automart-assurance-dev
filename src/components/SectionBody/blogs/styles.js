@@ -5,7 +5,8 @@ export default makeStyles((theme) => ({
         position: "relative",
         display: "flex",
         width: "100%",
-        // height: "570px",
+
+        height: "570px",
         // [theme.breakpoints.up("sm")]: {
         //     height: "570px",
         // },
@@ -21,7 +22,7 @@ export default makeStyles((theme) => ({
 
         "& .arrow": {
             position: "absolute",
-            top: "35%",
+            // top: "35%",
             border: "hidden",
             borderRadius: "50%",
             padding: "0px",

@@ -54,8 +54,8 @@ export default function testimonials() {
             >
                 <CardMedia
                     className={classes.img}
-                    image={blogsData[state[`div${x}`].data].src}
-                    component="img"
+                    component={blogsData[state[`div${x}`].data].NextImage}
+                    // component="img"
                     title={blogsData[state[`div${x}`].data].title}
                 />
                 <CardContent className={classes.textContainer}>

@@ -4,33 +4,32 @@
 
 import {Typography} from "@material-ui/core";
 
-intro.title = "Who is Assurance.PH?";
-
+intro.title = "Why Get Car Insurance?";
+const textEntries = [
+    {
+        subtitle: "Financial Security",
+        body: "When you get into an accident, the insurance company will pay to repair the damages to your vehicle, the other party’s vehicle, as well as medical expenses incurred, if any. You won’t have unexpected expenses, which can break your finances. You’re buying peace-of-mind!",
+    },
+    {
+        subtitle: "Pay Now and Save Later",
+        body: "Pay your car insurance premiums and see how much savings you have when your car needs to get repaired.",
+    },
+    {
+        subtitle: "Protection from Day 1",
+        body: "If you buy from us, you’ll be protected right from the moment you first drive your car! Only Automart.Ph and Assurance.Ph can offer you that protection.",
+    },
+];
 export default function intro() {
     return (
-        <>
-            <br />
-            <Typography variant="body1" component="p">
-                Assurance.Ph is the insurance name under the company, Mabuhay
-                Insurance Agency Corporation. Established in January 2021, this
-                company is owned and headed by President/Chief Executive
-                Officer, Poncevic Ceballos Jr.
-            </Typography>
-            <br />
-            <Typography variant="body1" component="p">
-                Mabuhay Insurance Agency Corporation is a sister company of
-                Qmarketz Corporation who produced Automart.Ph and Motomart.Ph.
-                Automart.Ph is the largest online seller in the Philippines of
-                repossessed cars. Motomart has the same concept but selling
-                repossessed motorcycles instead. Our branches are located
-                nationwide. With the growing footprint of Automart.Ph and
-                Motomart.Ph with respect to car and motorcycle sales,
-                Assurance.Ph was conceptualized to service the insurance
-                requirements of our buyers. Car dealerships in the Philippines
-                traditionally have their own agencies and insurance partners so
-                it was timely that in the third year of Automart and its
-                nationwide recognition, Assurance.Ph was born.
-            </Typography>
-        </>
+        <ul style={{listStyleType: "none", padding: 0}}>
+            {textEntries.map((e, i) => (
+                <li key={i} style={{marginBottom: 30}}>
+                    <Typography variant="h6" style={{fontWeight: "bold"}}>
+                        {e.subtitle}
+                    </Typography>
+                    <Typography variant="body1">{e.body}</Typography>
+                </li>
+            ))}
+        </ul>
     );
 }

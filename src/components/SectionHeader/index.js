@@ -5,9 +5,10 @@ import useStyles from "./styles";
 import {useDispatch} from "react-redux";
 import {onChange} from "@/redux/dialogs/creators";
 
-import getConfig from "next/config";
-const {publicRuntimeConfig} = getConfig();
-let basePath = publicRuntimeConfig.basePath || "";
+import Image from "next/image";
+import headerImage from "../../images/headerImage.png";
+
+const basePath = process.env.NEXT_PUBLIC_BASEPATH;
 
 export default function sectionHeader() {
     const classes = useStyles();
@@ -21,12 +22,23 @@ export default function sectionHeader() {
         <div className={classes.root}>
             <div className={classes.semiRoot}>
                 <div className={classes.blackBackground} />
-                <img
+                {/* <img
                     className={classes.imgBackground}
                     src={`${basePath}/images/headerImage.webp`}
                     srcSet={`${basePath}/images/headerImage_4000.webp 4000w, ${basePath}/images/headerImage_2000.webp 2000w, ${basePath}/images/headerImage_1000.webp 1000w`}
                     sizes="100vw"
                     alt="A cover image."
+                /> */}
+                <Image
+                    className={classes.imgBackground}
+                    src={`${basePath}/images/headerImage.png`}
+                    alt="Picture of the author"
+                    // layout="responsive"
+                    // width={1240}
+                    // height={600}
+                    // sizes="(max-height: 500px) 1000px, 2000px"
+                    layout="fill"
+                    objectFit="cover"
                 />
                 <Container maxWidth="sm" className={classes.container}>
                     <Typography
@@ -34,7 +46,7 @@ export default function sectionHeader() {
                         component="h1"
                         className={classes.headerText}
                     >
-                        Peace of Mind Is Just a Click Away.
+                        Affordable car insurance for your peace of mind
                     </Typography>
                     <Button
                         variant="contained"

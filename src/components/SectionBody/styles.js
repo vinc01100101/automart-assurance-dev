@@ -7,9 +7,9 @@ export default makeStyles((theme) => ({
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",
-        "& #bodySection-5": {
-            height: 700,
-        },
+        // "& #bodySection-5": {
+        //     height: 700,
+        // },
     },
     introFlexSetter: {
         display: "flex",
@@ -22,10 +22,10 @@ export default makeStyles((theme) => ({
         },
     },
     introImage: {
-        clipPath: `circle(50%)`,
-        paddingRight: "30px",
+        // height: "100% !important",
     },
     introImageWrapper: {
+        clipPath: `circle(50%)`,
         position: "relative",
         flexShrink: 0,
         width: "300px",
@@ -47,8 +47,8 @@ export default makeStyles((theme) => ({
     child: {
         marginBottom: "98px",
         width: "100%",
-        paddingTop: 70,
-        marginTop: -70,
+        // paddingTop: 70,
+        // marginTop: -70,
     },
     //for curved light green background of "Just follow these 3 easy steps" section.
     stepsBackground: {

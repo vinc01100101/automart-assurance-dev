@@ -20,11 +20,9 @@ import {onChange} from "@/redux/dialogs/creators";
 
 import Image from "next/image";
 
-import getConfig from "next/config";
-const {publicRuntimeConfig} = getConfig();
-let basePath = publicRuntimeConfig.basePath || "/";
+const basePath = process.env.NEXT_PUBLIC_BASEPATH;
 
-steps.title = "";
+steps.title = "Getting car insurance now Is as easy as 1-2-3";
 
 export default function steps() {
     const dispatch = useDispatch();
@@ -39,7 +37,7 @@ export default function steps() {
                 <div className={classes.setFlex}>
                     <div className={classes.logoContainer}>
                         <Image
-                            src={`${basePath}/images/ClaimAndRegistration/${i}.webp`}
+                            src={`${basePath}/svg/not-in-sprite/logo-step${i}.svg`}
                             alt={entry.title}
                             width={entry.size[0]}
                             height={entry.size[1]}

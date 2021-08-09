@@ -12,7 +12,7 @@ import {benefits0, benefits1, benefits2} from "@/svgStore/svgCall";
 //put inside array for reference
 const referenceIndex = [benefits0, benefits1, benefits2];
 
-benefits.title = "Benefits of getting it from Assurance.Ph";
+benefits.title = "Benefits of Getting Vehicle Insurance from Assurance.Ph";
 
 export default function benefits() {
     const classes = useStyles();

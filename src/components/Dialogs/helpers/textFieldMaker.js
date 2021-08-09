@@ -1,18 +1,18 @@
-import {TextField} from "@material-ui/core";
-import dynamic from "next/dynamic";
-const MenuItem = dynamic(() => import("@material-ui/core/MenuItem"));
+import {TextField, MenuItem} from "@material-ui/core";
 
 export default function textFieldMaker(
     textFieldProps,
     error,
     helperText,
-    handleChange
+    handleChange,
+    size = "medium"
 ) {
     const {label, value, id, isMultilined, isSelect, menuData, placeholder} =
         textFieldProps;
 
     return (
         <TextField
+            size={size}
             key={id}
             fullWidth
             error={error}
@@ -20,7 +20,7 @@ export default function textFieldMaker(
             multiline={isMultilined}
             select={isSelect}
             rows={4}
-            label={label + " *"}
+            label={label}
             value={value}
             id={`input-${id}`}
             variant="outlined"

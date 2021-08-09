@@ -33,14 +33,9 @@ const pnaObj = {
     },
 };
 
-import getConfig from "next/config";
-const {publicRuntimeConfig} = getConfig();
+const basePath = process.env.NEXT_PUBLIC_BASEPATH;
 
 export default function pna() {
-    let basePath = publicRuntimeConfig.basePath
-        ? publicRuntimeConfig.basePath
-        : "/";
-
     const classes = useStyles();
 
     const hrefChecker = (href, Component) => {

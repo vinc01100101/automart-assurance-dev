@@ -1,26 +1,5 @@
-// let apiBaseUrl = process.env.SELLMYCAR_API_BASE_URL;
-// let baseUrl = process.env.APP_BASEURL;
-// let exportsObj;
-
-// if (baseUrl == "/") {
-//   exportsObj = {
-//     publicRuntimeConfig: {
-//       apiBasePath: apiBaseUrl
-//     }
-//   };
-// } else {
-//   exportsObj = {
-//     basePath: baseUrl,
-//     publicRuntimeConfig: {
-//       basePath: baseUrl + "/",
-//       apiBasePath: apiBaseUrl
-//     },
-//   };
-// }
+const basePath = process.env.NEXT_PUBLIC_BASEPATH;
 
 module.exports = {
-    basePath: "/assurance",
-    publicRuntimeConfig: {
-        basePath: "/assurance",
-    },
+    basePath: "/insurance",
 };
