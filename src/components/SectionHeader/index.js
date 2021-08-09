@@ -1,4 +1,4 @@
-import {Typography, Button, Container, Hidden} from "@material-ui/core";
+import {Typography, Button, Container} from "@material-ui/core";
 import useStyles from "./styles";
 
 //redux
@@ -6,7 +6,7 @@ import {useDispatch} from "react-redux";
 import {onChange} from "@/redux/dialogs/creators";
 
 import Image from "next/image";
-import headerImage from "../../images/headerImage.png";
+// import headerImage from "../../images/headerImage.png";
 
 const basePath = process.env.NEXT_PUBLIC_BASEPATH;
 
@@ -15,7 +15,7 @@ export default function sectionHeader() {
     const dispatch = useDispatch();
 
     const handleClick = () => {
-        dispatch(onChange({key: "dialogGetQuoteIsOpen", value: true}));
+        // dispatch(onChange({key: "dialogGetQuoteIsOpen", value: true}));
     };
 
     return (
