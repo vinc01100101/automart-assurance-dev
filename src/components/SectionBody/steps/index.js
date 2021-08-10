@@ -22,7 +22,7 @@ import Image from "next/image";
 
 const basePath = process.env.NEXT_PUBLIC_BASEPATH;
 
-steps.title = "Getting car insurance now Is as easy as 1-2-3";
+steps.title = "Getting car insurance now is as easy as 1-2-3";
 
 export default function steps() {
     const dispatch = useDispatch();
@@ -62,8 +62,6 @@ export default function steps() {
                         </Typography>
                         <CardActions className={classes.cardActions}>
                             {entry.button &&
-                                //   idk why conditional statement doesn't work on color props,
-                                //   so i'll do this instead
                                 (i == 0 ? (
                                     <Button
                                         className={`${classes.button} ${classes.whiteButton}`}

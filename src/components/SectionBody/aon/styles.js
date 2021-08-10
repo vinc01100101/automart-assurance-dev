@@ -34,5 +34,6 @@ export default makeStyles((theme) => ({
         borderRadius: "50%",
         marginBottom: "12px",
         overflow: "hidden",
+        boxShadow: "-15px 15px 10px 0px #777",
     },
 }));

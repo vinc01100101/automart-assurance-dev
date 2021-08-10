@@ -23,8 +23,11 @@ export default function benefits() {
                     <div className={classes.iconContainer}>
                         {referenceIndex[i]}
                     </div>
+                    <Typography variant="h6" component="p">
+                        {label.title}
+                    </Typography>
                     <Typography variant="body1" component="p">
-                        {label}
+                        {label.content}
                     </Typography>
                 </div>
             );
@@ -33,18 +36,19 @@ export default function benefits() {
     return (
         <div className={classes.root}>
             {makeComponents([
-                "Quick and simple process",
-                "We will fully assist you in the event of a claim",
-                <>
-                    We are part of a trusted brand -{" "}
-                    <a href={AUTOMART} target="_blank">
-                        Automart.Ph
-                    </a>{" "}
-                    and{" "}
-                    <a href={MOTOMART} target="_blank">
-                        Motomart.Ph
-                    </a>
-                </>,
+                {
+                    title: "Quick Online Policy Issuance",
+                    content: "Get insured via email, in minutes!",
+                },
+                {
+                    title: "Fast, Simple Claim Processing",
+                    content:
+                        "If you get into an accident, we’ll be with you every step of the way to claim and get your vehicle fixed, the right way!",
+                },
+                {
+                    title: "Pay by installment",
+                    content: "Just ask your insurance adviser for details.",
+                },
             ])}
         </div>
     );
