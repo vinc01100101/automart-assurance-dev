@@ -23,7 +23,11 @@ export default function benefits() {
                     <div className={classes.iconContainer}>
                         {referenceIndex[i]}
                     </div>
-                    <Typography variant="h6" component="p">
+                    <Typography
+                        variant="h6"
+                        component="p"
+                        style={{fontWeight: "bold"}}
+                    >
                         {label.title}
                     </Typography>
                     <Typography variant="body1" component="p">
