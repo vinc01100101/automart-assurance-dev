@@ -3,14 +3,14 @@ import {viber, telephone, atsign} from "@/svgStore/svgCall";
 //href strings
 import {TELEPHONE, EMAIL, VIBER} from "@/components/hrefLinks";
 
-import {Link} from "@material-ui/core";
+import {Link, Typography} from "@material-ui/core";
 
 //sibling files
 import useStyles from "./styles";
 //react
 import {useState, useEffect} from "react";
 
-callorchat.title = "You can call or chat with us!";
+callorchat.title = "Contact Us";
 
 export default function callorchat() {
     const classes = useStyles();
@@ -54,5 +54,14 @@ export default function callorchat() {
         });
     };
 
-    return <div className={classes.root}>{makeContacts()}</div>;
+    return (
+        <div className={classes.root}>
+            <Typography variant="body1">
+                This insurance product is offered by Automart.Ph and
+                Assurance.Ph. We want to ensure that you drive your dream car,
+                worry free!
+            </Typography>
+            {makeContacts()}
+        </div>
+    );
 }

@@ -10,8 +10,8 @@ export const CONTACTUS = "#bodySection-7";
 // export const BLOG = "http://automart.ph/blog";
 
 //SOCIAL
-export const FACEBOOK = "https://www.facebook.com/automartph/";
-export const INSTAGRAM = "https://www.instagram.com/automartph/";
+export const FACEBOOK = "https://www.facebook.com/AssurancePhilippines/";
+export const INSTAGRAM = "https://www.instagram.com/assurance.ph/";
 export const YOUTUBE =
     "https://www.youtube.com/channel/UCh-uSYHQZPeNMFkIZzBBbDw";
 export const LINKEDIN = "https://www.linkedin.com/company/automart-ph/";

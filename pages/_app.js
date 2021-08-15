@@ -156,7 +156,7 @@ function MyApp({Component, pageProps}) {
                 <link rel="icon" href={`${basePath}/favicon.png`} />
 
                 {/* asset preloads */}
-                <link
+                {/* <link
                     rel="preload"
                     as="image"
                     href={`${basePath}/images/headerImage.webp`}
@@ -167,7 +167,7 @@ function MyApp({Component, pageProps}) {
                     rel="preload"
                     as="image"
                     href={`${basePath}/images/introImage.webp`}
-                />
+                /> */}
 
                 {/* fonts asynchronouse load*/}
                 <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -185,10 +185,10 @@ function MyApp({Component, pageProps}) {
                 </noscript>
 
                 {/* google tag */}
-                <script
+                {/* <script
                     src="https://www.googletagmanager.com/gtag/js?id=G-6L6EWL6H47"
                     defer
-                ></script>
+                ></script> */}
 
                 {/* FAQs SCHEMA */}
                 <script
