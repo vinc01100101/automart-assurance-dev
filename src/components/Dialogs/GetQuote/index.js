@@ -12,16 +12,12 @@ const makeDynamic = (componentName) => {
 
 const pages = [
     {
-        Component: makeDynamic("VehicleDetails"),
-        title: "Vehicle Details",
+        Component: makeDynamic("VehicleInfo"),
+        title: "Vehicle Information",
     },
     {
-        Component: makeDynamic("InsuranceType"),
-        title: "Insurance Type",
-    },
-    {
-        Component: makeDynamic("PolicyDetails"),
-        title: "Policy Details",
+        Component: makeDynamic("PersonalInfo"),
+        title: "Personal Information",
     },
 ];
 

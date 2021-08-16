@@ -1,4 +1,4 @@
-import {makeStyles} from "@material-ui/core/styles";
+import {makeStyles} from "@material-ui/styles";
 
 export default makeStyles((theme) => ({
     root: {
@@ -57,6 +57,9 @@ export default makeStyles((theme) => ({
     },
     whiteButton: {
         color: "black",
-        background: "white",
+        // background: theme.palette.secondary.main,
+        // "& :hover": {
+        //     background: "gray",
+        // },
     },
 }));

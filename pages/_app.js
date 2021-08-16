@@ -17,18 +17,16 @@ import {useEffect} from "react";
 import {useDispatch} from "react-redux";
 
 //redux actions
-import {
-    fetchType,
-    fetchYear,
-    fetchBrands,
-    fetchModels,
-    fetcVtplLimits,
-} from "@/redux/dialogs/creators";
+// import {
+//     fetchType,
+//     fetchYear,
+//     fetchBrands,
+//     fetchModels,
+//     fetcVtplLimits,
+// } from "@/redux/dialogs/creators";
 
 //whole page dialogs
 import GetQuote from "@/components/Dialogs/GetQuote";
-import GetCTPL from "@/components/Dialogs/GetCTPL";
-import Claim from "@/components/Dialogs/Claim";
 
 //hrefLinks
 import {CONTACTUS, FAQS} from "@/components/hrefLinks";
@@ -64,12 +62,12 @@ import faqSchema from "@/src/faqSchema";
 const basePath = process.env.NEXT_PUBLIC_BASEPATH;
 
 function MyApp({Component, pageProps}) {
-    const dispatch = useDispatch();
-    dispatch(fetchType());
-    dispatch(fetchYear());
-    dispatch(fetchBrands());
-    dispatch(fetchModels());
-    dispatch(fetcVtplLimits());
+    // const dispatch = useDispatch();
+    // dispatch(fetchType());
+    // dispatch(fetchYear());
+    // dispatch(fetchBrands());
+    // dispatch(fetchModels());
+    // dispatch(fetcVtplLimits());
 
     (() => {
         //theme module
@@ -208,8 +206,6 @@ function MyApp({Component, pageProps}) {
             <_Wrapper>
                 <_NavBarWithDrawer />
                 <GetQuote />
-                <GetCTPL />
-                <Claim />
                 <Component {...pageProps} />
                 <_Footer PartnersAndAffiliates={Pna} />
             </_Wrapper>

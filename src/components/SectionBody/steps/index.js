@@ -61,38 +61,23 @@ export default function steps() {
                             {entry.content}
                         </Typography>
                         <CardActions className={classes.cardActions}>
-                            {entry.button &&
-                                (i == 0 ? (
-                                    <Button
-                                        className={`${classes.button} ${classes.whiteButton}`}
-                                        variant="contained"
-                                        // onClick={() =>
-                                        //     dispatch(
-                                        //         onChange({
-                                        //             key: "dialogCtplIsOpen",
-                                        //             value: true,
-                                        //         })
-                                        //     )
-                                        // }
-                                    >
-                                        {entry.button}
-                                    </Button>
-                                ) : (
-                                    <Button
-                                        className={classes.button}
-                                        variant="contained"
-                                        onClick={() =>
-                                            dispatch(
-                                                onChange({
-                                                    key: "dialogClaimIsOpen",
-                                                    value: true,
-                                                })
-                                            )
-                                        }
-                                    >
-                                        {entry.button}
-                                    </Button>
-                                ))}
+                            {entry.button && (
+                                <Button
+                                    className={`${classes.button} ${classes.whiteButton}`}
+                                    variant="contained"
+                                    color="inherit"
+                                    onClick={() =>
+                                        dispatch(
+                                            onChange({
+                                                key: "dialogGetQuoteIsOpen",
+                                                value: true,
+                                            })
+                                        )
+                                    }
+                                >
+                                    {entry.button}
+                                </Button>
+                            )}
                         </CardActions>
                     </CardContent>
                 </div>
